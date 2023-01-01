@@ -57,5 +57,14 @@ namespace PawnShop
             mnuPawn.Text="အပေါင်";
             mnuPawn.BackColor=Color.Silver;
         }
+
+        private void အရသToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new frmYaeSmall());
+            mnuYae.Text="‌အရွေးသေး";
+            mnuYae.BackColor=Color.Bisque;
+            mnuPawn.Text="အပေါင်";
+            mnuPawn.BackColor=Color.Silver;
+        }
     }
 }

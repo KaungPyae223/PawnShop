@@ -100,6 +100,7 @@
             this.အရသToolStripMenuItem.Name = "အရသToolStripMenuItem";
             this.အရသToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
             this.အရသToolStripMenuItem.Text = "‌အရွေးသေး";
+            this.အရသToolStripMenuItem.Click += new System.EventHandler(this.အရသToolStripMenuItem_Click);
             // 
             // mainPannel
             // 

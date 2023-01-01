@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PawnShop.PawnData
+namespace PawnShop.YaeData
 {
-    public partial class frmPawnSmall : Form
+    public partial class frmYaeSmall : Form
     {
-        public frmPawnSmall()
+        public frmYaeSmall()
         {
             InitializeComponent();
-        }
-
-        private void tsbNew_Click(object sender, EventArgs e)
-        {
-            frmPawnAdd frm= new frmPawnAdd();
-            frm.ShowDialog();
         }
     }
 }

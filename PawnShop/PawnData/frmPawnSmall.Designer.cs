@@ -82,6 +82,7 @@
             this.tsbNew.Size = new System.Drawing.Size(142, 42);
             this.tsbNew.Text = "အပေါင်အသစ်";
             this.tsbNew.ToolTipText = "Pawn Big Add";
+            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // tsbEdit
             // 

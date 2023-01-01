@@ -16,5 +16,11 @@ namespace PawnShop.PawnData
         {
             InitializeComponent();
         }
+
+        private void tsbNew_Click(object sender, EventArgs e)
+        {
+            frmPawnAdd frm = new frmPawnAdd();
+            frm.ShowDialog();
+        }
     }
 }
