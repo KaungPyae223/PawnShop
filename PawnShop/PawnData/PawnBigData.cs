@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PawnShop
+namespace PawnShop.PawnData
 {
-    public partial class Form1 : Form
+    public partial class frmPawnBigData : Form
     {
-        public Form1()
+        public frmPawnBigData()
         {
             InitializeComponent();
         }
