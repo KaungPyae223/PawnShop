@@ -29,63 +29,84 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.pawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.yaeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPawn = new System.Windows.Forms.ToolStripMenuItem();
             this.pawnBigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pawnSmallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuYae = new System.Windows.Forms.ToolStripMenuItem();
+            this.အရToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.အရသToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPannel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pawnToolStripMenuItem,
-            this.yaeToolStripMenuItem});
+            this.mnuPawn,
+            this.mnuYae});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 46);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // pawnToolStripMenuItem
+            // mnuPawn
             // 
-            this.pawnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuPawn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pawnBigToolStripMenuItem,
             this.pawnSmallToolStripMenuItem});
-            this.pawnToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pawnToolStripMenuItem.Name = "pawnToolStripMenuItem";
-            this.pawnToolStripMenuItem.Size = new System.Drawing.Size(85, 38);
-            this.pawnToolStripMenuItem.Text = "Pawn";
-            // 
-            // yaeToolStripMenuItem
-            // 
-            this.yaeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yaeToolStripMenuItem.Name = "yaeToolStripMenuItem";
-            this.yaeToolStripMenuItem.Size = new System.Drawing.Size(66, 38);
-            this.yaeToolStripMenuItem.Text = "Yae";
+            this.mnuPawn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mnuPawn.Name = "mnuPawn";
+            this.mnuPawn.Size = new System.Drawing.Size(98, 42);
+            this.mnuPawn.Text = "အပေါင်";
             // 
             // pawnBigToolStripMenuItem
             // 
+            this.pawnBigToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.pawnBigToolStripMenuItem.Name = "pawnBigToolStripMenuItem";
-            this.pawnBigToolStripMenuItem.Size = new System.Drawing.Size(270, 40);
-            this.pawnBigToolStripMenuItem.Text = "Pawn Big";
+            this.pawnBigToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.pawnBigToolStripMenuItem.Text = "အပေါင်ကြီး";
             this.pawnBigToolStripMenuItem.Click += new System.EventHandler(this.pawnBigToolStripMenuItem_Click);
             // 
             // pawnSmallToolStripMenuItem
             // 
             this.pawnSmallToolStripMenuItem.Name = "pawnSmallToolStripMenuItem";
-            this.pawnSmallToolStripMenuItem.Size = new System.Drawing.Size(270, 40);
-            this.pawnSmallToolStripMenuItem.Text = "Pawn Small";
+            this.pawnSmallToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.pawnSmallToolStripMenuItem.Text = "အပေါင်သေး";
+            this.pawnSmallToolStripMenuItem.Click += new System.EventHandler(this.pawnSmallToolStripMenuItem_Click);
+            // 
+            // mnuYae
+            // 
+            this.mnuYae.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.အရToolStripMenuItem,
+            this.အရသToolStripMenuItem});
+            this.mnuYae.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mnuYae.Name = "mnuYae";
+            this.mnuYae.Size = new System.Drawing.Size(86, 42);
+            this.mnuYae.Text = "‌အရွေး";
+            // 
+            // အရToolStripMenuItem
+            // 
+            this.အရToolStripMenuItem.Name = "အရToolStripMenuItem";
+            this.အရToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.အရToolStripMenuItem.Text = "‌အရွေးကြီး";
+            this.အရToolStripMenuItem.Click += new System.EventHandler(this.အရToolStripMenuItem_Click);
+            // 
+            // အရသToolStripMenuItem
+            // 
+            this.အရသToolStripMenuItem.Name = "အရသToolStripMenuItem";
+            this.အရသToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.အရသToolStripMenuItem.Text = "‌အရွေးသေး";
             // 
             // mainPannel
             // 
             this.mainPannel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPannel.Location = new System.Drawing.Point(0, 42);
+            this.mainPannel.Location = new System.Drawing.Point(0, 46);
             this.mainPannel.Name = "mainPannel";
-            this.mainPannel.Size = new System.Drawing.Size(800, 408);
+            this.mainPannel.Size = new System.Drawing.Size(800, 404);
             this.mainPannel.TabIndex = 1;
             // 
             // FrmMain
@@ -97,6 +118,7 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
@@ -111,11 +133,13 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem pawnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuPawn;
         private System.Windows.Forms.ToolStripMenuItem pawnBigToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pawnSmallToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem yaeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuYae;
         private System.Windows.Forms.Panel mainPannel;
+        private System.Windows.Forms.ToolStripMenuItem အရToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem အရသToolStripMenuItem;
     }
 }
 

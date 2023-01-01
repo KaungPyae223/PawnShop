@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PawnShop.PawnData;
+using PawnShop.YaeData;
+
 namespace PawnShop
 {
     public partial class FrmMain : Form
@@ -32,6 +34,28 @@ namespace PawnShop
         private void pawnBigToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadform(new frmPawnBigData());
+            mnuPawn.Text="အပေါင်ကြီး";
+            mnuPawn.BackColor=Color.Bisque;
+            mnuYae.Text="‌အရွေး";
+            mnuYae.BackColor=Color.Silver;
+        }
+
+        private void pawnSmallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new frmPawnSmall());
+            mnuPawn.Text="အပေါင်သေး";
+            mnuPawn.BackColor=Color.Bisque;
+            mnuYae.Text="‌အရွေး";
+            mnuYae.BackColor=Color.Silver;
+        }
+
+        private void အရToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new frmYaeBig());
+            mnuYae.Text="‌အရွေးကြီး";
+            mnuYae.BackColor=Color.Bisque;
+            mnuPawn.Text="အပေါင်";
+            mnuPawn.BackColor=Color.Silver;
         }
     }
 }
