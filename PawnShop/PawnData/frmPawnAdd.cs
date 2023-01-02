@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PawnShop.DBO;
 namespace PawnShop.PawnData
 {
     public partial class frmPawnAdd : Form
@@ -19,6 +19,9 @@ namespace PawnShop.PawnData
 
         public Boolean pawnbig = true;
         int OK;
+        public string SPstring;
+        public DataTable DT;
+        clsMainDB objclsMainDB = new clsMainDB();
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtVourcher.Text.Length!=7 && pawnbig==true )
@@ -31,7 +34,7 @@ namespace PawnShop.PawnData
                 MessageBox.Show("Vourcher ID must have 6 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtVourcher.Focus();
             }
-            else if (txtItemName.Text=="")
+            else if (txtItemName.Text.Trim()=="")
             {
                 MessageBox.Show("Please type item Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtItemName.Focus();
@@ -40,17 +43,17 @@ namespace PawnShop.PawnData
             { 
                 MessageBox.Show("Please select weight", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if(int.TryParse(txtAmount.Text,out OK)==false || Convert.ToInt32(txtAmount.Text)<=999 || txtAmount.Text=="")
+            else if(int.TryParse(txtAmount.Text,out OK)==false || Convert.ToInt32(txtAmount.Text.Trim())<=999 || txtAmount.Text.Trim()=="")
             {
                 MessageBox.Show("Please type an amount and amount should be number and amound must be greather than 1000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAmount.Focus();
             }
-            else if(txtName.Text=="")
+            else if(txtName.Text.Trim()=="")
             {
                 MessageBox.Show("Please type Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtName.Focus();
             }
-            else if (txtLocation.Text=="")
+            else if (txtLocation.Text.Trim()=="")
             {
                 MessageBox.Show("Please type Location", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtLocation.Focus();
@@ -77,6 +80,19 @@ namespace PawnShop.PawnData
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();  
+        }
+
+        private void dtpPawn_ValueChanged(object sender, EventArgs e)
+        {
+            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}'", dtpPawn.Text, "0");
+            DT = objclsMainDB.SelectData(SPstring);
+            int DateDiff = Convert.ToInt32(DT.Rows[0]["NO"]);
+            if (DateDiff > 0) 
+            {
+                MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpPawn.Value=DateTime.Today;
+                dtpPawn.Focus();
+            }
         }
     }
 }

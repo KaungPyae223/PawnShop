@@ -395,10 +395,12 @@
             // 
             // dtpPawn
             // 
+            this.dtpPawn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpPawn.Location = new System.Drawing.Point(207, 400);
             this.dtpPawn.Name = "dtpPawn";
             this.dtpPawn.Size = new System.Drawing.Size(355, 26);
             this.dtpPawn.TabIndex = 17;
+            this.dtpPawn.ValueChanged += new System.EventHandler(this.dtpPawn_ValueChanged);
             // 
             // frmPawnAdd
             // 
@@ -457,6 +459,6 @@
         public System.Windows.Forms.ComboBox cboPae;
         public System.Windows.Forms.ComboBox cboYae;
         public System.Windows.Forms.TextBox txtKyat;
-        private System.Windows.Forms.DateTimePicker dtpPawn;
+        public System.Windows.Forms.DateTimePicker dtpPawn;
     }
 }
