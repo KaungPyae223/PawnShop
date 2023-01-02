@@ -415,6 +415,7 @@
             this.Name = "frmPawnAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPawnAdd";
+            this.Load += new System.EventHandler(this.frmPawnAdd_Load);
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

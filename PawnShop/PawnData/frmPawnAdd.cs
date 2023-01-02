@@ -58,6 +58,11 @@ namespace PawnShop.PawnData
                 MessageBox.Show("Please type Location", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtLocation.Focus();
             }
+            else
+            {
+                string weight = txtKyat.Text.Trim()+" ကျပ်  "+cboPae.SelectedItem.ToString()+" ပဲ  "+cboYae.SelectedItem.ToString()+" ရွေး";
+                MessageBox.Show(weight);
+            }
         }
 
         private void txtVourcher_TextChanged(object sender, EventArgs e)
@@ -93,6 +98,24 @@ namespace PawnShop.PawnData
                 dtpPawn.Value=DateTime.Today;
                 dtpPawn.Focus();
             }
+        }
+
+        private void frmPawnAdd_Load(object sender, EventArgs e)
+        {
+            if(pawnbig)
+            {
+                SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}'", dtpPawn.Text, "1");
+
+                DT = objclsMainDB.SelectData(SPstring);
+                string ID = DT.Rows[0]["ID"].ToString();
+                string[] z = ID.Split(' ');
+                string p = z[1].Trim();
+                int i = Convert.ToInt32(p);
+                i++;
+                ID = z[0].Trim() +" "+i.ToString("000");
+                txtVourcher.Text = ID;
+            }
+            
         }
     }
 }
