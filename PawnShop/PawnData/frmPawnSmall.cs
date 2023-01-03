@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PawnShop.PawnData
@@ -19,7 +12,8 @@ namespace PawnShop.PawnData
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
-            frmPawnAdd frm= new frmPawnAdd();
+            frmPawnAdd frm = new frmPawnAdd();
+            frm.pawnbig=false;
             frm.ShowDialog();
         }
     }

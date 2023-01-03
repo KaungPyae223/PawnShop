@@ -29,31 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPawnSmall));
-            this.dgvPawn = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tslLabel = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmName = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmDate = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAmount = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPawn)).BeginInit();
+            this.itemNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.toolStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvPawn
-            // 
-            this.dgvPawn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPawn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPawn.Location = new System.Drawing.Point(0, 47);
-            this.dgvPawn.Name = "dgvPawn";
-            this.dgvPawn.RowHeadersWidth = 62;
-            this.dgvPawn.RowTemplate.Height = 28;
-            this.dgvPawn.Size = new System.Drawing.Size(800, 403);
-            this.dgvPawn.TabIndex = 3;
             // 
             // toolStrip1
             // 
@@ -109,8 +106,8 @@
             this.tslLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tslLabel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmName,
-            this.tsmDate,
-            this.tsmAmount});
+            this.tsmAmount,
+            this.itemNameToolStripMenuItem});
             this.tslLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tslLabel.Image = ((System.Drawing.Image)(resources.GetObject("tslLabel.Image")));
             this.tslLabel.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -121,19 +118,13 @@
             // tsmName
             // 
             this.tsmName.Name = "tsmName";
-            this.tsmName.Size = new System.Drawing.Size(193, 38);
+            this.tsmName.Size = new System.Drawing.Size(270, 38);
             this.tsmName.Text = "Name";
-            // 
-            // tsmDate
-            // 
-            this.tsmDate.Name = "tsmDate";
-            this.tsmDate.Size = new System.Drawing.Size(193, 38);
-            this.tsmDate.Text = "Date";
             // 
             // tsmAmount
             // 
             this.tsmAmount.Name = "tsmAmount";
-            this.tsmAmount.Size = new System.Drawing.Size(193, 38);
+            this.tsmAmount.Size = new System.Drawing.Size(270, 38);
             this.tsmAmount.Text = "Amount";
             // 
             // toolStripTextBox1
@@ -151,40 +142,126 @@
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(123, 38);
+            this.toolStripLabel1.Size = new System.Drawing.Size(123, 42);
             this.toolStripLabel1.Text = "အပေါင်သေး";
+            // 
+            // itemNameToolStripMenuItem
+            // 
+            this.itemNameToolStripMenuItem.Name = "itemNameToolStripMenuItem";
+            this.itemNameToolStripMenuItem.Size = new System.Drawing.Size(270, 38);
+            this.itemNameToolStripMenuItem.Text = "Item Name";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.dateTimePicker2);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 47);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(800, 54);
+            this.panel1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 101);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 349);
+            this.panel2.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(800, 349);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "from";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(82, 15);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(169, 26);
+            this.dateTimePicker1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(257, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "to";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(291, 14);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(169, 26);
+            this.dateTimePicker2.TabIndex = 3;
             // 
             // frmPawnSmall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgvPawn);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPawnSmall";
             this.Text = "frmPawnSmall";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPawn)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvPawn;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.ToolStripButton tsbSearch;
         private System.Windows.Forms.ToolStripDropDownButton tslLabel;
         private System.Windows.Forms.ToolStripMenuItem tsmName;
-        private System.Windows.Forms.ToolStripMenuItem tsmDate;
         private System.Windows.Forms.ToolStripMenuItem tsmAmount;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripMenuItem itemNameToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label1;
     }
 }

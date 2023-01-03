@@ -84,12 +84,14 @@ namespace PawnShop.PawnData
                     {
                         objclsPawn.action = 0;
                         if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        { 
+                        {
                             objclsPawn.saveData();
                             reload();
                         }
 
                     }
+                    frmPawnBigData objpawnBigData = new frmPawnBigData();
+                    objpawnBigData.ShowData();
 
                 }
 
@@ -98,6 +100,14 @@ namespace PawnShop.PawnData
         private void reload()
         {
             addvourcher();
+            txtAmount.Text="";
+            txtItemName.Text="";
+            txtKyat.Text="0";
+            txtLocation.Text="";
+            txtNote.Text="";
+            txtName.Text="";
+            cboPae.SelectedIndex=0;
+            cboYae.SelectedIndex=0;
         }
         private void addvourcher()
         {
@@ -110,9 +120,19 @@ namespace PawnShop.PawnData
                 string[] z = ID.Split(' ');
                 string p = z[1].Trim();
                 int i = Convert.ToInt32(p);
-                i++;
-                ID = z[0].Trim() +" "+i.ToString("000");
-                txtVourcher.Text = ID;
+                if (i== 999)
+                {
+                    MessageBox.Show("Please enter a new vourcher");
+                    txtVourcher.Text="";
+                    txtVourcher.Focus();
+                    return;
+                }
+                else
+                {
+                    i++;
+                    ID = z[0].Trim() +" "+i.ToString("000");
+                    txtVourcher.Text = ID;
+                }
             }
         }
         private void txtVourcher_TextChanged(object sender, EventArgs e)
@@ -123,7 +143,7 @@ namespace PawnShop.PawnData
                 txtVourcher.Focus();
                 txtVourcher.Text=txtVourcher.Text.Remove(7, 1);
             }
-            else if (txtVourcher.Text.Length!=6 && pawnbig==false)
+            else if (txtVourcher.Text.Length>6 && pawnbig==false)
             {
                 MessageBox.Show("Vourcher ID must have 6 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtVourcher.Focus();
