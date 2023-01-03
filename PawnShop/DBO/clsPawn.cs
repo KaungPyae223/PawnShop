@@ -6,12 +6,55 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+
 namespace PawnShop.DBO
 {
     internal class clsPawn
     {
-        public string Date { get; set; }
+        public string ID { get; set; }
+        public string ItemName { get; set; }
+        public string weight { get; set; }
+        public int amount { get; set; }
+        public string name { get; set; }
+        public string location { get; set; }
+        public string date { get; set; }
+        public string description { get; set; }
+        public int action { get; set; }
+        public string yaeDate { get; set; }
+ 
 
-       
+        public void saveData()
+        {
+            clsMainDB objClsMain = new clsMainDB();
+            try
+            {
+                objClsMain.DataBaseCon();
+
+                SqlCommand sql = new SqlCommand("SP_InsertPawn", objClsMain.con);
+                sql.CommandType = CommandType.StoredProcedure;
+                sql.Parameters.AddWithValue("@BigVourcherID", ID);
+                sql.Parameters.AddWithValue("@ItemName",ItemName );
+                sql.Parameters.AddWithValue("@amount", amount);
+                sql.Parameters.AddWithValue("@CustomerName",name );
+                sql.Parameters.AddWithValue("@CustomerLocation",location );
+                sql.Parameters.AddWithValue("@PawnDate", date);
+                sql.Parameters.AddWithValue("@Note", description);
+                sql.Parameters.AddWithValue("@weight", weight);
+                sql.Parameters.AddWithValue("@action", action);
+                sql.Parameters.AddWithValue("@YaeDate", yaeDate);
+
+                sql.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                objClsMain.con.Close();
+            }
+        }
+
     }
 }

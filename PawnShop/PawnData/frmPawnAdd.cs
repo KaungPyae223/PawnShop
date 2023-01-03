@@ -22,6 +22,7 @@ namespace PawnShop.PawnData
         public string SPstring;
         public DataTable DT;
         clsMainDB objclsMainDB = new clsMainDB();
+        public Boolean isedit = false;
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtVourcher.Text.Length!=7 && pawnbig==true )
@@ -60,8 +61,34 @@ namespace PawnShop.PawnData
             }
             else
             {
-                string weight = txtKyat.Text.Trim()+" ကျပ်  "+cboPae.SelectedItem.ToString()+" ပဲ  "+cboYae.SelectedItem.ToString()+" ရွေး";
-                MessageBox.Show(weight);
+                SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}'", txtVourcher.Text.Trim(), "2");
+                
+                DT=objclsMainDB.SelectData(SPstring);
+                
+                
+                    string weight = txtKyat.Text.Trim()+" ကျပ်  "+cboPae.SelectedItem.ToString()+" ပဲ  "+cboYae.SelectedItem.ToString()+" ရွေး";
+                    clsPawn objclsPawn= new clsPawn();
+                    objclsPawn.weight = weight;
+                    objclsPawn.date=dtpPawn.Text;
+                    objclsPawn.ID=txtVourcher.Text.Trim();
+                    objclsPawn.ItemName = txtItemName.Text.Trim();
+                    objclsPawn.amount = Convert.ToInt32(txtAmount.Text.Trim());
+                    objclsPawn.name= txtName.Text.Trim();
+                    objclsPawn.location= txtLocation.Text.Trim();
+                    objclsPawn.description = txtNote.Text.Trim();
+                    
+                    if(isedit)
+                    {
+
+                    }
+                    else
+                    {
+                        objclsPawn.action = 0;
+                        if(MessageBox.Show("This ID is already exit", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                            objclsPawn.saveData();
+                    }
+                
+
             }
         }
 

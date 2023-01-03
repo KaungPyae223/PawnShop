@@ -231,6 +231,8 @@
             // 
             // txtName
             // 
+            this.txtName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(207, 276);
             this.txtName.Name = "txtName";
@@ -239,6 +241,8 @@
             // 
             // txtLocation
             // 
+            this.txtLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtLocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLocation.Location = new System.Drawing.Point(207, 338);
             this.txtLocation.Name = "txtLocation";
@@ -414,7 +418,7 @@
             this.MinimizeBox = false;
             this.Name = "frmPawnAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmPawnAdd";
+            this.Text = "PawnAdd";
             this.Load += new System.EventHandler(this.frmPawnAdd_Load);
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
