@@ -87,5 +87,42 @@ namespace PawnShop.PawnData
             else
                 ShowData();
         }
+
+        private void tsbEdit_Click(object sender, EventArgs e)
+        {
+            showEntry();
+            
+        }
+        public void showEntry()
+        {
+            if (dgvPawn.CurrentRow.Cells[0].Value.ToString() == string.Empty)
+            {
+                MessageBox.Show("Please select a course to edit");
+            }
+            else
+            {
+                frmPawnAdd frm = new frmPawnAdd();
+                frm.isedit= true;
+                frm.txtVourcher.Text = dgvPawn.CurrentRow.Cells[1].Value.ToString();
+                frm.txtItemName.Text = dgvPawn.CurrentRow.Cells[2].Value.ToString();
+                frm.txtAmount.Text= dgvPawn.CurrentRow.Cells["amount"].Value.ToString();
+                frm.txtName.Text=dgvPawn.CurrentRow.Cells[4].Value.ToString();
+                frm.txtLocation.Text= dgvPawn.CurrentRow.Cells[5].Value.ToString();
+                frm.dtpPawn.Text= dgvPawn.CurrentRow.Cells[6].Value.ToString();
+                frm.txtNote.Text= dgvPawn.CurrentRow.Cells[8].Value.ToString();
+                string[] z = dgvPawn.CurrentRow.Cells[9].Value.ToString().Split(' ');
+                frm.txtKyat.Text=z[0];
+                frm.cboPae.Text=z[3];
+                frm.cboYae.Text=z[6];
+                frm.txtKyat.Enabled=false;
+                frm.cboPae.Enabled=false;
+                frm.cboYae.Enabled=false;
+                frm.dtpPawn.Enabled=false;
+                frm.txtVourcher.Enabled=false;
+                frm.btnSave.Text="Edit";
+                frm.ShowDialog();
+                ShowData();
+            }
+        }
     }
 }

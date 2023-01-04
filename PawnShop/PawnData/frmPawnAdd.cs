@@ -74,28 +74,32 @@ namespace PawnShop.PawnData
         }
         private void addvourcher()
         {
-            if (pawnbig)
+            if (isedit==false)
             {
-                SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", dtpPawn.Text,"0", "1");
+                if (pawnbig)
+                {
+                    SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", dtpPawn.Text, "0", "1");
 
-                DT = objclsMainDB.SelectData(SPstring);
-                string ID = DT.Rows[0]["ID"].ToString();
-                string[] z = ID.Split(' ');
-                string p = z[1].Trim();
-                int i = Convert.ToInt32(p);
-                if (i== 999)
-                {
-                    MessageBox.Show("Please enter a new vourcher");
-                    txtVourcher.Text="";
-                    txtVourcher.Focus();
-                    return;
+                    DT = objclsMainDB.SelectData(SPstring);
+                    string ID = DT.Rows[0]["ID"].ToString();
+                    string[] z = ID.Split(' ');
+                    string p = z[1].Trim();
+                    int i = Convert.ToInt32(p);
+                    if (i== 999)
+                    {
+                        MessageBox.Show("Please enter a new vourcher");
+                        txtVourcher.Text="";
+                        txtVourcher.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        i++;
+                        ID = z[0].Trim() +" "+i.ToString("000");
+                        txtVourcher.Text = ID;
+                    }
                 }
-                else
-                {
-                    i++;
-                    ID = z[0].Trim() +" "+i.ToString("000");
-                    txtVourcher.Text = ID;
-                }
+
             }
         }
         private void txtVourcher_TextChanged(object sender, EventArgs e)
@@ -122,7 +126,7 @@ namespace PawnShop.PawnData
 
         private void dtpPawn_ValueChanged(object sender, EventArgs e)
         {
-            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", dtpPawn.Text,"0", "0");
+            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", dtpPawn.Text, "0", "0");
             DT = objclsMainDB.SelectData(SPstring);
             int DateDiff = Convert.ToInt32(DT.Rows[0]["NO"]);
             if (DateDiff > 0)
@@ -141,7 +145,7 @@ namespace PawnShop.PawnData
 
         private void txtItemName_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode== Keys.Enter) 
+            if (e.KeyCode== Keys.Enter)
             {
                 txtAmount.Focus();
             }
@@ -180,7 +184,7 @@ namespace PawnShop.PawnData
         }
         public void saveData()
         {
-            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", txtVourcher.Text.Trim(),"0", "2");
+            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", txtVourcher.Text.Trim(), "0", "2");
             DT=objclsMainDB.SelectData(SPstring);
             if (DT.Rows.Count>0 && isedit==false)
             {
@@ -203,7 +207,12 @@ namespace PawnShop.PawnData
 
                 if (isedit)
                 {
-
+                    objclsPawn.action =1;
+                    if (MessageBox.Show("Please confirm to edit", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        objclsPawn.saveData();
+                        this.Close();
+                    }
                 }
                 else
                 {

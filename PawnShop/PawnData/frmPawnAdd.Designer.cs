@@ -449,14 +449,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtVourcher;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtItemName;
-        private System.Windows.Forms.TextBox txtAmount;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtLocation;
-        private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -470,5 +464,11 @@
         public System.Windows.Forms.ComboBox cboYae;
         public System.Windows.Forms.TextBox txtKyat;
         public System.Windows.Forms.DateTimePicker dtpPawn;
+        public System.Windows.Forms.TextBox txtNote;
+        public System.Windows.Forms.TextBox txtVourcher;
+        public System.Windows.Forms.TextBox txtItemName;
+        public System.Windows.Forms.TextBox txtAmount;
+        public System.Windows.Forms.TextBox txtName;
+        public System.Windows.Forms.TextBox txtLocation;
     }
 }
