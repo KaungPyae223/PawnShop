@@ -220,6 +220,7 @@
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(394, 30);
             this.txtItemName.TabIndex = 2;
+            this.txtItemName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItemName_KeyDown);
             // 
             // txtAmount
             // 
@@ -228,6 +229,7 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(394, 30);
             this.txtAmount.TabIndex = 6;
+            this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmount_KeyDown);
             // 
             // txtName
             // 
@@ -238,6 +240,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(394, 30);
             this.txtName.TabIndex = 8;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // txtLocation
             // 
@@ -248,6 +251,7 @@
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(394, 30);
             this.txtLocation.TabIndex = 10;
+            this.txtLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLocation_KeyDown);
             // 
             // txtNote
             // 
@@ -257,6 +261,7 @@
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(394, 111);
             this.txtNote.TabIndex = 14;
+            this.txtNote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNote_KeyDown);
             // 
             // label1
             // 

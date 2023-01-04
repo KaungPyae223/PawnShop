@@ -55,45 +55,7 @@ namespace PawnShop.PawnData
             }
             else
             {
-                SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}'", txtVourcher.Text.Trim(), "2");
-                DT=objclsMainDB.SelectData(SPstring);
-                if (DT.Rows.Count>0 && isedit==false)
-                {
-                    MessageBox.Show("ID is already exit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtVourcher.Focus();
-                }
-                else
-                {
-                    string weight = txtKyat.Text.Trim()+" ကျပ်  "+cboPae.SelectedItem.ToString()+" ပဲ  "+cboYae.SelectedItem.ToString()+" ရွေး";
-                    clsPawn objclsPawn = new clsPawn();
-                    objclsPawn.weight = weight;
-                    objclsPawn.date=dtpPawn.Text;
-                    objclsPawn.ID=txtVourcher.Text.Trim();
-                    objclsPawn.ItemName = txtItemName.Text.Trim();
-                    objclsPawn.amount = Convert.ToInt32(txtAmount.Text.Trim());
-                    objclsPawn.name= txtName.Text.Trim();
-                    objclsPawn.location= txtLocation.Text.Trim();
-                    objclsPawn.description = txtNote.Text.Trim();
-                    objclsPawn.yaeDate="";
-
-                    if (isedit)
-                    {
-
-                    }
-                    else
-                    {
-                        objclsPawn.action = 0;
-                        if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                        {
-                            objclsPawn.saveData();
-                            reload();
-                        }
-
-                    }
-                    frmPawnBigData objpawnBigData = new frmPawnBigData();
-                    objpawnBigData.ShowData();
-
-                }
+                saveData();
 
             }
         }
@@ -108,6 +70,7 @@ namespace PawnShop.PawnData
             txtName.Text="";
             cboPae.SelectedIndex=0;
             cboYae.SelectedIndex=0;
+            txtItemName.Focus();
         }
         private void addvourcher()
         {
@@ -173,7 +136,87 @@ namespace PawnShop.PawnData
         private void frmPawnAdd_Load(object sender, EventArgs e)
         {
             addvourcher();
+            txtItemName.Focus();
+        }
 
+        private void txtItemName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode== Keys.Enter) 
+            {
+                txtAmount.Focus();
+            }
+        }
+
+        private void txtAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode== Keys.Enter)
+            {
+                txtName.Focus();
+            }
+        }
+
+        private void txtName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode== Keys.Enter)
+            {
+                txtLocation.Focus();
+            }
+        }
+
+        private void txtLocation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode== Keys.Enter)
+            {
+                txtNote.Focus();
+            }
+        }
+
+        private void txtNote_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode== Keys.Enter)
+            {
+                saveData();
+            }
+        }
+        public void saveData()
+        {
+            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}'", txtVourcher.Text.Trim(), "2");
+            DT=objclsMainDB.SelectData(SPstring);
+            if (DT.Rows.Count>0 && isedit==false)
+            {
+                MessageBox.Show("ID is already exit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtVourcher.Focus();
+            }
+            else
+            {
+                string weight = txtKyat.Text.Trim()+" ကျပ်  "+cboPae.SelectedItem.ToString()+" ပဲ  "+cboYae.SelectedItem.ToString()+" ရွေး";
+                clsPawn objclsPawn = new clsPawn();
+                objclsPawn.weight = weight;
+                objclsPawn.date=dtpPawn.Text;
+                objclsPawn.ID=txtVourcher.Text.Trim();
+                objclsPawn.ItemName = txtItemName.Text.Trim();
+                objclsPawn.amount = Convert.ToInt32(txtAmount.Text.Trim());
+                objclsPawn.name= txtName.Text.Trim();
+                objclsPawn.location= txtLocation.Text.Trim();
+                objclsPawn.description = txtNote.Text.Trim();
+                objclsPawn.yaeDate="";
+
+                if (isedit)
+                {
+
+                }
+                else
+                {
+                    objclsPawn.action = 0;
+                    if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        objclsPawn.saveData();
+                        reload();
+                    }
+
+                }
+
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using PawnShop.DBO;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PawnShop.PawnData
@@ -22,6 +23,7 @@ namespace PawnShop.PawnData
         private void frmPawnBigData_Load(object sender, EventArgs e)
         {
             ShowData();
+            
         }
         public void ShowData()
         {
@@ -29,17 +31,20 @@ namespace PawnShop.PawnData
             dgvPawn.DataSource = objclsMain.SelectData(SP);
             dgvPawn.Columns[0].Width = (dgvPawn.Width/100)*5;
             dgvPawn.Columns[1].Width = (dgvPawn.Width/100)*10;
-            dgvPawn.Columns[2].Width = (dgvPawn.Width/100)*10;
+            dgvPawn.Columns[2].Width = (dgvPawn.Width/100)*15;
             dgvPawn.Columns[3].Width = (dgvPawn.Width/100)*10;
-            dgvPawn.Columns[4].Width = (dgvPawn.Width/100)*20;
-            dgvPawn.Columns[5].Width = (dgvPawn.Width/100)*10;
+            dgvPawn.Columns[4].Width = (dgvPawn.Width/100)*18;
+            dgvPawn.Columns[5].Width = (dgvPawn.Width/100)*12;
             dgvPawn.Columns[6].Width = (dgvPawn.Width/100)*15;
             dgvPawn.Columns[7].Visible = false;
             dgvPawn.Columns[8].Visible = false;
             dgvPawn.Columns[9].Width = (dgvPawn.Width/100)*20;
-
+            
+            for(int i = 1; i<=dgvPawn.Rows.Count; i+=2)
+            dgvPawn.Rows[i].DefaultCellStyle.BackColor= Color.Black;
 
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
