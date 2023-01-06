@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="DBO\clsMainDB.cs" />
     <Compile Include="DBO\clsPawn.cs" />
+    <Compile Include="DBO\CodeLibrary.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>

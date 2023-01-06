@@ -14,6 +14,7 @@ namespace PawnShop.PawnData
         }
         string SP;
         clsMainDB objclsMain = new clsMainDB();
+        CodeLibrary objclsCodeLibrary = new CodeLibrary();
         private void tsbNew_Click(object sender, EventArgs e)
         {
             frmPawnAdd frm = new frmPawnAdd();
@@ -24,10 +25,7 @@ namespace PawnShop.PawnData
         private void frmPawnBigData_Load(object sender, EventArgs e)
         {
 
-            DataTable DT;
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", "0", "0", "4");
-            DT = objclsMain.SelectData(SP);
-            dtpFrom.Text=DT.Rows[0][0].ToString();
+            dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
             ShowData();
 
         }
@@ -39,13 +37,12 @@ namespace PawnShop.PawnData
             dgvPawn.Columns[1].Width = (dgvPawn.Width/100)*10;
             dgvPawn.Columns[2].Width = (dgvPawn.Width/100)*15;
             dgvPawn.Columns[3].Width = (dgvPawn.Width/100)*10;
-            dgvPawn.Columns[4].Width = (dgvPawn.Width/100)*20;
-            dgvPawn.Columns[5].Width = (dgvPawn.Width/100)*15;
+            dgvPawn.Columns[4].Width = (dgvPawn.Width/100)*18;
+            dgvPawn.Columns[5].Width = (dgvPawn.Width/100)*12;
             dgvPawn.Columns[6].Width = (dgvPawn.Width/100)*15;
-            dgvPawn.Columns[7].Width = (dgvPawn.Width/100)*15;
-
+            dgvPawn.Columns[7].Visible = false;
             dgvPawn.Columns[8].Visible = false;
-            dgvPawn.Columns[9].Visible = false;
+            dgvPawn.Columns[9].Width = (dgvPawn.Width/100)*20;
 
             for (int i = 0; i<dgvPawn.RowCount-1; i++)
             {
@@ -60,7 +57,7 @@ namespace PawnShop.PawnData
                     SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", "0", "0", "4");
                     DT = objclsMain.SelectData(SP);
                     int diff = DateTime.Compare(Convert.ToDateTime(dgvPawn.Rows[i].Cells[6].Value.ToString()), Convert.ToDateTime(DT.Rows[0][0].ToString()));
-                    if(diff < 0)
+                    if (diff < 0)
                     {
                         dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.Pink;
                         dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.Black;
@@ -70,19 +67,19 @@ namespace PawnShop.PawnData
                 }
                 if (dgvPawn.Rows[i].Cells[8].Value.ToString() != null)
                 {
-                    if(dgvPawn.Rows[i].Cells[8].Value.ToString().Contains("Lost Ticket"))
+                    if (dgvPawn.Rows[i].Cells[8].Value.ToString().Contains("Lost Ticket"))
                     {
                         dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.Red;
                         dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.White;
                     }
-                    
+
                     if (dgvPawn.Rows[i].Cells[8].Value.ToString().Contains("Lost Ticket") && dgvPawn.Rows[i].Cells[7].Value.ToString() != null)
                     {
                         dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.DarkBlue;
                         dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.White;
                     }
                 }
-                
+
 
             }
 
@@ -96,10 +93,8 @@ namespace PawnShop.PawnData
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
 
-            DataTable DT;
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", dtpFrom.Text, dtpTo.Text, "5");
-            DT = objclsMain.SelectData(SP);
-            int DateDiff = Convert.ToInt32(DT.Rows[0]["NO"]);
+
+            int DateDiff = objclsCodeLibrary.dateDiff(dtpFrom.Text, dtpTo.Text);
             if (DateDiff<0)
             {
                 MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -111,10 +106,8 @@ namespace PawnShop.PawnData
 
         private void dtpTo_ValueChanged(object sender, EventArgs e)
         {
-            DataTable DT;
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", dtpFrom.Text, dtpTo.Text, "5");
-            DT = objclsMain.SelectData(SP);
-            int DateDiff = Convert.ToInt32(DT.Rows[0]["NO"]);
+
+            int DateDiff = objclsCodeLibrary.dateDiff(dtpFrom.Text, dtpTo.Text);
             if (DateDiff<0)
             {
                 MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
