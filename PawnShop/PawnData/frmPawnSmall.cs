@@ -14,6 +14,8 @@ namespace PawnShop.PawnData
         }
         string SP;
         clsMainDB objClsMain = new clsMainDB();
+        CodeLibrary objclsCodeLibrary = new CodeLibrary();
+
         private void tsbNew_Click(object sender, EventArgs e)
         {
             frmPawnAdd frm = new frmPawnAdd();
@@ -24,10 +26,7 @@ namespace PawnShop.PawnData
         private void frmPawnSmall_Load(object sender, EventArgs e)
         {
 
-            DataTable DT;
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", "0", "0", "4");
-            DT = objClsMain.SelectData(SP);
-            dtpFrom.Text=DT.Rows[0][0].ToString();
+            dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
             ShowData();
 
         }
@@ -46,7 +45,7 @@ namespace PawnShop.PawnData
             dgvPawn.Columns[8].Visible = false;
             dgvPawn.Columns[9].Width = (dgvPawn.Width/100)*20;
 
-            
+
 
             for (int i = 0; i<dgvPawn.RowCount-1; i++)
             {
@@ -92,13 +91,13 @@ namespace PawnShop.PawnData
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
-            DataTable DT;
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", dtpFrom.Text, dtpTo.Text, "5");
-            DT = objClsMain.SelectData(SP);
-            int DateDiff = Convert.ToInt32(DT.Rows[0]["NO"]);
-            if (DateDiff<0)
+            
+
+            if (objclsCodeLibrary.dateDiff(dtpFrom.Text, dtpTo.Text))
             {
                 MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
+
                 dtpFrom.Focus();
             }
             else
@@ -107,13 +106,11 @@ namespace PawnShop.PawnData
 
         private void dtpTo_ValueChanged(object sender, EventArgs e)
         {
-            DataTable DT;
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", dtpFrom.Text, dtpTo.Text, "5");
-            DT = objClsMain.SelectData(SP);
-            int DateDiff = Convert.ToInt32(DT.Rows[0]["NO"]);
-            if (DateDiff<0)
+            if (objclsCodeLibrary.dateDiff(dtpFrom.Text, dtpTo.Text))
             {
                 MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpTo.Text=DateTime.Today.ToString();
+
                 dtpFrom.Focus();
             }
             else

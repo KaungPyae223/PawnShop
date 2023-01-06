@@ -10,11 +10,14 @@ namespace PawnShop.DBO
         string SP;
         clsMainDB objclsMain = new clsMainDB();
 
-        public int dateDiff(string date1, string date2)
+        public Boolean dateDiff(string date1, string date2)
         {
             SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", date1, date2, "5");
             DT = objclsMain.SelectData(SP);
-            return Convert.ToInt32(DT.Rows[0]["NO"]);
+            if (Convert.ToInt32(DT.Rows[0]["NO"])<0)
+                return true;
+            else
+                return false;
         }
         public string LastSixMonthes()
         {
@@ -22,7 +25,7 @@ namespace PawnShop.DBO
             DT = objclsMain.SelectData(SP);
             return DT.Rows[0][0].ToString();
         }
-        
+       
          
     }
 }

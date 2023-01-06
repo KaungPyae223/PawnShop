@@ -44,6 +44,8 @@ namespace PawnShop.PawnData
             dgvPawn.Columns[8].Visible = false;
             dgvPawn.Columns[9].Width = (dgvPawn.Width/100)*20;
 
+
+
             for (int i = 0; i<dgvPawn.RowCount-1; i++)
             {
                 if (dgvPawn.Rows[i].Cells[7].Value.ToString().Length>0)
@@ -94,10 +96,11 @@ namespace PawnShop.PawnData
         {
 
 
-            int DateDiff = objclsCodeLibrary.dateDiff(dtpFrom.Text, dtpTo.Text);
-            if (DateDiff<0)
+            if (objclsCodeLibrary.dateDiff(dtpFrom.Text, dtpTo.Text))
             {
                 MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
+
                 dtpFrom.Focus();
             }
             else
@@ -107,10 +110,10 @@ namespace PawnShop.PawnData
         private void dtpTo_ValueChanged(object sender, EventArgs e)
         {
 
-            int DateDiff = objclsCodeLibrary.dateDiff(dtpFrom.Text, dtpTo.Text);
-            if (DateDiff<0)
+            if (objclsCodeLibrary.dateDiff(dtpFrom.Text, dtpTo.Text))
             {
                 MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpTo.Text=DateTime.Today.ToString();
                 dtpFrom.Focus();
             }
             else
