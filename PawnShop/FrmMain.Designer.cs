@@ -36,6 +36,8 @@
             this.အရToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.အရသToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPannel = new System.Windows.Forms.Panel();
+            this.sarYinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dailyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +48,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuPawn,
-            this.mnuYae});
+            this.mnuYae,
+            this.sarYinToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 46);
@@ -67,14 +70,14 @@
             // 
             this.pawnBigToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.pawnBigToolStripMenuItem.Name = "pawnBigToolStripMenuItem";
-            this.pawnBigToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.pawnBigToolStripMenuItem.Size = new System.Drawing.Size(230, 46);
             this.pawnBigToolStripMenuItem.Text = "အပေါင်ကြီး";
             this.pawnBigToolStripMenuItem.Click += new System.EventHandler(this.pawnBigToolStripMenuItem_Click);
             // 
             // pawnSmallToolStripMenuItem
             // 
             this.pawnSmallToolStripMenuItem.Name = "pawnSmallToolStripMenuItem";
-            this.pawnSmallToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.pawnSmallToolStripMenuItem.Size = new System.Drawing.Size(230, 46);
             this.pawnSmallToolStripMenuItem.Text = "အပေါင်သေး";
             this.pawnSmallToolStripMenuItem.Click += new System.EventHandler(this.pawnSmallToolStripMenuItem_Click);
             // 
@@ -91,14 +94,14 @@
             // အရToolStripMenuItem
             // 
             this.အရToolStripMenuItem.Name = "အရToolStripMenuItem";
-            this.အရToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.အရToolStripMenuItem.Size = new System.Drawing.Size(218, 46);
             this.အရToolStripMenuItem.Text = "‌အရွေးကြီး";
             this.အရToolStripMenuItem.Click += new System.EventHandler(this.အရToolStripMenuItem_Click);
             // 
             // အရသToolStripMenuItem
             // 
             this.အရသToolStripMenuItem.Name = "အရသToolStripMenuItem";
-            this.အရသToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.အရသToolStripMenuItem.Size = new System.Drawing.Size(218, 46);
             this.အရသToolStripMenuItem.Text = "‌အရွေးသေး";
             this.အရသToolStripMenuItem.Click += new System.EventHandler(this.အရသToolStripMenuItem_Click);
             // 
@@ -109,6 +112,21 @@
             this.mainPannel.Name = "mainPannel";
             this.mainPannel.Size = new System.Drawing.Size(800, 404);
             this.mainPannel.TabIndex = 1;
+            // 
+            // sarYinToolStripMenuItem
+            // 
+            this.sarYinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dailyToolStripMenuItem});
+            this.sarYinToolStripMenuItem.Name = "sarYinToolStripMenuItem";
+            this.sarYinToolStripMenuItem.Size = new System.Drawing.Size(87, 42);
+            this.sarYinToolStripMenuItem.Text = "Sar Yin";
+            // 
+            // dailyToolStripMenuItem
+            // 
+            this.dailyToolStripMenuItem.Name = "dailyToolStripMenuItem";
+            this.dailyToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.dailyToolStripMenuItem.Text = "Daily";
+            this.dailyToolStripMenuItem.Click += new System.EventHandler(this.dailyToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -141,6 +159,8 @@
         private System.Windows.Forms.Panel mainPannel;
         private System.Windows.Forms.ToolStripMenuItem အရToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem အရသToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sarYinToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dailyToolStripMenuItem;
     }
 }
 

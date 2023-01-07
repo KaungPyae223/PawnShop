@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PawnShop.PawnData;
 using PawnShop.YaeData;
-
+using PawnShop.Monthly;
 namespace PawnShop
 {
     public partial class FrmMain : Form
@@ -65,6 +65,11 @@ namespace PawnShop
             mnuYae.BackColor=Color.Bisque;
             mnuPawn.Text="အပေါင်";
             mnuPawn.BackColor=Color.Silver;
+        }
+
+        private void dailyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadform(new frmDaily());
         }
     }
 }

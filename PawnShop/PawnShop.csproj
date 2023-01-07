@@ -55,6 +55,18 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Monthly\Daily.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monthly\Daily.Designer.cs">
+      <DependentUpon>Daily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monthly\DailyAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monthly\DailyAdd.Designer.cs">
+      <DependentUpon>DailyAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="PawnData\frmPawnAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +101,12 @@
     </Compile>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monthly\Daily.resx">
+      <DependentUpon>Daily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monthly\DailyAdd.resx">
+      <DependentUpon>DailyAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PawnData\frmPawnAdd.resx">
       <DependentUpon>frmPawnAdd.cs</DependentUpon>
