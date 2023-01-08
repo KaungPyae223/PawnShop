@@ -1,6 +1,7 @@
 ﻿using PawnShop.DBO;
 using System;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -26,6 +27,8 @@ namespace PawnShop.PawnData
         {
 
             dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
+            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "ItemName");
             ShowData();
 
         }
@@ -90,7 +93,7 @@ namespace PawnShop.PawnData
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            ShowData();
+            MakeColors();
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
@@ -160,10 +163,46 @@ namespace PawnShop.PawnData
 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "6");
+            if(tslLabel.Text=="Customer Name")
+                SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "6");
+            else if (tslLabel.Text=="Amount")
+                SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "8");
+            else
+                SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "9");
+
             dgvPawn.DataSource = objclsMain.SelectData(SP);
             MakeColors();
 
         }
+
+        
+        private void tsmAmount_Click(object sender, EventArgs e)
+        {
+            tslLabel.Text="Amount";
+            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(),"0", "3");
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "Amount");
+            toolStripTextBox1.Text="";
+
+        }
+
+        private void TsbItemName_Click(object sender, EventArgs e)
+        {
+            tslLabel.Text="Item Name";
+            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "ItemName");
+            toolStripTextBox1.Text="";
+
+        }
+
+        private void TsmCustomerName_Click(object sender, EventArgs e)
+        {
+            tslLabel.Text="Customer Name";
+            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
+            toolStripTextBox1.Text="";
+
+        }
+
+
     }
 }

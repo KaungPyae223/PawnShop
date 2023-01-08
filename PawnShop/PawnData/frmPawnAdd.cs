@@ -16,6 +16,7 @@ namespace PawnShop.PawnData
         public string SPstring;
         public DataTable DT;
         clsMainDB objclsMainDB = new clsMainDB();
+        CodeLibrary objclsCodelibrary = new CodeLibrary();
         public Boolean isedit = false;
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -78,7 +79,7 @@ namespace PawnShop.PawnData
             {
                 if (pawnbig)
                 {
-                    SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpPawn.Text, "0","0", "1");
+                    SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpPawn.Text, "0", "0", "1");
 
                     DT = objclsMainDB.SelectData(SPstring);
                     string ID = DT.Rows[0]["ID"].ToString();
@@ -126,14 +127,10 @@ namespace PawnShop.PawnData
 
         private void dtpPawn_ValueChanged(object sender, EventArgs e)
         {
-            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpPawn.Text, "0","0", "0");
-            DT = objclsMainDB.SelectData(SPstring);
-            int DateDiff = Convert.ToInt32(DT.Rows[0]["NO"]);
-            if (DateDiff > 0)
+            if (objclsCodelibrary.dateDiff(dtpPawn.Text, DateTime.Today.ToShortDateString()))
             {
-                MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpPawn.Value=DateTime.Today;
-                dtpPawn.Focus();
+                MessageBox.Show("Check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpPawn.Text=DateTime.Now.ToString();
             }
         }
 
@@ -184,7 +181,7 @@ namespace PawnShop.PawnData
         }
         public void saveData()
         {
-            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", txtVourcher.Text.Trim(), "0","0", "2");
+            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", txtVourcher.Text.Trim(), "0", "0", "2");
             DT=objclsMainDB.SelectData(SPstring);
             if (DT.Rows.Count>0 && isedit==false)
             {

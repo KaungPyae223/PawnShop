@@ -48,5 +48,36 @@ namespace PawnShop.DBO
             }
             return DT;
         }
+        public void toolStripTextBoxdata(ref ToolStripTextBox tstToolStrip, string Sp, string fieldName)
+        {
+            DataTable DT = new DataTable();
+            AutoCompleteStringCollection sourse = new AutoCompleteStringCollection();
+            try
+            {
+                DataBaseCon();
+                SqlDataAdapter adpt = new SqlDataAdapter(Sp, con);
+                adpt.Fill(DT);
+                if (DT.Rows.Count > 0)
+                {
+                    tstToolStrip.AutoCompleteCustomSource.Clear();
+                    for (int i = 0; i < DT.Rows.Count; i++)
+                    {
+                        sourse.Add(DT.Rows[i][fieldName].ToString());
+                    }
+                    tstToolStrip.AutoCompleteCustomSource = sourse;
+                    tstToolStrip.Text = "";
+                    tstToolStrip.Focus();
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

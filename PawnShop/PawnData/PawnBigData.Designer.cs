@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPawnBigData));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tslLabel = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmName = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmDate = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmCustomerName = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAmount = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -60,6 +59,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.TsbItemName = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -132,33 +132,29 @@
             // 
             this.tslLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tslLabel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmName,
-            this.tsmDate,
-            this.tsmAmount});
+            this.TsmCustomerName,
+            this.tsmAmount,
+            this.TsbItemName});
             this.tslLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tslLabel.Image = ((System.Drawing.Image)(resources.GetObject("tslLabel.Image")));
             this.tslLabel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tslLabel.Name = "tslLabel";
-            this.tslLabel.Size = new System.Drawing.Size(89, 42);
-            this.tslLabel.Text = "Name";
+            this.tslLabel.Size = new System.Drawing.Size(189, 42);
+            this.tslLabel.Text = "Customer Name";
             // 
-            // tsmName
+            // TsmCustomerName
             // 
-            this.tsmName.Name = "tsmName";
-            this.tsmName.Size = new System.Drawing.Size(193, 38);
-            this.tsmName.Text = "Name";
-            // 
-            // tsmDate
-            // 
-            this.tsmDate.Name = "tsmDate";
-            this.tsmDate.Size = new System.Drawing.Size(193, 38);
-            this.tsmDate.Text = "Date";
+            this.TsmCustomerName.Name = "TsmCustomerName";
+            this.TsmCustomerName.Size = new System.Drawing.Size(274, 38);
+            this.TsmCustomerName.Text = "Customer Name";
+            this.TsmCustomerName.Click += new System.EventHandler(this.TsmCustomerName_Click);
             // 
             // tsmAmount
             // 
             this.tsmAmount.Name = "tsmAmount";
-            this.tsmAmount.Size = new System.Drawing.Size(193, 38);
+            this.tsmAmount.Size = new System.Drawing.Size(274, 38);
             this.tsmAmount.Text = "Amount";
+            this.tsmAmount.Click += new System.EventHandler(this.tsmAmount_Click);
             // 
             // toolStripTextBox1
             // 
@@ -264,24 +260,24 @@
             // dgvPawn
             // 
             this.dgvPawn.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPawn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPawn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvPawn.ColumnHeadersHeight = 35;
             this.dgvPawn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPawn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPawn.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgvPawn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPawn.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dgvPawn.Location = new System.Drawing.Point(0, 0);
@@ -387,6 +383,13 @@
             this.label3.Size = new System.Drawing.Size(30, 30);
             this.label3.TabIndex = 0;
             // 
+            // TsbItemName
+            // 
+            this.TsbItemName.Name = "TsbItemName";
+            this.TsbItemName.Size = new System.Drawing.Size(274, 38);
+            this.TsbItemName.Text = "Item Name";
+            this.TsbItemName.Click += new System.EventHandler(this.TsbItemName_Click);
+            // 
             // frmPawnBigData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -420,8 +423,7 @@
         private System.Windows.Forms.ToolStripButton tsbEdit;
         private System.Windows.Forms.ToolStripButton tsbSearch;
         private System.Windows.Forms.ToolStripDropDownButton tslLabel;
-        private System.Windows.Forms.ToolStripMenuItem tsmName;
-        private System.Windows.Forms.ToolStripMenuItem tsmDate;
+        private System.Windows.Forms.ToolStripMenuItem TsmCustomerName;
         private System.Windows.Forms.ToolStripMenuItem tsmAmount;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
@@ -444,5 +446,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem TsbItemName;
     }
 }
