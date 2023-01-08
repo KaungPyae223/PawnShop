@@ -130,8 +130,7 @@ namespace PawnShop.PawnData
             if (objclsCodelibrary.dateDiff(dtpPawn.Text, DateTime.Today.ToShortDateString()))
             {
                 MessageBox.Show("Check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpPawn.Text=DateTime.Now.ToString();
-            }
+                dtpPawn.Text=DateTime.Now.ToString();          }
         }
 
         private void frmPawnAdd_Load(object sender, EventArgs e)

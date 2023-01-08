@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlTypes;
 using System.Drawing;
 using System.Windows.Forms;
+using PawnShop.Report;
 
 namespace PawnShop.PawnData
 {
@@ -16,6 +17,7 @@ namespace PawnShop.PawnData
         string SP;
         clsMainDB objclsMain = new clsMainDB();
         CodeLibrary objclsCodeLibrary = new CodeLibrary();
+
         private void tsbNew_Click(object sender, EventArgs e)
         {
             frmPawnAdd frm = new frmPawnAdd();
@@ -155,6 +157,23 @@ namespace PawnShop.PawnData
 
         }
 
-
+        private void tsbPrint_Click(object sender, EventArgs e)
+        {
+            if(dgvPawn.Rows.Count>1)
+            {
+                DataTable DT = new DataTable();
+                DT = objclsMain.SelectData(SP);   
+                frm_Report frm = new frm_Report();
+                Crpt_PawnBig crpt= new Crpt_PawnBig();
+                crpt.SetDataSource(DT);
+                frm.crystalReportViewer1.ReportSource= crpt;
+                frm.ShowDialog();
+                ShowData();
+            }
+            else
+            {
+                MessageBox.Show("There is no data");
+            }
+        }
     }
 }
