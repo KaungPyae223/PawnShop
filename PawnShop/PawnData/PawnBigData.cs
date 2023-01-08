@@ -31,7 +31,7 @@ namespace PawnShop.PawnData
         }
         public void ShowData()
         {
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "3");
+            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(),"0", "3");
             dgvPawn.DataSource = objclsMain.SelectData(SP);
             dgvPawn.Columns[0].Width = (dgvPawn.Width/100)*5;
             dgvPawn.Columns[1].Width = (dgvPawn.Width/100)*10;
@@ -44,8 +44,11 @@ namespace PawnShop.PawnData
             dgvPawn.Columns[8].Visible = false;
             dgvPawn.Columns[9].Width = (dgvPawn.Width/100)*20;
 
-
-
+            MakeColors();
+            
+        }
+        public void MakeColors()
+        {
             for (int i = 0; i<dgvPawn.RowCount-1; i++)
             {
                 if (dgvPawn.Rows[i].Cells[7].Value.ToString().Length>0)
@@ -56,7 +59,7 @@ namespace PawnShop.PawnData
                 else
                 {
                     DataTable DT;
-                    SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}'", "0", "0", "4");
+                    SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", "0", "0", "0", "4");
                     DT = objclsMain.SelectData(SP);
                     int diff = DateTime.Compare(Convert.ToDateTime(dgvPawn.Rows[i].Cells[6].Value.ToString()), Convert.ToDateTime(DT.Rows[0][0].ToString()));
                     if (diff < 0)
@@ -84,9 +87,7 @@ namespace PawnShop.PawnData
 
 
             }
-
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             ShowData();
@@ -155,6 +156,14 @@ namespace PawnShop.PawnData
                 frm.ShowDialog();
                 ShowData();
             }
+        }
+
+        private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "6");
+            dgvPawn.DataSource = objclsMain.SelectData(SP);
+            MakeColors();
+
         }
     }
 }
