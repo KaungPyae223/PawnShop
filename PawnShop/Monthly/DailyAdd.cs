@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PawnShop.DBO;
 namespace PawnShop.Monthly
 {
     public partial class DailyAdd : Form
@@ -16,6 +16,7 @@ namespace PawnShop.Monthly
         {
             InitializeComponent();
         }
+        readonly CodeLibrary objclsCodeLibary = new CodeLibrary();
 
         private void DailyAdd_Load(object sender, EventArgs e)
         {
@@ -25,6 +26,15 @@ namespace PawnShop.Monthly
             int formh = this.Height;
             int fontwidth = this.Width;
             this.Location=new Point((screenwidth-fontwidth)/2, (h-formh)/2);
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            if (objclsCodeLibary.dateDiff(dtpDate.Text, DateTime.Today.ToShortDateString()))
+            {
+                MessageBox.Show("Check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDate.Text=DateTime.Now.ToString();
+            }
         }
     }
 }

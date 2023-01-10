@@ -35,6 +35,7 @@
             this.lblSearch = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.TsbPrint = new System.Windows.Forms.ToolStripSplitButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
@@ -43,6 +44,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TsmDaily = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -58,7 +61,8 @@
             this.tsbEdit,
             this.lblSearch,
             this.toolStripTextBox1,
-            this.toolStripLabel1});
+            this.toolStripLabel1,
+            this.TsbPrint});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(820, 47);
@@ -115,6 +119,18 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(148, 42);
             this.toolStripLabel1.Text = "နေ.ချူပ်စာရင်း";
             // 
+            // TsbPrint
+            // 
+            this.TsbPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TsbPrint.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsmDaily,
+            this.TsmAll});
+            this.TsbPrint.Image = ((System.Drawing.Image)(resources.GetObject("TsbPrint.Image")));
+            this.TsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbPrint.Name = "TsbPrint";
+            this.TsbPrint.Size = new System.Drawing.Size(79, 42);
+            this.TsbPrint.Text = "Print ";
+            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -145,6 +161,7 @@
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(169, 26);
             this.dtpTo.TabIndex = 3;
+            this.dtpTo.ValueChanged += new System.EventHandler(this.dtpTo_ValueChanged);
             // 
             // label2
             // 
@@ -163,6 +180,7 @@
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(169, 26);
             this.dtpFrom.TabIndex = 1;
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
             // label1
             // 
@@ -194,6 +212,18 @@
             this.dataGridView1.Size = new System.Drawing.Size(820, 354);
             this.dataGridView1.TabIndex = 0;
             // 
+            // TsmDaily
+            // 
+            this.TsmDaily.Name = "TsmDaily";
+            this.TsmDaily.Size = new System.Drawing.Size(270, 36);
+            this.TsmDaily.Text = "Print Daily";
+            // 
+            // TsmAll
+            // 
+            this.TsmAll.Name = "TsmAll";
+            this.TsmAll.Size = new System.Drawing.Size(270, 36);
+            this.TsmAll.Text = "Print All";
+            // 
             // frmDaily
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -206,6 +236,7 @@
             this.Name = "frmDaily";
             this.Text = "Daily";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmDaily_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -233,5 +264,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripSplitButton TsbPrint;
+        private System.Windows.Forms.ToolStripMenuItem TsmDaily;
+        private System.Windows.Forms.ToolStripMenuItem TsmAll;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using PawnShop.DBO;
+using PawnShop.Report;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -17,6 +18,7 @@ namespace PawnShop.PawnData
         public DataTable DT;
         clsMainDB objclsMainDB = new clsMainDB();
         CodeLibrary objclsCodelibrary = new CodeLibrary();
+        private string VourcherID;
         public Boolean isedit = false;
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -56,10 +58,13 @@ namespace PawnShop.PawnData
             }
             else
             {
+                VourcherID = txtVourcher.Text;
                 saveData();
+                
 
             }
         }
+       
         private void reload()
         {
             addvourcher();
@@ -130,7 +135,8 @@ namespace PawnShop.PawnData
             if (objclsCodelibrary.dateDiff(dtpPawn.Text, DateTime.Today.ToShortDateString()))
             {
                 MessageBox.Show("Check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpPawn.Text=DateTime.Now.ToString();          }
+                dtpPawn.Text=DateTime.Now.ToString();          
+            }
         }
 
         private void frmPawnAdd_Load(object sender, EventArgs e)

@@ -16,14 +16,14 @@ namespace PawnShop.Report {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Crpt_PawnBig : ReportClass {
+    public class CRPTPawnBigVourcher : ReportClass {
         
-        public Crpt_PawnBig() {
+        public CRPTPawnBigVourcher() {
         }
         
         public override string ResourceName {
             get {
-                return "Crpt_PawnBig.rpt";
+                return "CRPTPawnBigVourcher.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PawnShop.Report {
         
         public override string FullResourceName {
             get {
-                return "PawnShop.Report.Crpt_PawnBig.rpt";
+                return "PawnShop.Report.CRPTPawnBigVourcher.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace PawnShop.Report {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace PawnShop.Report {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,65 +82,17 @@ namespace PawnShop.Report {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection3 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection3 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
-            get {
-                return this.ReportDefinition.Sections[7];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[8];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[9];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[10];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrpt_PawnBig : Component, ICachedReport {
+    public class CachedCRPTPawnBigVourcher : Component, ICachedReport {
         
-        public CachedCrpt_PawnBig() {
+        public CachedCRPTPawnBigVourcher() {
         }
         
         [Browsable(false)]
@@ -177,7 +129,7 @@ namespace PawnShop.Report {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Crpt_PawnBig rpt = new Crpt_PawnBig();
+            CRPTPawnBigVourcher rpt = new CRPTPawnBigVourcher();
             rpt.Site = this.Site;
             return rpt;
         }

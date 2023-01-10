@@ -297,6 +297,7 @@
             this.dgvPawn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPawn.Size = new System.Drawing.Size(800, 278);
             this.dgvPawn.TabIndex = 0;
+            this.dgvPawn.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPawn_CellContentDoubleClick);
             // 
             // panel3
             // 

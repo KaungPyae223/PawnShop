@@ -2,7 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-
+using PawnShop.Report;
 namespace PawnShop.DBO
 {
     internal class CodeLibrary

@@ -1,10 +1,8 @@
 ﻿using PawnShop.DBO;
+using PawnShop.Report;
 using System;
 using System.Data;
-using System.Data.SqlTypes;
-using System.Drawing;
 using System.Windows.Forms;
-using PawnShop.Report;
 
 namespace PawnShop.PawnData
 {
@@ -17,6 +15,7 @@ namespace PawnShop.PawnData
         string SP;
         clsMainDB objclsMain = new clsMainDB();
         CodeLibrary objclsCodeLibrary = new CodeLibrary();
+        public Boolean showVourcher = false;
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
@@ -36,17 +35,17 @@ namespace PawnShop.PawnData
         }
         public void ShowData()
         {
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(),"0", "3");
+            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             dgvPawn.DataSource = objclsMain.SelectData(SP);
             objclsCodeLibrary.DGVpawnEdid(ref dgvPawn);
 
             objclsCodeLibrary.MakeColors(ref dgvPawn);
-            
+
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
-            objclsCodeLibrary.MakeColors(ref dgvPawn);
+            ShowData();
 
         }
 
@@ -110,14 +109,24 @@ namespace PawnShop.PawnData
                 frm.dtpPawn.Enabled=false;
                 frm.txtVourcher.Enabled=false;
                 frm.btnSave.Text="Edit";
+                if(showVourcher)
+                {
+                    frm.txtItemName.Enabled=false;
+                    frm.txtAmount.Enabled=false;
+                    frm.txtName.Enabled=false;
+                    frm.txtLocation.Enabled=false;
+                    frm.txtNote.Enabled=false;
+                }
                 frm.ShowDialog();
                 ShowData();
+
+
             }
         }
 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
-            if(tslLabel.Text=="Customer Name")
+            if (tslLabel.Text=="Customer Name")
                 SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "6");
             else if (tslLabel.Text=="Amount")
                 SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "8");
@@ -129,11 +138,11 @@ namespace PawnShop.PawnData
 
         }
 
-        
+
         private void tsmAmount_Click(object sender, EventArgs e)
         {
             tslLabel.Text="Amount";
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(),"0", "3");
+            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "Amount");
             toolStripTextBox1.Text="";
 
@@ -159,12 +168,12 @@ namespace PawnShop.PawnData
 
         private void tsbPrint_Click(object sender, EventArgs e)
         {
-            if(dgvPawn.Rows.Count>1)
+            if (dgvPawn.Rows.Count>1)
             {
                 DataTable DT = new DataTable();
-                DT = objclsMain.SelectData(SP);   
+                DT = objclsMain.SelectData(SP);
                 frm_Report frm = new frm_Report();
-                Crpt_PawnBig crpt= new Crpt_PawnBig();
+                Crpt_PawnBig crpt = new Crpt_PawnBig();
                 crpt.SetDataSource(DT);
                 frm.crystalReportViewer1.ReportSource= crpt;
                 frm.ShowDialog();
@@ -174,6 +183,12 @@ namespace PawnShop.PawnData
             {
                 MessageBox.Show("There is no data");
             }
+        }
+
+        private void dgvPawn_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            showVourcher=true;
+            showEntry();
         }
     }
 }
