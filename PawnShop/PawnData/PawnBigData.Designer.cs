@@ -428,7 +428,6 @@
         private System.Windows.Forms.ToolStripMenuItem TsmCustomerName;
         private System.Windows.Forms.ToolStripMenuItem tsmAmount;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dtpTo;
         private System.Windows.Forms.Label label2;
@@ -449,5 +448,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem TsbItemName;
+        public System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }
 }

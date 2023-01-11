@@ -2,6 +2,7 @@
 using PawnShop.Report;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PawnShop.PawnData
@@ -15,7 +16,7 @@ namespace PawnShop.PawnData
         string SP;
         clsMainDB objclsMain = new clsMainDB();
         CodeLibrary objclsCodeLibrary = new CodeLibrary();
-        public Boolean showVourcher = false;
+       public string a;
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
@@ -28,18 +29,27 @@ namespace PawnShop.PawnData
         {
 
             dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
             ShowData();
 
         }
         public void ShowData()
         {
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             dgvPawn.DataSource = objclsMain.SelectData(SP);
-            objclsCodeLibrary.DGVpawnEdid(ref dgvPawn);
+            dgvPawn.Columns[0].Width = (dgvPawn.Width/100)*5;
+            dgvPawn.Columns[1].Width = (dgvPawn.Width/100)*10;
+            dgvPawn.Columns[2].Width = (dgvPawn.Width/100)*15;
+            dgvPawn.Columns[3].Width = (dgvPawn.Width/100)*10;
+            dgvPawn.Columns[4].Width = (dgvPawn.Width/100)*18;
+            dgvPawn.Columns[5].Width = (dgvPawn.Width/100)*12;
+            dgvPawn.Columns[6].Width = (dgvPawn.Width/100)*15;
+            dgvPawn.Columns[7].Visible = false;
+            dgvPawn.Columns[8].Visible = false;
+            dgvPawn.Columns[9].Width = (dgvPawn.Width/100)*20;
 
-            objclsCodeLibrary.MakeColors(ref dgvPawn);
+            MakeColors();
 
         }
 
@@ -109,14 +119,6 @@ namespace PawnShop.PawnData
                 frm.dtpPawn.Enabled=false;
                 frm.txtVourcher.Enabled=false;
                 frm.btnSave.Text="Edit";
-                if(showVourcher)
-                {
-                    frm.txtItemName.Enabled=false;
-                    frm.txtAmount.Enabled=false;
-                    frm.txtName.Enabled=false;
-                    frm.txtLocation.Enabled=false;
-                    frm.txtNote.Enabled=false;
-                }
                 frm.ShowDialog();
                 ShowData();
 
@@ -127,14 +129,14 @@ namespace PawnShop.PawnData
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             if (tslLabel.Text=="Customer Name")
-                SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "6");
+                SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "6");
             else if (tslLabel.Text=="Amount")
-                SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "8");
+                SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "8");
             else
-                SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "9");
+                SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "9");
 
             dgvPawn.DataSource = objclsMain.SelectData(SP);
-            objclsCodeLibrary.MakeColors(ref dgvPawn);
+            MakeColors();
 
         }
 
@@ -142,7 +144,7 @@ namespace PawnShop.PawnData
         private void tsmAmount_Click(object sender, EventArgs e)
         {
             tslLabel.Text="Amount";
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "Amount");
             toolStripTextBox1.Text="";
 
@@ -151,7 +153,7 @@ namespace PawnShop.PawnData
         private void TsbItemName_Click(object sender, EventArgs e)
         {
             tslLabel.Text="Item Name";
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "ItemName");
             toolStripTextBox1.Text="";
 
@@ -160,7 +162,8 @@ namespace PawnShop.PawnData
         private void TsmCustomerName_Click(object sender, EventArgs e)
         {
             tslLabel.Text="Customer Name";
-            SP = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            string a = "SP_SelectPawn";
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
             toolStripTextBox1.Text="";
 
@@ -187,8 +190,46 @@ namespace PawnShop.PawnData
 
         private void dgvPawn_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            showVourcher=true;
-            showEntry();
+            
+        }
+        public void MakeColors()
+        {
+            for (int i = 0; i<dgvPawn.RowCount-1; i++)
+            {
+                if (dgvPawn.Rows[i].Cells[7].Value.ToString().Length>0)
+                {
+                    dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.Aquamarine;
+                    dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.Black;
+                }
+                else
+                {
+                    
+                    int diff = DateTime.Compare(Convert.ToDateTime(dgvPawn.Rows[i].Cells[6].Value.ToString()), Convert.ToDateTime(objclsCodeLibrary.LastSixMonthes()));
+                    if (diff < 0)
+                    {
+                        dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.Pink;
+                        dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.Black;
+
+                    }
+
+                }
+                if (dgvPawn.Rows[i].Cells[8].Value.ToString() != null)
+                {
+                    if (dgvPawn.Rows[i].Cells[8].Value.ToString().Contains("Lost Ticket"))
+                    {
+                        dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.Red;
+                        dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.White;
+                    }
+
+                    if (dgvPawn.Rows[i].Cells[8].Value.ToString().Contains("Lost Ticket") && dgvPawn.Rows[i].Cells[7].Value.ToString() != null)
+                    {
+                        dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.DarkBlue;
+                        dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.White;
+                    }
+                }
+
+
+            }
         }
     }
 }

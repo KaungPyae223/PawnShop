@@ -18,13 +18,13 @@ namespace PawnShop
         {
             InitializeComponent();
         }
-        public void loadform(object Form)
+        public void loadform(Form f)
         {
             if (this.mainPannel.Controls.Count > 0)
             {
                 this.mainPannel.Controls.RemoveAt(0);
             }
-            Form f = Form as Form;
+            
             f.TopLevel = false;
             f.Dock = DockStyle.Fill;
             this.mainPannel.Controls.Add(f);
@@ -33,7 +33,9 @@ namespace PawnShop
         }
         private void pawnBigToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new frmPawnBigData());
+            frmPawnBigData frm = new frmPawnBigData();
+            frm.a="SP_SelectPawn";
+            loadform(frm);
             mnuPawn.Text="အပေါင်ကြီး";
             mnuPawn.BackColor=Color.Bisque;
             mnuYae.Text="‌အရွေး";
@@ -42,7 +44,10 @@ namespace PawnShop
 
         private void pawnSmallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new frmPawnSmall());
+            frmPawnBigData frm = new frmPawnBigData();
+            frm.a="SP_SelectPawnSmall";
+            frm.toolStripLabel1.Text="အပေါင်သေး";
+            loadform(frm);
             mnuPawn.Text="အပေါင်သေး";
             mnuPawn.BackColor=Color.Bisque;
             mnuYae.Text="‌အရွေး";

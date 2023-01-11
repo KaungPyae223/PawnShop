@@ -80,12 +80,6 @@
     <Compile Include="PawnData\frmPawnAdd.Designer.cs">
       <DependentUpon>frmPawnAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="PawnData\frmPawnSmall.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PawnData\frmPawnSmall.Designer.cs">
-      <DependentUpon>frmPawnSmall.cs</DependentUpon>
-    </Compile>
     <Compile Include="PawnData\PawnBigData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,9 +129,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PawnData\frmPawnAdd.resx">
       <DependentUpon>frmPawnAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PawnData\frmPawnSmall.resx">
-      <DependentUpon>frmPawnSmall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PawnData\PawnBigData.resx">
       <DependentUpon>PawnBigData.cs</DependentUpon>
