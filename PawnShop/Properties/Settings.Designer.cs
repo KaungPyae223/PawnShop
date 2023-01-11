@@ -26,7 +26,7 @@ namespace PawnShop.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-C2N843M\\SQLEXPRESS;Initial Catalog=PawnShop;Integrated Securi" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-6JJ01OS\\SQLEXPRESS;Initial Catalog=PawnShop;Integrated Securi" +
             "ty=True")]
         public string PawnCon {
             get {

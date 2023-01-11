@@ -1,5 +1,4 @@
 ﻿using PawnShop.DBO;
-using PawnShop.Report;
 using System;
 using System.Data;
 using System.Drawing;
@@ -178,14 +177,7 @@ namespace PawnShop.PawnData
         {
             if (dgvPawn.Rows.Count>1)
             {
-                DataTable DT = new DataTable();
-                DT = objclsMain.SelectData(SP);
-                frm_Report frm = new frm_Report();
-                Crpt_PawnBig crpt = new Crpt_PawnBig();
-                crpt.SetDataSource(DT);
-                frm.crystalReportViewer1.ReportSource= crpt;
-                frm.ShowDialog();
-                ShowData();
+                
             }
             else
             {
