@@ -19,6 +19,7 @@ namespace PawnShop.PawnData
         CodeLibrary objclsCodelibrary = new CodeLibrary();
         private string VourcherID;
         public Boolean isedit = false;
+        public string front;
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtVourcher.Text.Length!=7 && pawnbig==true)
@@ -26,7 +27,7 @@ namespace PawnShop.PawnData
                 MessageBox.Show("Vourcher ID must have 7 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtVourcher.Focus();
             }
-            else if (txtVourcher.Text.Length!=6 && pawnbig==false)
+            else if (txtVourcher.Text.Length!=5 && pawnbig==false)
             {
                 MessageBox.Show("Vourcher ID must have 6 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtVourcher.Focus();
@@ -59,11 +60,11 @@ namespace PawnShop.PawnData
             {
                 VourcherID = txtVourcher.Text;
                 saveData();
-                
+
 
             }
         }
-       
+
         private void reload()
         {
             addvourcher();
@@ -83,14 +84,14 @@ namespace PawnShop.PawnData
             {
                 if (pawnbig)
                 {
-                    SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpPawn.Text, "0", "0", "1");
+                    SPstring = string.Format(front, dtpPawn.Text, "0", "0", "1");
 
                     DT = objclsMainDB.SelectData(SPstring);
                     string ID = DT.Rows[0]["ID"].ToString();
                     string[] z = ID.Split(' ');
                     string p = z[1].Trim();
                     int i = Convert.ToInt32(p);
-                    if (i== 999)
+                    if ((i== 999 && pawnbig == true)||(i==99 && pawnbig==false))
                     {
                         MessageBox.Show("Please enter a new vourcher");
                         txtVourcher.Text="";
@@ -100,7 +101,11 @@ namespace PawnShop.PawnData
                     else
                     {
                         i++;
-                        ID = z[0].Trim() +" "+i.ToString("000");
+                        if (pawnbig)
+                            ID = z[0].Trim() +" "+i.ToString("000");
+                        else
+                            ID= z[0].Trim()+" "+i.ToString("00");
+                        
                         txtVourcher.Text = ID;
                     }
                 }
@@ -115,11 +120,11 @@ namespace PawnShop.PawnData
                 txtVourcher.Focus();
                 txtVourcher.Text=txtVourcher.Text.Remove(7, 1);
             }
-            else if (txtVourcher.Text.Length>6 && pawnbig==false)
+            else if (txtVourcher.Text.Length>5 && pawnbig==false)
             {
-                MessageBox.Show("Vourcher ID must have 6 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vourcher ID must have 5 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtVourcher.Focus();
-                txtVourcher.Text=txtVourcher.Text.Remove(6, 1);
+                txtVourcher.Text=txtVourcher.Text.Remove(5, 1);
 
             }
         }
@@ -134,7 +139,7 @@ namespace PawnShop.PawnData
             if (objclsCodelibrary.dateDiff(dtpPawn.Text, DateTime.Today.ToShortDateString()))
             {
                 MessageBox.Show("Check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpPawn.Text=DateTime.Now.ToString();          
+                dtpPawn.Text=DateTime.Now.ToString();
             }
         }
 
@@ -185,7 +190,7 @@ namespace PawnShop.PawnData
         }
         public void saveData()
         {
-            SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", txtVourcher.Text.Trim(), "0", "0", "2");
+            SPstring = string.Format(front, txtVourcher.Text.Trim(), "0", "0", "2");
             DT=objclsMainDB.SelectData(SPstring);
             if (DT.Rows.Count>0 && isedit==false)
             {
@@ -208,7 +213,11 @@ namespace PawnShop.PawnData
 
                 if (isedit)
                 {
-                    objclsPawn.action =1;
+                    if(pawnbig)
+                        objclsPawn.action =1;
+                    else
+                        objclsPawn.action =3;
+
                     if (MessageBox.Show("Please confirm to edit", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         objclsPawn.saveData();
@@ -217,7 +226,10 @@ namespace PawnShop.PawnData
                 }
                 else
                 {
-                    objclsPawn.action = 0;
+                    if (pawnbig)
+                        objclsPawn.action = 0;
+                    else
+                        objclsPawn.action = 2;
                     if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         objclsPawn.saveData();
