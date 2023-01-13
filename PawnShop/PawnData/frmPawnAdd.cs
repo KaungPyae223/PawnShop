@@ -19,8 +19,6 @@ namespace PawnShop.PawnData
         CodeLibrary objclsCodelibrary = new CodeLibrary();
         private string VourcherID;
         public Boolean isedit = false;
-        public string a;
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtVourcher.Text.Length!=7 && pawnbig==true)
@@ -61,11 +59,11 @@ namespace PawnShop.PawnData
             {
                 VourcherID = txtVourcher.Text;
                 saveData();
-
+                
 
             }
         }
-
+       
         private void reload()
         {
             addvourcher();
@@ -83,39 +81,29 @@ namespace PawnShop.PawnData
         {
             if (isedit==false)
             {
+                if (pawnbig)
+                {
+                    SPstring = string.Format("SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'", dtpPawn.Text, "0", "0", "1");
 
-                SPstring = string.Format(a, dtpPawn.Text, "0", "0", "1");
-
-                DT = objclsMainDB.SelectData(SPstring);
-                string ID = DT.Rows[0]["ID"].ToString();
-                string[] z = ID.Split(' ');
-                string p = z[1].Trim();
-                int i = Convert.ToInt32(p);
-                if (i== 999)
-                {
-                    MessageBox.Show("Please enter a new vourcher");
-                    txtVourcher.Text="";
-                    txtVourcher.Focus();
-                    return;
-                }
-                else if(i==99 && pawnbig==false)
-                {
-                    MessageBox.Show("Please enter a new vourcher");
-                    txtVourcher.Text="";
-                    txtVourcher.Focus();
-                    return;
-                }
-                else
-                {
-                    i++;
-                    if(pawnbig)
-                        ID = z[0].Trim() +" "+i.ToString("000");
+                    DT = objclsMainDB.SelectData(SPstring);
+                    string ID = DT.Rows[0]["ID"].ToString();
+                    string[] z = ID.Split(' ');
+                    string p = z[1].Trim();
+                    int i = Convert.ToInt32(p);
+                    if (i== 999)
+                    {
+                        MessageBox.Show("Please enter a new vourcher");
+                        txtVourcher.Text="";
+                        txtVourcher.Focus();
+                        return;
+                    }
                     else
-                        ID = z[0].Trim() +" "+i.ToString("00");
-
-                    txtVourcher.Text = ID;
+                    {
+                        i++;
+                        ID = z[0].Trim() +" "+i.ToString("000");
+                        txtVourcher.Text = ID;
+                    }
                 }
-
 
             }
         }
@@ -127,11 +115,11 @@ namespace PawnShop.PawnData
                 txtVourcher.Focus();
                 txtVourcher.Text=txtVourcher.Text.Remove(7, 1);
             }
-            else if (txtVourcher.Text.Length>5 && pawnbig==false)
+            else if (txtVourcher.Text.Length>6 && pawnbig==false)
             {
                 MessageBox.Show("Vourcher ID must have 6 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtVourcher.Focus();
-                txtVourcher.Text=txtVourcher.Text.Remove(5, 1);
+                txtVourcher.Text=txtVourcher.Text.Remove(6, 1);
 
             }
         }
@@ -146,7 +134,7 @@ namespace PawnShop.PawnData
             if (objclsCodelibrary.dateDiff(dtpPawn.Text, DateTime.Today.ToShortDateString()))
             {
                 MessageBox.Show("Check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpPawn.Text=DateTime.Now.ToString();
+                dtpPawn.Text=DateTime.Now.ToString();          
             }
         }
 
@@ -206,7 +194,7 @@ namespace PawnShop.PawnData
             }
             else
             {
-                string weight = txtKyat.Text.Trim()+" ကျပ်  "+cboPae.SelectedItem.ToString()+" ပဲ  "+cboYae.SelectedItem.ToString()+" ရွေး";
+                string weight = txtKyat.Text.Trim()+" ကျပ်  "+cboPae.Text.ToString()+" ပဲ  "+cboYae.Text.ToString()+" ရွေး";
                 clsPawn objclsPawn = new clsPawn();
                 objclsPawn.weight = weight;
                 objclsPawn.date=dtpPawn.Text;
@@ -220,11 +208,7 @@ namespace PawnShop.PawnData
 
                 if (isedit)
                 {
-                    if (pawnbig)
-                        objclsPawn.action =1;
-                    else
-                        objclsPawn.action =4;
-
+                    objclsPawn.action =1;
                     if (MessageBox.Show("Please confirm to edit", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         objclsPawn.saveData();
@@ -233,11 +217,7 @@ namespace PawnShop.PawnData
                 }
                 else
                 {
-                    if (pawnbig)
-                        objclsPawn.action = 0;
-                    else
-                        objclsPawn.action = 3;
-
+                    objclsPawn.action = 0;
                     if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         objclsPawn.saveData();

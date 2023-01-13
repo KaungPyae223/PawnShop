@@ -34,8 +34,7 @@ namespace PawnShop
         private void pawnBigToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPawnBigData frm = new frmPawnBigData();
-            frm.a="SP_SelectPawn N'{0}',N'{1}',N'{2}','{3}'";
-            frm.big = true;
+            frm.a="SP_SelectPawn";
             loadform(frm);
             mnuPawn.Text="အပေါင်ကြီး";
             mnuPawn.BackColor=Color.Bisque;
@@ -46,9 +45,8 @@ namespace PawnShop
         private void pawnSmallToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPawnBigData frm = new frmPawnBigData();
-            frm.a="SP_SelectPawnSmall N'{0}',N'{1}',N'{2}','{3}'";
+            frm.a="SP_SelectPawnSmall";
             frm.toolStripLabel1.Text="အပေါင်သေး";
-            frm.big=false;
             loadform(frm);
             mnuPawn.Text="အပေါင်သေး";
             mnuPawn.BackColor=Color.Bisque;

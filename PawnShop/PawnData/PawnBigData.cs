@@ -15,31 +15,29 @@ namespace PawnShop.PawnData
         string SP;
         clsMainDB objclsMain = new clsMainDB();
         CodeLibrary objclsCodeLibrary = new CodeLibrary();
-        public string a;
-        public Boolean big;
+       public string a;
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
             frmPawnAdd frm = new frmPawnAdd();
-            frm.pawnbig=big;
-            frm.a=this.a;
+            frm.pawnbig=true;
             frm.ShowDialog();
+            ShowData();
         }
 
         private void frmPawnBigData_Load(object sender, EventArgs e)
         {
 
             dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
-            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
             ShowData();
 
         }
         public void ShowData()
         {
-            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             dgvPawn.DataSource = objclsMain.SelectData(SP);
-
             dgvPawn.Columns[0].Width = (dgvPawn.Width/100)*5;
             dgvPawn.Columns[1].Width = (dgvPawn.Width/100)*10;
             dgvPawn.Columns[2].Width = (dgvPawn.Width/100)*15;
@@ -121,11 +119,9 @@ namespace PawnShop.PawnData
                 frm.dtpPawn.Enabled=false;
                 frm.txtVourcher.Enabled=false;
                 frm.btnSave.Text="Edit";
-                frm.a=this.a;
-                frm.pawnbig=big;
                 frm.ShowDialog();
                 ShowData();
-                
+
 
             }
         }
@@ -133,11 +129,11 @@ namespace PawnShop.PawnData
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             if (tslLabel.Text=="Customer Name")
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "6");
+                SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "6");
             else if (tslLabel.Text=="Amount")
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "8");
+                SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "8");
             else
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "9");
+                SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "9");
 
             dgvPawn.DataSource = objclsMain.SelectData(SP);
             MakeColors();
@@ -148,7 +144,7 @@ namespace PawnShop.PawnData
         private void tsmAmount_Click(object sender, EventArgs e)
         {
             tslLabel.Text="Amount";
-            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "Amount");
             toolStripTextBox1.Text="";
 
@@ -157,7 +153,7 @@ namespace PawnShop.PawnData
         private void TsbItemName_Click(object sender, EventArgs e)
         {
             tslLabel.Text="Item Name";
-            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "ItemName");
             toolStripTextBox1.Text="";
 
@@ -167,7 +163,7 @@ namespace PawnShop.PawnData
         {
             tslLabel.Text="Customer Name";
             string a = "SP_SelectPawn";
-            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            SP = string.Format(a+" N'{0}',N'{1}',N'{2}','{3}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
             toolStripTextBox1.Text="";
 
@@ -187,7 +183,7 @@ namespace PawnShop.PawnData
 
         private void dgvPawn_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
         public void MakeColors()
         {
@@ -200,7 +196,7 @@ namespace PawnShop.PawnData
                 }
                 else
                 {
-
+                    
                     int diff = DateTime.Compare(Convert.ToDateTime(dgvPawn.Rows[i].Cells[6].Value.ToString()), Convert.ToDateTime(objclsCodeLibrary.LastSixMonthes()));
                     if (diff < 0)
                     {
