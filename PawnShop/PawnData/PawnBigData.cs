@@ -231,14 +231,22 @@ namespace PawnShop.PawnData
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            
-            clsPawn objclsPawn = new clsPawn();
-            objclsPawn.ID=dgvPawn.CurrentRow.Cells[1].Value.ToString();
-            if(big)
-                objclsPawn.action=4;
+            if (dgvPawn.CurrentRow.Cells[0].Value.ToString()== null)
+                MessageBox.Show("Plesase select row to delete");
             else
-                objclsPawn.action=5;
-            objclsPawn.saveData();
+            {
+                clsPawn objclsPawn = new clsPawn();
+                objclsPawn.ID=dgvPawn.CurrentRow.Cells[1].Value.ToString();
+                if (big)
+                    objclsPawn.action=4;
+                else
+                    objclsPawn.action=5;
+                if(MessageBox.Show("Are you sure to delete","Comfirm",MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK) 
+                    objclsPawn.saveData();
+
+                ShowData();
+            }
+            
         }
     }
 }
