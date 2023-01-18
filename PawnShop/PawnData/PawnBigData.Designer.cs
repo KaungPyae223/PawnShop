@@ -268,6 +268,7 @@
             // 
             // dgvPawn
             // 
+            this.dgvPawn.AllowUserToResizeRows = false;
             this.dgvPawn.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -293,12 +294,13 @@
             this.dgvPawn.MultiSelect = false;
             this.dgvPawn.Name = "dgvPawn";
             this.dgvPawn.ReadOnly = true;
+            this.dgvPawn.RowHeadersVisible = false;
             this.dgvPawn.RowHeadersWidth = 62;
             this.dgvPawn.RowTemplate.Height = 28;
             this.dgvPawn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPawn.Size = new System.Drawing.Size(800, 278);
             this.dgvPawn.TabIndex = 0;
-            this.dgvPawn.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPawn_CellContentDoubleClick);
+            this.dgvPawn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPawn_CellContentClick);
             // 
             // panel3
             // 

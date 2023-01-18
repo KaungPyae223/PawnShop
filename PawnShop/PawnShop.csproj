@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="DBO\clsMainDB.cs" />
     <Compile Include="DBO\clsPawn.cs" />
+    <Compile Include="DBO\clsYae.cs" />
     <Compile Include="DBO\CodeLibrary.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -73,6 +74,12 @@
     </Compile>
     <Compile Include="Monthly\DailyAdd.Designer.cs">
       <DependentUpon>DailyAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PawnData\ctl_PawnDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PawnData\ctl_PawnDetails.Designer.cs">
+      <DependentUpon>ctl_PawnDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="PawnData\frmPawnAdd.cs">
       <SubType>Form</SubType>
@@ -108,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monthly\DailyAdd.resx">
       <DependentUpon>DailyAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PawnData\ctl_PawnDetails.resx">
+      <DependentUpon>ctl_PawnDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PawnData\frmPawnAdd.resx">
       <DependentUpon>frmPawnAdd.cs</DependentUpon>

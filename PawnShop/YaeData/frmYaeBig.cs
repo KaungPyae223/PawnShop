@@ -22,5 +22,10 @@ namespace PawnShop.YaeData
             frmYaeAdd frm = new frmYaeAdd();
             frm.ShowDialog();
         }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
