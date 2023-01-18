@@ -88,17 +88,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="YaeData\frmYaeAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YaeData\frmYaeAdd.Designer.cs">
+      <DependentUpon>frmYaeAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="YaeData\frmYaeBig.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="YaeData\frmYaeBig.Designer.cs">
       <DependentUpon>frmYaeBig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="YaeData\frmYaeSmall.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="YaeData\frmYaeSmall.Designer.cs">
-      <DependentUpon>frmYaeSmall.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -124,11 +124,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="YaeData\frmYaeAdd.resx">
+      <DependentUpon>frmYaeAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="YaeData\frmYaeBig.resx">
       <DependentUpon>frmYaeBig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="YaeData\frmYaeSmall.resx">
-      <DependentUpon>frmYaeSmall.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

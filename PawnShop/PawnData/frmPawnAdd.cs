@@ -82,33 +82,33 @@ namespace PawnShop.PawnData
         {
             if (isedit==false)
             {
-                if (pawnbig)
-                {
-                    SPstring = string.Format(front, dtpPawn.Text, "0", "0", "1");
 
-                    DT = objclsMainDB.SelectData(SPstring);
-                    string ID = DT.Rows[0]["ID"].ToString();
-                    string[] z = ID.Split(' ');
-                    string p = z[1].Trim();
-                    int i = Convert.ToInt32(p);
-                    if ((i== 999 && pawnbig == true)||(i==99 && pawnbig==false))
-                    {
-                        MessageBox.Show("Please enter a new vourcher");
-                        txtVourcher.Text="";
-                        txtVourcher.Focus();
-                        return;
-                    }
-                    else
-                    {
-                        i++;
-                        if (pawnbig)
-                            ID = z[0].Trim() +" "+i.ToString("000");
-                        else
-                            ID= z[0].Trim()+" "+i.ToString("00");
-                        
-                        txtVourcher.Text = ID;
-                    }
+
+                SPstring = string.Format(front, dtpPawn.Text, "0", "0", "1");
+
+                DT = objclsMainDB.SelectData(SPstring);
+                string ID = DT.Rows[0]["ID"].ToString();
+                string[] z = ID.Split(' ');
+                string p = z[1].Trim();
+                int i = Convert.ToInt32(p);
+                if ((i== 999 && pawnbig == true)||(i==99 && pawnbig==false))
+                {
+                    MessageBox.Show("Please enter a new vourcher");
+                    txtVourcher.Text="";
+                    txtVourcher.Focus();
+                    return;
                 }
+                else
+                {
+                    i++;
+                    if (pawnbig)
+                        ID = z[0].Trim() +" "+i.ToString("000");
+                    else
+                        ID= z[0].Trim()+" "+i.ToString("00");
+
+                    txtVourcher.Text = ID;
+                }
+
 
             }
         }
@@ -213,7 +213,7 @@ namespace PawnShop.PawnData
 
                 if (isedit)
                 {
-                    if(pawnbig)
+                    if (pawnbig)
                         objclsPawn.action =1;
                     else
                         objclsPawn.action =3;

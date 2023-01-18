@@ -67,7 +67,7 @@ namespace PawnShop
 
         private void အရသToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new frmYaeSmall());
+            loadform(new frmYaeBig());
             mnuYae.Text="‌အရွေးသေး";
             mnuYae.BackColor=Color.Bisque;
             mnuPawn.Text="အပေါင်";

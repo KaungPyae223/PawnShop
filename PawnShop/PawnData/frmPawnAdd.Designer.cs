@@ -259,7 +259,7 @@
             this.txtNote.Location = new System.Drawing.Point(206, 608);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(394, 111);
+            this.txtNote.Size = new System.Drawing.Size(394, 160);
             this.txtNote.TabIndex = 14;
             this.txtNote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNote_KeyDown);
             // 

@@ -16,5 +16,11 @@ namespace PawnShop.YaeData
         {
             InitializeComponent();
         }
+
+        private void tsbNew_Click(object sender, EventArgs e)
+        {
+            frmYaeAdd frm = new frmYaeAdd();
+            frm.ShowDialog();
+        }
     }
 }
