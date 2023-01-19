@@ -121,7 +121,7 @@ namespace PawnShop.PawnData
         }
         public void showEntry()
         {
-            if (dgvPawn.CurrentRow.Cells[0].Value.ToString() == string.Empty)
+            if (dgvPawn.CurrentRow.Cells[1].Value.ToString() == string.Empty)
             {
                 MessageBox.Show("Please select a course to edit");
             }
@@ -252,12 +252,12 @@ namespace PawnShop.PawnData
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if (dgvPawn.CurrentRow.Cells[0].Value.ToString()== null)
+            if (dgvPawn.CurrentRow.Cells[1].Value.ToString()== null)
                 MessageBox.Show("Plesase select row to delete");
             else
             {
                 clsPawn objclsPawn = new clsPawn();
-                objclsPawn.ID=dgvPawn.CurrentRow.Cells[1].Value.ToString();
+                objclsPawn.ID=dgvPawn.CurrentRow.Cells[2].Value.ToString();
                 if (big)
                     objclsPawn.action=4;
                 else
@@ -301,12 +301,13 @@ namespace PawnShop.PawnData
                     l5.Text=dgvPawn.CurrentRow.Cells[5].Value.ToString();
                     l6.Text= dgvPawn.CurrentRow.Cells[6].Value.ToString();
                     l7.Text= Convert.ToDateTime(dgvPawn.CurrentRow.Cells[7].Value.ToString()).ToShortDateString();
-                    l8.Text= dgvPawn.CurrentRow.Cells[9].Value.ToString();
+                    string[] a = dgvPawn.CurrentRow.Cells[8].Value.ToString().Split(' ');
+                    l8.Text= a[0];
                     l9.Text= dgvPawn.CurrentRow.Cells[9].Value.ToString();
-                    string[] z = dgvPawn.CurrentRow.Cells[10].Value.ToString().Split(' ');
 
 
                     PawnDetails.Show();
+                    
                     dgvPawn[e.ColumnIndex, e.RowIndex].Value="-";
                 }
                 else
