@@ -18,7 +18,7 @@ namespace PawnShop.PawnData
         public string a;
         UserControl PawnDetails;
         Boolean firsttime = true;
-
+        int con;
         private void tsbNew_Click(object sender, EventArgs e)
         {
             frmPawnAdd frm = new frmPawnAdd();
@@ -31,25 +31,26 @@ namespace PawnShop.PawnData
         private void frmPawnBigData_Load(object sender, EventArgs e)
         {
 
-            dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
             SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
+            cboCondition.SelectedIndex= 0;
             ShowData();
             ShowDetails();
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
-            
+
 
         }
         public void ShowDetails()
         {
             PawnDetails = new ctl_PawnDetails();
-            
+
             PawnDetails.Hide();
             Controls.Add(PawnDetails);
             Controls.SetChildIndex(PawnDetails, 0);
         }
         public void ShowData()
         {
-            if(firsttime) 
+            if (firsttime)
             {
                 DataGridViewTextBoxColumn dgcol = new DataGridViewTextBoxColumn();
                 dgcol.DefaultCellStyle.NullValue="+";
@@ -60,9 +61,6 @@ namespace PawnShop.PawnData
                 dgvPawn.Columns.Add(dgcol);
                 firsttime=false;
             }
-            
-
-            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
 
             dgvPawn.DataSource = objclsMain.SelectData(SP);
 
@@ -82,7 +80,9 @@ namespace PawnShop.PawnData
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ShowData();
+            cboCondition.SelectedIndex= 0;
+            tslLabel.Text="Customer Name";
+            toolStripTextBox1.Text="";
 
         }
 
@@ -157,11 +157,11 @@ namespace PawnShop.PawnData
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             if (tslLabel.Text=="Customer Name")
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "6");
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, con*3+0);
             else if (tslLabel.Text=="Amount")
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "8");
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, con*3+1);
             else
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, "9");
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, con*3+2);
 
             dgvPawn.DataSource = objclsMain.SelectData(SP);
             MakeColors();
@@ -172,7 +172,6 @@ namespace PawnShop.PawnData
         private void tsmAmount_Click(object sender, EventArgs e)
         {
             tslLabel.Text="Amount";
-            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "Amount");
             toolStripTextBox1.Text="";
 
@@ -181,7 +180,6 @@ namespace PawnShop.PawnData
         private void TsbItemName_Click(object sender, EventArgs e)
         {
             tslLabel.Text="Item Name";
-            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "ItemName");
             toolStripTextBox1.Text="";
 
@@ -190,8 +188,6 @@ namespace PawnShop.PawnData
         private void TsmCustomerName_Click(object sender, EventArgs e)
         {
             tslLabel.Text="Customer Name";
-            string a = "SP_SelectPawn";
-            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
             toolStripTextBox1.Text="";
 
@@ -231,19 +227,20 @@ namespace PawnShop.PawnData
                     }
 
                 }
-                if (dgvPawn.Rows[i].Cells[9].Value.ToString() != null)
+                if (dgvPawn.Rows[i].Cells[9].Value.ToString().Trim().Length > 0)
                 {
-                    if (dgvPawn.Rows[i].Cells[9].Value.ToString().Contains("Lost Ticket"))
+
+                    if (dgvPawn.Rows[i].Cells[9].Value.ToString().Contains("Lost Ticket") && dgvPawn.Rows[i].Cells[8].Value.ToString().Length > 0)
+                    {
+                        dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.DarkBlue;
+                        dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.White;
+                    }
+                    else
                     {
                         dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.Red;
                         dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.White;
                     }
 
-                    if (dgvPawn.Rows[i].Cells[9].Value.ToString().Contains("Lost Ticket") && dgvPawn.Rows[i].Cells[7].Value.ToString() != null)
-                    {
-                        dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.DarkBlue;
-                        dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.White;
-                    }
                 }
 
 
@@ -272,9 +269,9 @@ namespace PawnShop.PawnData
 
         private void dgvPawn_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex== 0)
+            if (e.ColumnIndex== 0)
             {
-                if (dgvPawn[e.ColumnIndex,e.RowIndex].Value==null)
+                if (dgvPawn[e.ColumnIndex, e.RowIndex].Value==null)
                 {
                     dgvPawn[e.ColumnIndex, e.RowIndex].Value="+";
                 }
@@ -307,7 +304,7 @@ namespace PawnShop.PawnData
 
 
                     PawnDetails.Show();
-                    
+
                     dgvPawn[e.ColumnIndex, e.RowIndex].Value="-";
                 }
                 else
@@ -317,6 +314,35 @@ namespace PawnShop.PawnData
 
                 }
             }
+        }
+
+        private void cboCondition_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCondition.SelectedIndex == 0)
+            { 
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+                con = 2;
+            }
+            if (cboCondition.SelectedIndex == 1)
+            {
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "20");
+                con = 3;
+            }
+            if (cboCondition.SelectedIndex == 2)
+            {
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "21");
+                con = 4;
+            }
+            if (cboCondition.SelectedIndex == 3)
+            {
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "22");
+                con = 5;
+            }
+            dgvPawn.DataSource= objclsMain.SelectData(SP);
+            string name = tslLabel.Text.Replace(" ", "");
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, name);
+            MakeColors();
+
         }
     }
 }

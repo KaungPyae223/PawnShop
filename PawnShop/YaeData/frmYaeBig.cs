@@ -1,5 +1,6 @@
 ﻿using PawnShop.DBO;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PawnShop.YaeData
@@ -54,12 +55,28 @@ namespace PawnShop.YaeData
             dgvYae.Columns[9].Width=(dgvYae.Width/100)*10;
 
             dgvYae.Columns[10].Visible=false;
-
+            makecolors();
+        }
+        public void makecolors()
+        {
+            for (int i = 0; i<dgvYae.RowCount-1; i++)
+            {
+                if (dgvYae.Rows[i].Cells[9].Value.ToString().Contains("Lost Ticket"))
+                {
+                    dgvYae.Rows[i].DefaultCellStyle.BackColor=Color.DarkBlue;
+                    dgvYae.Rows[i].DefaultCellStyle.ForeColor=Color.White;
+                }
+            }
         }
         private void frmYaeBig_Load(object sender, EventArgs e)
         {
             dtpFrom.Text=objclsCodelibrary.LastSixMonthes();
             showData();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
