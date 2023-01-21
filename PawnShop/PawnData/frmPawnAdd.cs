@@ -17,52 +17,11 @@ namespace PawnShop.PawnData
         public DataTable DT;
         clsMainDB objclsMainDB = new clsMainDB();
         CodeLibrary objclsCodelibrary = new CodeLibrary();
-        private string VourcherID;
         public Boolean isedit = false;
         public string front;
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtVourcher.Text.Length!=7 && pawnbig==true)
-            {
-                MessageBox.Show("Vourcher ID must have 7 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtVourcher.Focus();
-            }
-            else if (txtVourcher.Text.Length!=5 && pawnbig==false)
-            {
-                MessageBox.Show("Vourcher ID must have 6 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtVourcher.Focus();
-            }
-            else if (txtItemName.Text.Trim()=="")
-            {
-                MessageBox.Show("Please type item Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtItemName.Focus();
-            }
-            else if ((txtKyat.Text == "0" && cboPae.SelectedIndex==0 && cboYae.SelectedIndex==0) || int.TryParse(txtKyat.Text, out OK)==false)
-            {
-                MessageBox.Show("Please select weight", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (int.TryParse(txtAmount.Text, out OK)==false || Convert.ToInt32(txtAmount.Text.Trim())<=999 || txtAmount.Text.Trim()=="")
-            {
-                MessageBox.Show("Please type an amount and amount should be number and amound must be greather than 1000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtAmount.Focus();
-            }
-            else if (txtName.Text.Trim()=="")
-            {
-                MessageBox.Show("Please type Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtName.Focus();
-            }
-            else if (txtLocation.Text.Trim()=="")
-            {
-                MessageBox.Show("Please type Location", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtLocation.Focus();
-            }
-            else
-            {
-                VourcherID = txtVourcher.Text;
-                saveData();
-
-
-            }
+            saveData();
         }
 
         private void reload()
@@ -190,53 +149,92 @@ namespace PawnShop.PawnData
         }
         public void saveData()
         {
-            SPstring = string.Format(front, txtVourcher.Text.Trim(), "0", "0", "2");
-            DT=objclsMainDB.SelectData(SPstring);
-            if (DT.Rows.Count>0 && isedit==false)
+            if (txtVourcher.Text.Length!=7 && pawnbig==true)
             {
-                MessageBox.Show("ID is already exit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vourcher ID must have 7 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtVourcher.Focus();
+            }
+            else if (txtVourcher.Text.Length!=5 && pawnbig==false)
+            {
+                MessageBox.Show("Vourcher ID must have 6 words", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtVourcher.Focus();
+            }
+            else if (txtItemName.Text.Trim()=="")
+            {
+                MessageBox.Show("Please type item Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtItemName.Focus();
+            }
+            else if ((txtKyat.Text == "0" && cboPae.SelectedIndex==0 && cboYae.SelectedIndex==0) || int.TryParse(txtKyat.Text, out OK)==false)
+            {
+                MessageBox.Show("Please select weight", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (int.TryParse(txtAmount.Text, out OK)==false || Convert.ToInt32(txtAmount.Text.Trim())<=999 || txtAmount.Text.Trim()=="")
+            {
+                MessageBox.Show("Please type an amount and amount should be number and amound must be greather than 1000", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAmount.Focus();
+            }
+            else if (txtName.Text.Trim()=="")
+            {
+                MessageBox.Show("Please type Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtName.Focus();
+            }
+            else if (txtLocation.Text.Trim()=="")
+            {
+                MessageBox.Show("Please type Location", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLocation.Focus();
             }
             else
             {
-                string weight = txtKyat.Text.Trim()+" ကျပ်  "+cboPae.Text.ToString()+" ပဲ  "+cboYae.Text.ToString()+" ရွေး";
-                clsPawn objclsPawn = new clsPawn();
-                objclsPawn.weight = weight;
-                objclsPawn.date=dtpPawn.Text;
-                objclsPawn.ID=txtVourcher.Text.Trim();
-                objclsPawn.ItemName = txtItemName.Text.Trim();
-                objclsPawn.amount = Convert.ToInt32(txtAmount.Text.Trim());
-                objclsPawn.name= txtName.Text.Trim();
-                objclsPawn.location= txtLocation.Text.Trim();
-                objclsPawn.description = txtNote.Text.Trim();
-                objclsPawn.yaeDate="";
-
-                if (isedit)
+                SPstring = string.Format(front, txtVourcher.Text.ToString(), "0", "0", "2");
+                DT=objclsMainDB.SelectData(SPstring);
+                if (DT.Rows.Count>0 && isedit==false)
                 {
-                    if (pawnbig)
-                        objclsPawn.action =1;
-                    else
-                        objclsPawn.action =3;
-
-                    if (MessageBox.Show("Please confirm to edit", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    {
-                        objclsPawn.saveData();
-                        this.Close();
-                    }
+                    MessageBox.Show("ID is already exit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtVourcher.Focus();
                 }
                 else
                 {
-                    if (pawnbig)
-                        objclsPawn.action = 0;
-                    else
-                        objclsPawn.action = 2;
-                    if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    string weight = txtKyat.Text.Trim()+" ကျပ်  "+cboPae.Text.ToString()+" ပဲ  "+cboYae.Text.ToString()+" ရွေး";
+                    clsPawn objclsPawn = new clsPawn();
+                    objclsPawn.weight = weight;
+                    objclsPawn.date=dtpPawn.Text;
+                    objclsPawn.ID=txtVourcher.Text.Trim();
+                    objclsPawn.ItemName = txtItemName.Text.Trim();
+                    objclsPawn.amount = Convert.ToInt32(txtAmount.Text.Trim());
+                    objclsPawn.name= txtName.Text.Trim();
+                    objclsPawn.location= txtLocation.Text.Trim();
+                    objclsPawn.description = txtNote.Text.Trim();
+                    objclsPawn.yaeDate="";
+
+                    if (isedit)
                     {
-                        objclsPawn.saveData();
-                        reload();
+                        if (pawnbig)
+                            objclsPawn.action =1;
+                        else
+                            objclsPawn.action =3;
+
+                        if (MessageBox.Show("Please confirm to edit", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            objclsPawn.saveData();
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        if (pawnbig)
+                            objclsPawn.action = 0;
+                        else
+                            objclsPawn.action = 2;
+                        if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            objclsPawn.saveData();
+                            reload();
+                        }
+
                     }
 
                 }
+
 
             }
         }

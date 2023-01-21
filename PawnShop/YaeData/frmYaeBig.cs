@@ -76,7 +76,34 @@ namespace PawnShop.YaeData
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void tsbEdit_Click(object sender, EventArgs e)
+        {
+            Showentry();
+        }
+        public void Showentry()
+        {
+            if (dgvYae.CurrentRow.Cells[1].Value.ToString()==string.Empty)
+            {
+                MessageBox.Show("Please select a course to edit");
+            }
+            else
+            {
+                frmYaeAdd frm = new frmYaeAdd();
+                frm.dateTimePicker1.Text=dgvYae.CurrentRow.Cells[8].Value.ToString();
+                frm.txtInterest.Text=dgvYae.CurrentRow.Cells[6].Value.ToString();
+                frm.txtNote.Text=dgvYae.CurrentRow.Cells[10].Value.ToString();
+                frm.txtTotal.Text=dgvYae.CurrentRow.Cells[7].Value.ToString();
+                frm.textBox1.Text = dgvYae.CurrentRow.Cells[2].Value.ToString();
+                frm.btnSave.Text="Edit";
+                frm.isEdit = true;
+               
+                frm.ShowDialog();
+                
+
+            }
         }
     }
 }

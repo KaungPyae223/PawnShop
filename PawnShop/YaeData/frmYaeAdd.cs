@@ -21,8 +21,8 @@ namespace PawnShop.YaeData
         CodeLibrary objclsCodelibrary = new CodeLibrary();
         clsMainDB objclsMainDB = new clsMainDB();
         string SPstring;
-        Boolean isEdit = false;
-        Boolean Big = true;
+        public Boolean isEdit = false;
+        public Boolean Big = true;
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             if (objclsCodelibrary.dateDiff(dateTimePicker1.Text, DateTime.Today.ToShortDateString()))
@@ -82,13 +82,17 @@ namespace PawnShop.YaeData
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            saveData();
+        }
+        private void saveData()
+        {
             int OK;
-            if(textBox1.Text.Trim().Length != 7 && Big) 
+            if (textBox1.Text.Trim().Length != 7 && Big)
             {
                 MessageBox.Show("Check Vourcher", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox1.Focus();
             }
-            else if(txtInterest.Text.Trim() == "" || int.TryParse(txtInterest.Text, out OK) == false)
+            else if (txtInterest.Text.Trim() == "" || int.TryParse(txtInterest.Text, out OK) == false)
             {
                 MessageBox.Show("Check Interest", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtInterest.Focus();
@@ -100,10 +104,10 @@ namespace PawnShop.YaeData
             }
             else
             {
-                SPstring=string.Format("SelectYaeBig N'{0}',N'{1}'", textBox1.Text.ToString().Trim(), "0");
+                SPstring=string.Format("SelectYaeBig N'{0}',N'{1}',N'{2}'", textBox1.Text.ToString().Trim(),"0", "0");
                 DataTable DT = new DataTable();
                 DT = objclsMainDB.SelectData(SPstring);
-                
+
                 if (DT.Rows.Count > 0 && isEdit == false)
                 {
                     MessageBox.Show("The Vourcher is already finished", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -121,16 +125,47 @@ namespace PawnShop.YaeData
                     objclsPawn.yaeDate= dateTimePicker1.Text;
                     objclsPawn.ID= textBox1.Text.ToString();
                     objclsPawn.action =6;
-                    objclsYae.action = 0;
-                    if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (isEdit)
                     {
-                        objclsYae.SaveData();
-                        objclsPawn.saveData();
+                        objclsYae.action = 1;
+                        if (MessageBox.Show("Please confirm to Edit", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            objclsYae.SaveData();
+                            objclsPawn.saveData();
+                        }
                     }
-                    
+                    else
+                    {
+                        objclsYae.action = 0;
+                        if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            objclsYae.SaveData();
+                            objclsPawn.saveData();
+                        }
+                    }
+                    Reset();
                 }
             }
-            
+        }
+        private void Reset()
+        {
+            textBox1.Text="";
+            txtInterest.Text="";
+            txtNote.Text="";
+            txtTotal.Text="";
+        }
+
+        private void txtNote_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                saveData();
+            }
+        }
+
+        private void frmYaeAdd_Load(object sender, EventArgs e)
+        {
+            textBox1.Focus();
         }
     }
 }

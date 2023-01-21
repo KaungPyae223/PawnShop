@@ -1,5 +1,7 @@
 ﻿using PawnShop.DBO;
 using System;
+using System.Data.SqlTypes;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -83,6 +85,7 @@ namespace PawnShop.PawnData
             cboCondition.SelectedIndex= 0;
             tslLabel.Text="Customer Name";
             toolStripTextBox1.Text="";
+            MakeColors();
 
         }
 
@@ -147,9 +150,10 @@ namespace PawnShop.PawnData
                 frm.txtVourcher.Enabled=false;
                 frm.btnSave.Text="Edit";
                 frm.pawnbig=big;
+                frm.front = a;
                 frm.ShowDialog();
                 ShowData();
-
+                MakeColors();
 
             }
         }
@@ -210,7 +214,7 @@ namespace PawnShop.PawnData
         {
             for (int i = 0; i<dgvPawn.RowCount-1; i++)
             {
-                if (dgvPawn.Rows[i].Cells[8].Value.ToString().Length>0)
+                if (dgvPawn.Rows[i].Cells[8].Value.ToString() != string.Empty)
                 {
                     dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.Aquamarine;
                     dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.Black;
@@ -227,10 +231,10 @@ namespace PawnShop.PawnData
                     }
 
                 }
-                if (dgvPawn.Rows[i].Cells[9].Value.ToString().Trim().Length > 0)
+                if (dgvPawn.Rows[i].Cells[9].Value.ToString().Trim() != string.Empty)
                 {
 
-                    if (dgvPawn.Rows[i].Cells[9].Value.ToString().Contains("Lost Ticket") && dgvPawn.Rows[i].Cells[8].Value.ToString().Length > 0)
+                    if (dgvPawn.Rows[i].Cells[9].Value.ToString().Contains("Lost Ticket") && dgvPawn.Rows[i].Cells[8].Value.ToString() != string.Empty)
                     {
                         dgvPawn.Rows[i].DefaultCellStyle.BackColor=Color.DarkBlue;
                         dgvPawn.Rows[i].DefaultCellStyle.ForeColor=Color.White;
@@ -253,8 +257,18 @@ namespace PawnShop.PawnData
                 MessageBox.Show("Plesase select row to delete");
             else
             {
+                
                 clsPawn objclsPawn = new clsPawn();
+                string SPstring=string.Format("SelectYaeBig N'{0}',N'{1}',N'{2}'", dgvPawn.CurrentRow.Cells[2].Value.ToString(), "0", "0");
+                DataTable DT = new DataTable();
+                DT = objclsMain.SelectData(SPstring);
+                if(DT.Rows.Count > 0)
+                {
+                    MessageBox.Show("Are you sure to delete. This data is contain both pawn and yae. It you delte the two data are deleted", "Comfirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                }
                 objclsPawn.ID=dgvPawn.CurrentRow.Cells[2].Value.ToString();
+                
                 if (big)
                     objclsPawn.action=4;
                 else
@@ -319,7 +333,7 @@ namespace PawnShop.PawnData
         private void cboCondition_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboCondition.SelectedIndex == 0)
-            { 
+            {
                 SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
                 con = 2;
             }

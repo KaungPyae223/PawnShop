@@ -309,6 +309,7 @@
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(340, 148);
             this.txtNote.TabIndex = 15;
+            this.txtNote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNote_KeyDown);
             // 
             // frmYaeAdd
             // 
@@ -323,6 +324,7 @@
             this.Name = "frmYaeAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmYaeAdd";
+            this.Load += new System.EventHandler(this.frmYaeAdd_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -335,12 +337,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -352,9 +351,12 @@
         private System.Windows.Forms.Label lblPawnDate;
         private System.Windows.Forms.Label lblItemName;
         private System.Windows.Forms.Label lblCustomerName;
-        private System.Windows.Forms.TextBox txtInterest;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Button btnSave;
+        public System.Windows.Forms.DateTimePicker dateTimePicker1;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtInterest;
+        public System.Windows.Forms.TextBox txtTotal;
+        public System.Windows.Forms.TextBox txtNote;
     }
 }
