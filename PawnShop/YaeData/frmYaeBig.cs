@@ -13,12 +13,18 @@ namespace PawnShop.YaeData
             InitializeComponent();
         }
         Boolean firsttime = true;
+        public Boolean big = true;
         clsMainDB objclsMain = new clsMainDB();
         CodeLibrary objclsCodelibrary = new CodeLibrary();
+        public string frontyae;
+        public string frontpawn;
         string SP;
         private void tsbNew_Click(object sender, EventArgs e)
         {
             frmYaeAdd frm = new frmYaeAdd();
+            frm.Big=big;
+            frm.frontPawn = this.frontpawn;
+            frm.frontyae = this.frontyae;
             frm.ShowDialog();
         }
 
@@ -49,7 +55,7 @@ namespace PawnShop.YaeData
             }
 
 
-            SP = string.Format("SelectYaeBig N'{0}', N'{1}', N'{2}'", dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "1");
+            SP = string.Format(frontyae, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "1");
 
             dgvYae.DataSource = objclsMain.SelectData(SP);
             dgvYae.Columns[1].Width=(dgvYae.Width/100)*5;
@@ -100,6 +106,9 @@ namespace PawnShop.YaeData
             else
             {
                 frmYaeAdd frm = new frmYaeAdd();
+                frm.Big=big;
+                frm.frontPawn = this.frontpawn;
+                frm.frontyae = this.frontyae;
                 frm.dateTimePicker1.Text=dgvYae.CurrentRow.Cells[8].Value.ToString();
                 frm.txtInterest.Text=dgvYae.CurrentRow.Cells[6].Value.ToString();
                 frm.txtNote.Text=dgvYae.CurrentRow.Cells[10].Value.ToString();
@@ -107,7 +116,7 @@ namespace PawnShop.YaeData
                 frm.textBox1.Text = dgvYae.CurrentRow.Cells[2].Value.ToString();
                 frm.btnSave.Text="Edit";
                 frm.isEdit = true;
-               
+
                 frm.ShowDialog();
                 
 
@@ -124,6 +133,13 @@ namespace PawnShop.YaeData
             }
             else
                 showData();
+        }
+
+        
+
+        private void dgvYae_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Showentry();
         }
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPawnBigData));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
@@ -44,6 +44,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cboCondition = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cboCondition = new System.Windows.Forms.ComboBox();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -209,6 +209,22 @@
             this.panel1.Size = new System.Drawing.Size(800, 54);
             this.panel1.TabIndex = 5;
             // 
+            // cboCondition
+            // 
+            this.cboCondition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCondition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCondition.FormattingEnabled = true;
+            this.cboCondition.Items.AddRange(new object[] {
+            "All",
+            "Pawn Only",
+            "Yae Only",
+            "Ticket Lost"});
+            this.cboCondition.Location = new System.Drawing.Point(577, 8);
+            this.cboCondition.Name = "cboCondition";
+            this.cboCondition.Size = new System.Drawing.Size(193, 33);
+            this.cboCondition.TabIndex = 5;
+            this.cboCondition.SelectedIndexChanged += new System.EventHandler(this.cboCondition_SelectedIndexChanged);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(466, 13);
@@ -272,24 +288,24 @@
             // 
             this.dgvPawn.AllowUserToResizeRows = false;
             this.dgvPawn.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPawn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPawn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPawn.ColumnHeadersHeight = 35;
             this.dgvPawn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPawn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPawn.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPawn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPawn.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dgvPawn.Location = new System.Drawing.Point(0, 0);
@@ -303,6 +319,7 @@
             this.dgvPawn.Size = new System.Drawing.Size(800, 278);
             this.dgvPawn.TabIndex = 0;
             this.dgvPawn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPawn_CellContentClick);
+            this.dgvPawn.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPawn_CellContentDoubleClick);
             // 
             // panel3
             // 
@@ -396,22 +413,6 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 30);
             this.label3.TabIndex = 0;
-            // 
-            // cboCondition
-            // 
-            this.cboCondition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCondition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboCondition.FormattingEnabled = true;
-            this.cboCondition.Items.AddRange(new object[] {
-            "All",
-            "Pawn Only",
-            "Yae Only",
-            "Ticket Lost"});
-            this.cboCondition.Location = new System.Drawing.Point(577, 8);
-            this.cboCondition.Name = "cboCondition";
-            this.cboCondition.Size = new System.Drawing.Size(193, 33);
-            this.cboCondition.TabIndex = 5;
-            this.cboCondition.SelectedIndexChanged += new System.EventHandler(this.cboCondition_SelectedIndexChanged);
             // 
             // frmPawnBigData
             // 

@@ -275,7 +275,10 @@ namespace PawnShop.PawnData
                             objclsYae.action=3;
                         }
                         else
+                        {
                             objclsPawn.action=5;
+                            objclsYae.action=6;
+                        }
                         objclsPawn.saveData();
                         objclsYae.SaveData();
                     }
@@ -375,6 +378,11 @@ namespace PawnShop.PawnData
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, name);
             MakeColors();
 
+        }
+
+        private void dgvPawn_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            showEntry();
         }
     }
 }

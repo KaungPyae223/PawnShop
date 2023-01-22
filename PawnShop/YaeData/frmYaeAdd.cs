@@ -23,6 +23,10 @@ namespace PawnShop.YaeData
         string SPstring;
         public Boolean isEdit = false;
         public Boolean Big = true;
+        public string frontyae;
+        public string frontPawn;
+        Boolean enabled = false;
+
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             if (objclsCodelibrary.dateDiff(dateTimePicker1.Text, DateTime.Today.ToShortDateString()))
@@ -34,10 +38,11 @@ namespace PawnShop.YaeData
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if(textBox1.Text.Length == 7) 
+            
+            if ((textBox1.Text.Length == 7 && Big) || (textBox1.Text.Length == 5 && !Big) )
             {
-                SPstring = string.Format("SP_SelectPawn  N'{0}',N'{1}',N'{2}','{3}'", textBox1.Text.Trim(), "0", "0", "2");
-                DataTable DT= new DataTable();
+                SPstring = string.Format(frontPawn, textBox1.Text.Trim(), "0", "0", "2");
+                DataTable DT = new DataTable();
                 DT = objclsMainDB.SelectData(SPstring);
                 if(DT.Rows.Count == 0 ) 
                 { 
@@ -52,6 +57,7 @@ namespace PawnShop.YaeData
                     lblItemName.Text= DT.Rows[0][1].ToString();
                     lblPawnDate.Text=Convert.ToDateTime(DT.Rows[0][5].ToString()).ToShortDateString();
                     txtInterest.Focus();
+                    enabled= true;
                 }
             }
         }
@@ -87,9 +93,14 @@ namespace PawnShop.YaeData
         private void saveData()
         {
             int OK;
-            if (textBox1.Text.Trim().Length != 7 && Big)
+            if ((textBox1.Text.Trim().Length != 7 && Big) || (textBox1.Text.Trim().Length != 5 && !Big))
             {
                 MessageBox.Show("Check Vourcher", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox1.Focus();
+            }
+            else if(enabled == false)
+            {
+                MessageBox.Show("The Vourcher ID is False", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox1.Focus();
             }
             else if (txtInterest.Text.Trim() == "" || int.TryParse(txtInterest.Text, out OK) == false)
@@ -104,7 +115,7 @@ namespace PawnShop.YaeData
             }
             else
             {
-                SPstring=string.Format("SelectYaeBig N'{0}',N'{1}',N'{2}'", textBox1.Text.ToString().Trim(),"0", "0");
+                SPstring=string.Format(frontyae, textBox1.Text.ToString().Trim(),"0", "0");
                 DataTable DT = new DataTable();
                 DT = objclsMainDB.SelectData(SPstring);
 
@@ -127,7 +138,11 @@ namespace PawnShop.YaeData
                     objclsPawn.action =6;
                     if (isEdit)
                     {
-                        objclsYae.action = 1;
+                        if(Big)
+                            objclsYae.action = 1;
+                        else
+                            objclsYae.action = 4;
+
                         if (MessageBox.Show("Please confirm to Edit", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             objclsYae.SaveData();
@@ -136,7 +151,10 @@ namespace PawnShop.YaeData
                     }
                     else
                     {
-                        objclsYae.action = 0;
+                        if (Big)
+                            objclsYae.action = 0;
+                        else
+                            objclsYae.action = 3;
                         if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         {
                             objclsYae.SaveData();

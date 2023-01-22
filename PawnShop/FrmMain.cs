@@ -58,7 +58,12 @@ namespace PawnShop
 
         private void အရToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new frmYaeBig());
+            frmYaeBig frm = new frmYaeBig();
+            frm.frontyae="SelectYaeBig N'{0}', N'{1}', N'{2}'";
+            frm.frontpawn="SP_SelectPawn  N'{0}',N'{1}',N'{2}','{3}'";
+            frm.big = true;
+            frm.toolStripLabel1.Text = "‌အရွေးကြီး";
+            loadform(frm);
             mnuYae.Text="‌အရွေးကြီး";
             mnuYae.BackColor=Color.Bisque;
             mnuPawn.Text="အပေါင်";
@@ -67,7 +72,12 @@ namespace PawnShop
 
         private void အရသToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadform(new frmYaeBig());
+            frmYaeBig frm = new frmYaeBig();
+            frm.frontyae="SP_SelectYaeSmall N'{0}', N'{1}', N'{2}'";
+            frm.frontpawn="SP_SelectPawnSmall  N'{0}',N'{1}',N'{2}','{3}'";
+            frm.big = false;
+            frm.toolStripLabel1.Text = "‌အရွေးကြီး";
+            loadform(frm);
             mnuYae.Text="‌အရွေးသေး";
             mnuYae.BackColor=Color.Bisque;
             mnuPawn.Text="အပေါင်";

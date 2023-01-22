@@ -266,6 +266,7 @@
             this.dgvYae.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvYae.Size = new System.Drawing.Size(800, 278);
             this.dgvYae.TabIndex = 1;
+            this.dgvYae.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvYae_CellContentDoubleClick);
             // 
             // panel3
             // 
@@ -334,7 +335,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmDate;
         private System.Windows.Forms.ToolStripMenuItem tsmAmount;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dtpTo;
         private System.Windows.Forms.Label label2;
@@ -346,5 +346,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.ToolStripLabel toolStripLabel1;
     }
 }
