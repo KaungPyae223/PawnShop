@@ -24,7 +24,15 @@ namespace PawnShop.YaeData
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
-            showData();
+            if (objclsCodelibrary.dateDiff(dtpFrom.Text, dtpTo.Text))
+            {
+                MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpFrom.Text=objclsCodelibrary.LastSixMonthes();
+
+                dtpFrom.Focus();
+            }
+            else
+                showData();
         }
         public void showData()
         {
@@ -104,6 +112,18 @@ namespace PawnShop.YaeData
                 
 
             }
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            if (objclsCodelibrary.dateDiff(dtpFrom.Text, dtpTo.Text))
+            {
+                MessageBox.Show("Plese check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpTo.Text=DateTime.Today.ToString();
+                dtpFrom.Focus();
+            }
+            else
+                showData();
         }
     }
 }

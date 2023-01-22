@@ -33,9 +33,10 @@ namespace PawnShop.PawnData
         {
 
             SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            ShowData();
             dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
             cboCondition.SelectedIndex= 0;
-            ShowData();
+
             ShowDetails();
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
 
@@ -100,7 +101,7 @@ namespace PawnShop.PawnData
                 dtpFrom.Focus();
             }
             else
-                ShowData();
+                dgvPawn.DataSource = objclsMain.SelectData(SP);
         }
 
         private void dtpTo_ValueChanged(object sender, EventArgs e)
@@ -113,7 +114,7 @@ namespace PawnShop.PawnData
                 dtpFrom.Focus();
             }
             else
-                ShowData();
+                dgvPawn.DataSource = objclsMain.SelectData(SP);
         }
 
         private void tsbEdit_Click(object sender, EventArgs e)

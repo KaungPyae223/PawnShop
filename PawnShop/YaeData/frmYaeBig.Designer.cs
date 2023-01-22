@@ -190,6 +190,7 @@
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(169, 26);
             this.dtpTo.TabIndex = 3;
+            this.dtpTo.ValueChanged += new System.EventHandler(this.dtpTo_ValueChanged);
             // 
             // label2
             // 
