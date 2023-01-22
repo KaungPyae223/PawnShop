@@ -1,6 +1,5 @@
 ﻿using PawnShop.DBO;
 using System;
-using System.Data.SqlTypes;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -257,24 +256,42 @@ namespace PawnShop.PawnData
                 MessageBox.Show("Plesase select row to delete");
             else
             {
-                
+
                 clsPawn objclsPawn = new clsPawn();
-                string SPstring=string.Format("SelectYaeBig N'{0}',N'{1}',N'{2}'", dgvPawn.CurrentRow.Cells[2].Value.ToString(), "0", "0");
+                clsYae objclsYae = new clsYae();
+                string SPstring = string.Format("SelectYaeBig N'{0}',N'{1}',N'{2}'", dgvPawn.CurrentRow.Cells[2].Value.ToString(), "0", "0");
                 DataTable DT = new DataTable();
                 DT = objclsMain.SelectData(SPstring);
-                if(DT.Rows.Count > 0)
+                if (DT.Rows.Count > 0)
                 {
-                    MessageBox.Show("Are you sure to delete. This data is contain both pawn and yae. It you delte the two data are deleted", "Comfirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (MessageBox.Show("Are you sure to delete. This data is contain both pawn and yae. It you delte the two data are deleted", "Comfirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)==DialogResult.OK)
+                    {
+                        objclsPawn.ID=dgvPawn.CurrentRow.Cells[2].Value.ToString();
+                        objclsYae.ID=dgvPawn.CurrentRow.Cells[2].Value.ToString();
+                        if (big)
+                        {
+                            objclsPawn.action=4;
+                            objclsYae.action=3;
+                        }
+                        else
+                            objclsPawn.action=5;
+                        objclsPawn.saveData();
+                        objclsYae.SaveData();
+                    }
 
                 }
-                objclsPawn.ID=dgvPawn.CurrentRow.Cells[2].Value.ToString();
-                
-                if (big)
-                    objclsPawn.action=4;
                 else
-                    objclsPawn.action=5;
-                if (MessageBox.Show("Are you sure to delete", "Comfirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    objclsPawn.saveData();
+                {
+                    objclsPawn.ID=dgvPawn.CurrentRow.Cells[2].Value.ToString();
+
+                    if (big)
+                        objclsPawn.action=4;
+                    else
+                        objclsPawn.action=5;
+
+                    if (MessageBox.Show("Are you sure to delete", "Comfirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        objclsPawn.saveData();
+                }
 
                 ShowData();
             }
