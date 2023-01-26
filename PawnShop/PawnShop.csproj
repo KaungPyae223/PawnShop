@@ -57,6 +57,12 @@
     <Compile Include="DBO\clsPawn.cs" />
     <Compile Include="DBO\clsYae.cs" />
     <Compile Include="DBO\CodeLibrary.cs" />
+    <Compile Include="frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="YaeData\frmYaeBig.Designer.cs">
       <DependentUpon>frmYaeBig.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

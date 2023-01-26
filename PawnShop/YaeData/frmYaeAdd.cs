@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using PawnShop.DBO;
+using System;
 using System.Data;
-using System.Data.SqlTypes;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using PawnShop.DBO;
 
 namespace PawnShop.YaeData
 {
     public partial class frmYaeAdd : Form
     {
-        public frmYaeAdd()
+        public frmYaeAdd(Boolean isBig, string FY, string FP)
         {
             InitializeComponent();
+            Big= isBig;
+            frontyae = FY;
+            frontPawn = FP;
+
         }
         CodeLibrary objclsCodelibrary = new CodeLibrary();
         clsMainDB objclsMainDB = new clsMainDB();
@@ -38,18 +35,18 @@ namespace PawnShop.YaeData
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
-            if ((textBox1.Text.Length == 7 && Big) || (textBox1.Text.Length == 5 && !Big) )
+
+            if ((textBox1.Text.Length == 7 && Big) || (textBox1.Text.Length == 5 && !Big))
             {
                 SPstring = string.Format(frontPawn, textBox1.Text.Trim(), "0", "0", "2");
                 DataTable DT = new DataTable();
                 DT = objclsMainDB.SelectData(SPstring);
-                if(DT.Rows.Count == 0 ) 
-                { 
+                if (DT.Rows.Count == 0)
+                {
                     MessageBox.Show("The Vourcher Do not Exit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox1.Clear();
                 }
-                else 
+                else
                 {
                     textBox1.Text = textBox1.Text.ToUpper();
                     lblAmount.Text=DT.Rows[0][2].ToString();
@@ -64,7 +61,7 @@ namespace PawnShop.YaeData
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 txtInterest.Focus();
             }
@@ -98,7 +95,7 @@ namespace PawnShop.YaeData
                 MessageBox.Show("Check Vourcher", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox1.Focus();
             }
-            else if(enabled == false)
+            else if (enabled == false)
             {
                 MessageBox.Show("The Vourcher ID is False", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox1.Focus();
@@ -115,7 +112,7 @@ namespace PawnShop.YaeData
             }
             else
             {
-                SPstring=string.Format(frontyae, textBox1.Text.ToString().Trim(),"0", "0");
+                SPstring=string.Format(frontyae, textBox1.Text.ToString().Trim(), "0", "0");
                 DataTable DT = new DataTable();
                 DT = objclsMainDB.SelectData(SPstring);
 
@@ -138,7 +135,7 @@ namespace PawnShop.YaeData
                     objclsPawn.action =6;
                     if (isEdit)
                     {
-                        if(Big)
+                        if (Big)
                             objclsYae.action = 1;
                         else
                             objclsYae.action = 4;
@@ -175,7 +172,7 @@ namespace PawnShop.YaeData
 
         private void txtNote_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 saveData();
             }

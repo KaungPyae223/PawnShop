@@ -8,23 +8,25 @@ namespace PawnShop.YaeData
 
     public partial class frmYaeBig : Form
     {
-        public frmYaeBig()
+        public frmYaeBig(string frontP, string frontY, Boolean isBig)
         {
             InitializeComponent();
+            frontpawn = frontP;
+            frontyae= frontY;
+            big = isBig;
         }
         Boolean firsttime = true;
-        public Boolean big = true;
+        Boolean big;
         clsMainDB objclsMain = new clsMainDB();
         CodeLibrary objclsCodelibrary = new CodeLibrary();
-        public string frontyae;
-        public string frontpawn;
+        string frontyae;
+        string frontpawn;
+        public string vourchertype;
         string SP;
         private void tsbNew_Click(object sender, EventArgs e)
         {
-            frmYaeAdd frm = new frmYaeAdd();
-            frm.Big=big;
-            frm.frontPawn = this.frontpawn;
-            frm.frontyae = this.frontyae;
+            frmYaeAdd frm = new frmYaeAdd(big, frontyae, frontpawn);
+
             frm.ShowDialog();
         }
 
@@ -86,11 +88,15 @@ namespace PawnShop.YaeData
         {
             dtpFrom.Text=objclsCodelibrary.LastSixMonthes();
             showData();
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
+            toolStripTextBox1.Text="";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            tslLabel.Text="Customer Name";
+            toolStripTextBox1.Text="";
+            makecolors();
         }
 
         private void tsbEdit_Click(object sender, EventArgs e)
@@ -105,10 +111,7 @@ namespace PawnShop.YaeData
             }
             else
             {
-                frmYaeAdd frm = new frmYaeAdd();
-                frm.Big=big;
-                frm.frontPawn = this.frontpawn;
-                frm.frontyae = this.frontyae;
+                frmYaeAdd frm = new frmYaeAdd(big, frontyae, frontpawn);
                 frm.dateTimePicker1.Text=dgvYae.CurrentRow.Cells[8].Value.ToString();
                 frm.txtInterest.Text=dgvYae.CurrentRow.Cells[6].Value.ToString();
                 frm.txtNote.Text=dgvYae.CurrentRow.Cells[10].Value.ToString();
@@ -118,7 +121,7 @@ namespace PawnShop.YaeData
                 frm.isEdit = true;
 
                 frm.ShowDialog();
-                
+
 
             }
         }
@@ -135,11 +138,32 @@ namespace PawnShop.YaeData
                 showData();
         }
 
-        
-
-        private void dgvYae_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void tsmName_Click(object sender, EventArgs e)
         {
-            Showentry();
+            tslLabel.Text="Customer Name";
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
+            toolStripTextBox1.Text="";
+        }
+
+        private void tsmVourcherID_Click(object sender, EventArgs e)
+        {
+            tslLabel.Text="Vourcher ID";
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, vourchertype);
+            toolStripTextBox1.Text="";
+        }
+
+        private void tsmAmount_Click(object sender, EventArgs e)
+        {
+            tslLabel.Text="Amount";
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "Amount");
+            toolStripTextBox1.Text="";
+        }
+
+        private void itemNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tslLabel.Text="Item Name";
+            objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "ItemName");
+            toolStripTextBox1.Text="";
         }
     }
 }

@@ -319,7 +319,6 @@
             this.dgvPawn.Size = new System.Drawing.Size(800, 278);
             this.dgvPawn.TabIndex = 0;
             this.dgvPawn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPawn_CellContentClick);
-            this.dgvPawn.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPawn_CellContentDoubleClick);
             // 
             // panel3
             // 

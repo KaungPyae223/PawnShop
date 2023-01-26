@@ -380,9 +380,6 @@ namespace PawnShop.PawnData
 
         }
 
-        private void dgvPawn_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            showEntry();
-        }
+        
     }
 }

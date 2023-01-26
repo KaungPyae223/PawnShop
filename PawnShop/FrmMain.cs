@@ -58,10 +58,8 @@ namespace PawnShop
 
         private void အရToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmYaeBig frm = new frmYaeBig();
-            frm.frontyae="SelectYaeBig N'{0}', N'{1}', N'{2}'";
-            frm.frontpawn="SP_SelectPawn  N'{0}',N'{1}',N'{2}','{3}'";
-            frm.big = true;
+            frmYaeBig frm = new frmYaeBig("SP_SelectPawn  N'{0}',N'{1}',N'{2}','{3}'", "SelectYaeBig N'{0}', N'{1}', N'{2}'",true);
+            frm.vourchertype="BigVourcherID";
             frm.toolStripLabel1.Text = "‌အရွေးကြီး";
             loadform(frm);
             mnuYae.Text="‌အရွေးကြီး";
@@ -72,10 +70,7 @@ namespace PawnShop
 
         private void အရသToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmYaeBig frm = new frmYaeBig();
-            frm.frontyae="SP_SelectYaeSmall N'{0}', N'{1}', N'{2}'";
-            frm.frontpawn="SP_SelectPawnSmall  N'{0}',N'{1}',N'{2}','{3}'";
-            frm.big = false;
+            frmYaeBig frm = new frmYaeBig("SP_SelectPawn  N'{0}',N'{1}',N'{2}','{3}'", "SP_SelectYaeSmall N'{0}', N'{1}', N'{2}'",false);
             frm.toolStripLabel1.Text = "‌အရွေးကြီး";
             loadform(frm);
             mnuYae.Text="‌အရွေးသေး";
