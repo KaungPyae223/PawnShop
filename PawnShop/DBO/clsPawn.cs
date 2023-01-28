@@ -10,7 +10,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace PawnShop.DBO
 {
-    internal class clsPawn
+    internal class clsPawn:clsMainDB
     {
         public string ID { get; set; }
         public string ItemName { get; set; }
@@ -26,12 +26,11 @@ namespace PawnShop.DBO
 
         public void saveData()
         {
-            clsMainDB objClsMain = new clsMainDB();
             try
             {
-                objClsMain.DataBaseCon();
+                DataBaseCon();
 
-                SqlCommand sql = new SqlCommand("SP_InsertPawn", objClsMain.con);
+                SqlCommand sql = new SqlCommand("SP_InsertPawn", con);
                 sql.CommandType = CommandType.StoredProcedure;
                 sql.Parameters.AddWithValue("@BigVourcherID", ID);
                 sql.Parameters.AddWithValue("@ItemName",ItemName );
@@ -52,7 +51,7 @@ namespace PawnShop.DBO
             }
             finally
             {
-                objClsMain.con.Close();
+                con.Close();
             }
         }
 

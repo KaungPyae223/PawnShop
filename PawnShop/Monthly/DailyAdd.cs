@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using PawnShop.DBO;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using PawnShop.DBO;
 namespace PawnShop.Monthly
 {
     public partial class DailyAdd : Form
@@ -19,8 +15,7 @@ namespace PawnShop.Monthly
         clsMainDB objclsMain = new clsMainDB();
         string SP;
         readonly CodeLibrary objclsCodeLibary = new CodeLibrary();
-        
-
+        Boolean CanCulate = false;
         private void DailyAdd_Load(object sender, EventArgs e)
         {
             this.Size=new Size(530, 700);
@@ -31,13 +26,42 @@ namespace PawnShop.Monthly
             this.Location=new Point((screenwidth-fontwidth)/2, (h-formh)/2);
             filldata();
         }
+        public void fillTotalData()
+        {
+            
+            int total = 0;
+            total += Convert.ToInt32(txtYaeBig.Text);
+            total += Convert.ToInt32(txtYaeBigToe.Text);
+            total += Convert.ToInt32(txtYaeTae.Text);
+            total += Convert.ToInt32(txtYaeToeTae.Text);
+            total += Convert.ToInt32(txtSoneBig.Text);
+            total += Convert.ToInt32(txtSoneBigToe.Text);
+            total += Convert.ToInt32(txtSoneSmall.Text);
+            total += Convert.ToInt32(txtSoneSmallToe.Text);
+            total += Convert.ToInt32(txtNgaeYin.Text);
+            txtTotalWinNgwe.Text = total.ToString();
+            total = 0;
+            total += Convert.ToInt32(txtPawnBig.Text);
+            total += Convert.ToInt32(txtPawnSmall.Text);
+            total += Convert.ToInt32(txtInterest.Text);
+            total += Convert.ToInt32(txtUsage.Text);
+            txtOutputmoney.Text = total.ToString();
+            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "4");
+            DataTable DT = new DataTable();
+            DT = objclsMain.SelectData(SP);
+            int latkyan = Convert.ToInt32(DT.Rows[0][0].ToString());
+            int final = (Convert.ToInt32(txtTotalWinNgwe.Text)+latkyan)-Convert.ToInt32(txtOutputmoney.Text);
+            txtLatKyan.Text = final.ToString();
+        }
+
         public void filldata()
         {
+            CanCulate = false;
             SP = string.Format("SP_SelectPawn  N'{0}',N'{1}',N'{2}','{3}'", dtpDate.Text.ToString(), dtpDate.Text.ToString(), "0", "3");
-            calculateTotal(txtPawnBig,3);
+            calculateTotal(txtPawnBig, 3);
             SP = string.Format("SP_SelectPawnSmall  N'{0}',N'{1}',N'{2}','{3}'", dtpDate.Text.ToString(), dtpDate.Text.ToString(), "0", "3");
             calculateTotal(txtPawnSmall, 3);
-            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(),  "0");
+            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "0");
             calculateTotal(txtYaeBig, 3);
             calculateTotal(txtYaeBigToe, 4);
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "1");
@@ -49,14 +73,16 @@ namespace PawnShop.Monthly
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "3");
             calculateTotal(txtSoneSmall, 3);
             calculateTotal(txtSoneSmallToe, 4);
+            fillTotalData();
+            CanCulate = true;
 
         }
-        public void calculateTotal(TextBox bt,int index)
+        public void calculateTotal(TextBox bt, int index)
         {
             int total = 0;
             DataTable DT = new DataTable();
             DT=objclsMain.SelectData(SP);
-            foreach(DataRow DR in DT.Rows)
+            foreach (DataRow DR in DT.Rows)
             {
                 total += Convert.ToInt32(DR[index].ToString());
             }
@@ -75,12 +101,12 @@ namespace PawnShop.Monthly
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtInterest_Leave(object sender, EventArgs e)
         {
-            if(txtInterest.Text==string.Empty)
+            if (txtInterest.Text==string.Empty)
             {
                 txtInterest.Text="0";
             }
@@ -104,7 +130,7 @@ namespace PawnShop.Monthly
 
         private void txtInterest_Click(object sender, EventArgs e)
         {
-            if(txtInterest.Text=="0")
+            if (txtInterest.Text=="0")
             {
                 txtInterest.Text="";
             }
@@ -112,6 +138,7 @@ namespace PawnShop.Monthly
 
         private void txtUsage_Click(object sender, EventArgs e)
         {
+
             if (txtUsage.Text=="0")
             {
                 txtUsage.Text="";
@@ -125,5 +152,57 @@ namespace PawnShop.Monthly
                 txtNgaeYin.Text="";
             }
         }
+
+        
+        public Boolean checkint(TextBox txt)
+        {
+            int OK;
+            if(int.TryParse(txt.Text, out OK)==false)
+            {
+                MessageBox.Show("Check input", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt.Text= "";
+                txt.Focus();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void txtNgaeYin_TextChanged(object sender, EventArgs e)
+        {
+            if(txtNgaeYin.Text != string.Empty)
+            {
+                if (checkint(txtNgaeYin))
+                {
+                    fillTotalData();
+                }
+            }
+        }
+
+        private void txtInterest_TextChanged(object sender, EventArgs e)
+        {
+            if(txtInterest.Text!=string.Empty)
+            {
+                if (checkint(txtInterest))
+                {
+                    fillTotalData();
+                }
+            }
+        }
+
+        private void txtUsage_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUsage.Text!=string.Empty)
+            {
+                if (checkint(txtUsage))
+                {
+                    fillTotalData();
+                }
+            }
+        }
+
+        
     }
 }

@@ -26,7 +26,7 @@ namespace PawnShop.YaeData
         private void tsbNew_Click(object sender, EventArgs e)
         {
             frmYaeAdd frm = new frmYaeAdd(big, frontyae, frontpawn);
-
+            
             frm.ShowDialog();
         }
 

@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace PawnShop.DBO
 {
-    internal class clsYae
+    internal class clsYae:clsMainDB
     {
         public string ID { get; set; }
         public int Interest { get; set; }
@@ -23,12 +23,11 @@ namespace PawnShop.DBO
 
         public void SaveData()
         {
-            clsMainDB objClsMain = new clsMainDB();
             try
             {
-                objClsMain.DataBaseCon();
+                DataBaseCon();
 
-                SqlCommand sql = new SqlCommand("SP_InsertYaeBig", objClsMain.con);
+                SqlCommand sql = new SqlCommand("SP_InsertYaeBig", con);
                 sql.CommandType = CommandType.StoredProcedure;
                 sql.Parameters.AddWithValue("@para1", ID);
                 sql.Parameters.AddWithValue("@para2", Interest);
@@ -46,7 +45,7 @@ namespace PawnShop.DBO
             }
             finally
             {
-                objClsMain.con.Close();
+                con.Close();
             }
         }
     }

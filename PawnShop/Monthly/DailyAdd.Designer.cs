@@ -44,31 +44,22 @@
             this.txtNgaeYin = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtYaeBigToe = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.lblBigYae = new System.Windows.Forms.Label();
-            this.txtYaeBig = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.lblPawnBig = new System.Windows.Forms.Label();
-            this.txtPawnBig = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtYaeToeTae = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lblPawnSmall = new System.Windows.Forms.Label();
-            this.txtPawnSmall = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.lblBigSone = new System.Windows.Forms.Label();
-            this.txtSoneBig = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtSoneBigToe = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTaeSone = new System.Windows.Forms.Label();
-            this.txtSoneSmall = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtSoneSmallToe = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.txtInterest = new System.Windows.Forms.TextBox();
@@ -80,11 +71,23 @@
             this.txtUsage = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtYaeTae = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.txtOutputmoney = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtLatKyan = new System.Windows.Forms.TextBox();
+            this.txtYaeTae = new System.Windows.Forms.TextBox();
+            this.txtYaeToeTae = new System.Windows.Forms.TextBox();
+            this.txtYaeBig = new System.Windows.Forms.TextBox();
+            this.txtYaeBigToe = new System.Windows.Forms.TextBox();
+            this.txtSoneBig = new System.Windows.Forms.TextBox();
+            this.txtSoneBigToe = new System.Windows.Forms.TextBox();
+            this.txtSoneSmall = new System.Windows.Forms.TextBox();
+            this.txtSoneSmallToe = new System.Windows.Forms.TextBox();
+            this.txtPawnSmall = new System.Windows.Forms.TextBox();
+            this.txtPawnBig = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
@@ -107,6 +110,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -230,7 +234,8 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label16, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel16, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel16, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel17, 1, 10);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -255,7 +260,7 @@
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(367, 3);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(308, 62);
+            this.label17.Size = new System.Drawing.Size(330, 62);
             this.label17.TabIndex = 16;
             this.label17.Text = "ထွက်ငွေ";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -294,6 +299,7 @@
             this.txtNgaeYin.TabIndex = 1;
             this.txtNgaeYin.Text = "0";
             this.txtNgaeYin.Click += new System.EventHandler(this.txtNgaeYin_Click);
+            this.txtNgaeYin.TextChanged += new System.EventHandler(this.txtNgaeYin_TextChanged);
             this.txtNgaeYin.Leave += new System.EventHandler(this.txtNgaeYin_Leave);
             // 
             // tableLayoutPanel10
@@ -322,13 +328,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "အကြီးအတိုး";
             // 
-            // txtYaeBigToe
-            // 
-            this.txtYaeBigToe.Location = new System.Drawing.Point(155, 18);
-            this.txtYaeBigToe.Name = "txtYaeBigToe";
-            this.txtYaeBigToe.Size = new System.Drawing.Size(175, 26);
-            this.txtYaeBigToe.TabIndex = 1;
-            // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 2;
@@ -353,13 +352,6 @@
             this.lblBigYae.Size = new System.Drawing.Size(59, 29);
             this.lblBigYae.TabIndex = 0;
             this.lblBigYae.Text = "အကြီး";
-            // 
-            // txtYaeBig
-            // 
-            this.txtYaeBig.Location = new System.Drawing.Point(155, 18);
-            this.txtYaeBig.Name = "txtYaeBig";
-            this.txtYaeBig.Size = new System.Drawing.Size(175, 26);
-            this.txtYaeBig.TabIndex = 1;
             // 
             // tableLayoutPanel7
             // 
@@ -387,13 +379,6 @@
             this.lblPawnBig.TabIndex = 0;
             this.lblPawnBig.Text = "အပေါင်ကြီး";
             // 
-            // txtPawnBig
-            // 
-            this.txtPawnBig.Location = new System.Drawing.Point(155, 18);
-            this.txtPawnBig.Name = "txtPawnBig";
-            this.txtPawnBig.Size = new System.Drawing.Size(175, 26);
-            this.txtPawnBig.TabIndex = 1;
-            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
@@ -418,13 +403,6 @@
             this.label5.Size = new System.Drawing.Size(107, 29);
             this.label5.TabIndex = 0;
             this.label5.Text = "အသေးအတိုး";
-            // 
-            // txtYaeToeTae
-            // 
-            this.txtYaeToeTae.Location = new System.Drawing.Point(155, 18);
-            this.txtYaeToeTae.Name = "txtYaeToeTae";
-            this.txtYaeToeTae.Size = new System.Drawing.Size(175, 26);
-            this.txtYaeToeTae.TabIndex = 1;
             // 
             // tableLayoutPanel5
             // 
@@ -452,13 +430,6 @@
             this.lblPawnSmall.TabIndex = 0;
             this.lblPawnSmall.Text = "အပေါင်သေး";
             // 
-            // txtPawnSmall
-            // 
-            this.txtPawnSmall.Location = new System.Drawing.Point(155, 18);
-            this.txtPawnSmall.Name = "txtPawnSmall";
-            this.txtPawnSmall.Size = new System.Drawing.Size(175, 26);
-            this.txtPawnSmall.TabIndex = 1;
-            // 
             // tableLayoutPanel11
             // 
             this.tableLayoutPanel11.ColumnCount = 2;
@@ -484,13 +455,6 @@
             this.lblBigSone.Size = new System.Drawing.Size(83, 29);
             this.lblBigSone.TabIndex = 0;
             this.lblBigSone.Text = "အကြီးဆုံး";
-            // 
-            // txtSoneBig
-            // 
-            this.txtSoneBig.Location = new System.Drawing.Point(155, 18);
-            this.txtSoneBig.Name = "txtSoneBig";
-            this.txtSoneBig.Size = new System.Drawing.Size(175, 26);
-            this.txtSoneBig.TabIndex = 1;
             // 
             // tableLayoutPanel12
             // 
@@ -518,13 +482,6 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "အကြီးဆုံးတိုး";
             // 
-            // txtSoneBigToe
-            // 
-            this.txtSoneBigToe.Location = new System.Drawing.Point(155, 18);
-            this.txtSoneBigToe.Name = "txtSoneBigToe";
-            this.txtSoneBigToe.Size = new System.Drawing.Size(175, 26);
-            this.txtSoneBigToe.TabIndex = 1;
-            // 
             // tableLayoutPanel13
             // 
             this.tableLayoutPanel13.ColumnCount = 2;
@@ -551,13 +508,6 @@
             this.lblTaeSone.TabIndex = 0;
             this.lblTaeSone.Text = "အသေးဆုံး";
             // 
-            // txtSoneSmall
-            // 
-            this.txtSoneSmall.Location = new System.Drawing.Point(155, 18);
-            this.txtSoneSmall.Name = "txtSoneSmall";
-            this.txtSoneSmall.Size = new System.Drawing.Size(175, 26);
-            this.txtSoneSmall.TabIndex = 1;
-            // 
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.ColumnCount = 2;
@@ -583,13 +533,6 @@
             this.label8.Size = new System.Drawing.Size(114, 29);
             this.label8.TabIndex = 0;
             this.label8.Text = "အသေးဆုံးတိုး";
-            // 
-            // txtSoneSmallToe
-            // 
-            this.txtSoneSmallToe.Location = new System.Drawing.Point(155, 18);
-            this.txtSoneSmallToe.Name = "txtSoneSmallToe";
-            this.txtSoneSmallToe.Size = new System.Drawing.Size(175, 26);
-            this.txtSoneSmallToe.TabIndex = 1;
             // 
             // tableLayoutPanel14
             // 
@@ -619,12 +562,14 @@
             // 
             // txtInterest
             // 
+            this.txtInterest.BackColor = System.Drawing.SystemColors.Window;
             this.txtInterest.Location = new System.Drawing.Point(155, 18);
             this.txtInterest.Name = "txtInterest";
             this.txtInterest.Size = new System.Drawing.Size(175, 26);
             this.txtInterest.TabIndex = 1;
             this.txtInterest.Text = "0";
             this.txtInterest.Click += new System.EventHandler(this.txtInterest_Click);
+            this.txtInterest.TextChanged += new System.EventHandler(this.txtInterest_TextChanged);
             this.txtInterest.Leave += new System.EventHandler(this.txtInterest_Leave);
             // 
             // tableLayoutPanel4
@@ -657,6 +602,7 @@
             // 
             this.txtTotalWinNgwe.Location = new System.Drawing.Point(155, 18);
             this.txtTotalWinNgwe.Name = "txtTotalWinNgwe";
+            this.txtTotalWinNgwe.ReadOnly = true;
             this.txtTotalWinNgwe.Size = new System.Drawing.Size(175, 26);
             this.txtTotalWinNgwe.TabIndex = 1;
             // 
@@ -694,6 +640,7 @@
             this.txtUsage.TabIndex = 1;
             this.txtUsage.Text = "0";
             this.txtUsage.Click += new System.EventHandler(this.txtUsage_Click);
+            this.txtUsage.TextChanged += new System.EventHandler(this.txtUsage_TextChanged);
             this.txtUsage.Leave += new System.EventHandler(this.txtUsage_Leave);
             // 
             // tableLayoutPanel2
@@ -722,19 +669,12 @@
             this.label1.Text = "အသေး";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // txtYaeTae
-            // 
-            this.txtYaeTae.Location = new System.Drawing.Point(155, 18);
-            this.txtYaeTae.Name = "txtYaeTae";
-            this.txtYaeTae.Size = new System.Drawing.Size(175, 26);
-            this.txtYaeTae.TabIndex = 1;
-            // 
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(28, 3);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(308, 62);
+            this.label16.Size = new System.Drawing.Size(330, 62);
             this.label16.TabIndex = 15;
             this.label16.Text = "ဝင်ငွေ";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -746,7 +686,7 @@
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 181F));
             this.tableLayoutPanel16.Controls.Add(this.label15, 0, 0);
             this.tableLayoutPanel16.Controls.Add(this.txtOutputmoney, 1, 0);
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(367, 806);
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(367, 406);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.Padding = new System.Windows.Forms.Padding(15, 15, 0, 0);
             this.tableLayoutPanel16.RowCount = 1;
@@ -769,8 +709,133 @@
             // 
             this.txtOutputmoney.Location = new System.Drawing.Point(155, 18);
             this.txtOutputmoney.Name = "txtOutputmoney";
+            this.txtOutputmoney.ReadOnly = true;
             this.txtOutputmoney.Size = new System.Drawing.Size(175, 26);
             this.txtOutputmoney.TabIndex = 1;
+            // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.ColumnCount = 2;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 181F));
+            this.tableLayoutPanel17.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.txtLatKyan, 1, 0);
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(367, 806);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.Padding = new System.Windows.Forms.Padding(15, 15, 0, 0);
+            this.tableLayoutPanel17.RowCount = 1;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(333, 56);
+            this.tableLayoutPanel17.TabIndex = 17;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(18, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 29);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "လက်ကျန်";
+            // 
+            // txtLatKyan
+            // 
+            this.txtLatKyan.Location = new System.Drawing.Point(155, 18);
+            this.txtLatKyan.Name = "txtLatKyan";
+            this.txtLatKyan.ReadOnly = true;
+            this.txtLatKyan.Size = new System.Drawing.Size(175, 26);
+            this.txtLatKyan.TabIndex = 1;
+            // 
+            // txtYaeTae
+            // 
+            this.txtYaeTae.BackColor = System.Drawing.SystemColors.Window;
+            this.txtYaeTae.Location = new System.Drawing.Point(155, 18);
+            this.txtYaeTae.Name = "txtYaeTae";
+            this.txtYaeTae.ReadOnly = true;
+            this.txtYaeTae.Size = new System.Drawing.Size(175, 26);
+            this.txtYaeTae.TabIndex = 1;
+            // 
+            // txtYaeToeTae
+            // 
+            this.txtYaeToeTae.BackColor = System.Drawing.SystemColors.Window;
+            this.txtYaeToeTae.Location = new System.Drawing.Point(155, 18);
+            this.txtYaeToeTae.Name = "txtYaeToeTae";
+            this.txtYaeToeTae.ReadOnly = true;
+            this.txtYaeToeTae.Size = new System.Drawing.Size(175, 26);
+            this.txtYaeToeTae.TabIndex = 1;
+            // 
+            // txtYaeBig
+            // 
+            this.txtYaeBig.BackColor = System.Drawing.SystemColors.Window;
+            this.txtYaeBig.Location = new System.Drawing.Point(155, 18);
+            this.txtYaeBig.Name = "txtYaeBig";
+            this.txtYaeBig.ReadOnly = true;
+            this.txtYaeBig.Size = new System.Drawing.Size(175, 26);
+            this.txtYaeBig.TabIndex = 1;
+            // 
+            // txtYaeBigToe
+            // 
+            this.txtYaeBigToe.BackColor = System.Drawing.SystemColors.Window;
+            this.txtYaeBigToe.Location = new System.Drawing.Point(155, 18);
+            this.txtYaeBigToe.Name = "txtYaeBigToe";
+            this.txtYaeBigToe.ReadOnly = true;
+            this.txtYaeBigToe.Size = new System.Drawing.Size(175, 26);
+            this.txtYaeBigToe.TabIndex = 1;
+            // 
+            // txtSoneBig
+            // 
+            this.txtSoneBig.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSoneBig.Location = new System.Drawing.Point(155, 18);
+            this.txtSoneBig.Name = "txtSoneBig";
+            this.txtSoneBig.ReadOnly = true;
+            this.txtSoneBig.Size = new System.Drawing.Size(175, 26);
+            this.txtSoneBig.TabIndex = 1;
+            // 
+            // txtSoneBigToe
+            // 
+            this.txtSoneBigToe.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSoneBigToe.Location = new System.Drawing.Point(155, 18);
+            this.txtSoneBigToe.Name = "txtSoneBigToe";
+            this.txtSoneBigToe.ReadOnly = true;
+            this.txtSoneBigToe.Size = new System.Drawing.Size(175, 26);
+            this.txtSoneBigToe.TabIndex = 1;
+            // 
+            // txtSoneSmall
+            // 
+            this.txtSoneSmall.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSoneSmall.Location = new System.Drawing.Point(155, 18);
+            this.txtSoneSmall.Name = "txtSoneSmall";
+            this.txtSoneSmall.ReadOnly = true;
+            this.txtSoneSmall.Size = new System.Drawing.Size(175, 26);
+            this.txtSoneSmall.TabIndex = 1;
+            // 
+            // txtSoneSmallToe
+            // 
+            this.txtSoneSmallToe.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSoneSmallToe.Location = new System.Drawing.Point(155, 18);
+            this.txtSoneSmallToe.Name = "txtSoneSmallToe";
+            this.txtSoneSmallToe.ReadOnly = true;
+            this.txtSoneSmallToe.Size = new System.Drawing.Size(175, 26);
+            this.txtSoneSmallToe.TabIndex = 1;
+            // 
+            // txtPawnSmall
+            // 
+            this.txtPawnSmall.BackColor = System.Drawing.SystemColors.Window;
+            this.txtPawnSmall.Location = new System.Drawing.Point(155, 18);
+            this.txtPawnSmall.Name = "txtPawnSmall";
+            this.txtPawnSmall.ReadOnly = true;
+            this.txtPawnSmall.Size = new System.Drawing.Size(175, 26);
+            this.txtPawnSmall.TabIndex = 1;
+            // 
+            // txtPawnBig
+            // 
+            this.txtPawnBig.BackColor = System.Drawing.SystemColors.Window;
+            this.txtPawnBig.Location = new System.Drawing.Point(155, 18);
+            this.txtPawnBig.Name = "txtPawnBig";
+            this.txtPawnBig.ReadOnly = true;
+            this.txtPawnBig.Size = new System.Drawing.Size(175, 26);
+            this.txtPawnBig.TabIndex = 1;
             // 
             // DailyAdd
             // 
@@ -825,6 +890,8 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
+            this.tableLayoutPanel17.ResumeLayout(false);
+            this.tableLayoutPanel17.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -844,31 +911,22 @@
         private System.Windows.Forms.TextBox txtNgaeYin;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtYaeBigToe;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label lblBigYae;
-        private System.Windows.Forms.TextBox txtYaeBig;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label lblPawnBig;
-        private System.Windows.Forms.TextBox txtPawnBig;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtYaeToeTae;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label lblPawnSmall;
-        private System.Windows.Forms.TextBox txtPawnSmall;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private System.Windows.Forms.Label lblBigSone;
-        private System.Windows.Forms.TextBox txtSoneBig;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtSoneBigToe;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.Label lblTaeSone;
-        private System.Windows.Forms.TextBox txtSoneSmall;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtSoneSmallToe;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtInterest;
@@ -880,7 +938,6 @@
         private System.Windows.Forms.TextBox txtUsage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtYaeTae;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
         private System.Windows.Forms.Label label15;
@@ -888,5 +945,18 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtLatKyan;
+        private System.Windows.Forms.TextBox txtYaeBigToe;
+        private System.Windows.Forms.TextBox txtYaeBig;
+        private System.Windows.Forms.TextBox txtPawnBig;
+        private System.Windows.Forms.TextBox txtYaeToeTae;
+        private System.Windows.Forms.TextBox txtPawnSmall;
+        private System.Windows.Forms.TextBox txtSoneBig;
+        private System.Windows.Forms.TextBox txtSoneBigToe;
+        private System.Windows.Forms.TextBox txtSoneSmall;
+        private System.Windows.Forms.TextBox txtSoneSmallToe;
+        private System.Windows.Forms.TextBox txtYaeTae;
     }
 }
