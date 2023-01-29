@@ -28,6 +28,7 @@ namespace PawnShop.YaeData
             frmYaeAdd frm = new frmYaeAdd(big, frontyae, frontpawn);
             
             frm.ShowDialog();
+            showData();
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
@@ -96,7 +97,7 @@ namespace PawnShop.YaeData
         {
             tslLabel.Text="Customer Name";
             toolStripTextBox1.Text="";
-            makecolors();
+            showData();
         }
 
         private void tsbEdit_Click(object sender, EventArgs e)

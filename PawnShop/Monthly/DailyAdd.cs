@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Drawing;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 namespace PawnShop.Monthly
 {
@@ -16,6 +15,7 @@ namespace PawnShop.Monthly
         string SP;
         readonly CodeLibrary objclsCodeLibary = new CodeLibrary();
         Boolean CanCulate = false;
+        Boolean IsEdit = false;
         private void DailyAdd_Load(object sender, EventArgs e)
         {
             this.Size=new Size(530, 700);
@@ -28,7 +28,7 @@ namespace PawnShop.Monthly
         }
         public void fillTotalData()
         {
-            
+
             int total = 0;
             total += Convert.ToInt32(txtYaeBig.Text);
             total += Convert.ToInt32(txtYaeBigToe.Text);
@@ -58,30 +58,32 @@ namespace PawnShop.Monthly
         {
             CanCulate = false;
             SP = string.Format("SP_SelectPawn  N'{0}',N'{1}',N'{2}','{3}'", dtpDate.Text.ToString(), dtpDate.Text.ToString(), "0", "3");
-            calculateTotal(txtPawnBig, 3);
+            calculateTotal(txtPawnBig, 3, lblPawnBig);
             SP = string.Format("SP_SelectPawnSmall  N'{0}',N'{1}',N'{2}','{3}'", dtpDate.Text.ToString(), dtpDate.Text.ToString(), "0", "3");
-            calculateTotal(txtPawnSmall, 3);
+            calculateTotal(txtPawnSmall, 3, lblPawnSmall);
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "0");
-            calculateTotal(txtYaeBig, 3);
-            calculateTotal(txtYaeBigToe, 4);
+            calculateTotal(txtYaeBig, 3, lblBigYae);
+            calculateTotal(txtYaeBigToe, 4, lblBigYae);
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "1");
-            calculateTotal(txtYaeTae, 3);
-            calculateTotal(txtYaeToeTae, 4);
+            calculateTotal(txtYaeTae, 3, lblSmallYae);
+            calculateTotal(txtYaeToeTae, 4, lblSmallYae);
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "2");
-            calculateTotal(txtSoneBig, 3);
-            calculateTotal(txtSoneBigToe, 4);
+            calculateTotal(txtSoneBig, 3, lblBigSone);
+            calculateTotal(txtSoneBigToe, 4, lblBigSone);
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "3");
-            calculateTotal(txtSoneSmall, 3);
-            calculateTotal(txtSoneSmallToe, 4);
+            calculateTotal(txtSoneSmall, 3, lblTaeSone);
+            calculateTotal(txtSoneSmallToe, 4, lblTaeSone);
             fillTotalData();
             CanCulate = true;
 
         }
-        public void calculateTotal(TextBox bt, int index)
+        public void calculateTotal(TextBox bt, int index, Label lbl)
         {
             int total = 0;
             DataTable DT = new DataTable();
             DT=objclsMain.SelectData(SP);
+            lbl.Text = lbl.Text +" ("+DT.Rows.Count+")";
+
             foreach (DataRow DR in DT.Rows)
             {
                 total += Convert.ToInt32(DR[index].ToString());
@@ -153,11 +155,11 @@ namespace PawnShop.Monthly
             }
         }
 
-        
+
         public Boolean checkint(TextBox txt)
         {
             int OK;
-            if(int.TryParse(txt.Text, out OK)==false)
+            if (int.TryParse(txt.Text, out OK)==false)
             {
                 MessageBox.Show("Check input", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt.Text= "";
@@ -172,7 +174,7 @@ namespace PawnShop.Monthly
 
         private void txtNgaeYin_TextChanged(object sender, EventArgs e)
         {
-            if(txtNgaeYin.Text != string.Empty)
+            if (txtNgaeYin.Text != string.Empty)
             {
                 if (checkint(txtNgaeYin))
                 {
@@ -183,7 +185,7 @@ namespace PawnShop.Monthly
 
         private void txtInterest_TextChanged(object sender, EventArgs e)
         {
-            if(txtInterest.Text!=string.Empty)
+            if (txtInterest.Text!=string.Empty)
             {
                 if (checkint(txtInterest))
                 {
@@ -203,6 +205,51 @@ namespace PawnShop.Monthly
             }
         }
 
-        
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "5");
+            DataTable DT = new DataTable();
+            DT = objclsMain.SelectData(SP);
+            if (DT.Rows.Count > 0  && IsEdit == false)
+            {
+                MessageBox.Show("The data in "+dtpDate.Text+" is already exit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDate.Focus();
+            }
+            else
+            {
+                clsDaily objclsDaily = new clsDaily();
+                objclsDaily.YaeSmall = Convert.ToInt32(txtYaeTae.Text.ToString());
+                objclsDaily.InsertSmall = Convert.ToInt32(txtYaeToeTae.Text.ToString());
+                objclsDaily.YaeBig = Convert.ToInt32(txtYaeBig.Text.ToString());
+                objclsDaily.InsertBig = Convert.ToInt32(txtYaeBigToe.Text.ToString());
+                objclsDaily.SoneBig = Convert.ToInt32(txtSoneBig.Text.ToString());
+                objclsDaily.SoneBigIntert = Convert.ToInt32(txtYaeBigToe.Text.ToString());
+                objclsDaily.SoneSmall = Convert.ToInt32(txtSoneSmall.Text.ToString());
+                objclsDaily.SoneSmallIntert = Convert.ToInt32(txtSoneSmallToe.Text.ToString());
+                objclsDaily.TotalIncome = Convert.ToInt32(txtTotalWinNgwe.Text.ToString());
+                objclsDaily.MainBalance = Convert.ToInt32(txtNgaeYin.Text.ToString());
+                objclsDaily.PawnSmall = Convert.ToInt32(txtPawnSmall.Text.ToString());
+                objclsDaily.PawnBig = Convert.ToInt32(txtPawnBig.Text.ToString());
+                objclsDaily.Usage = Convert.ToInt32(txtUsage.Text.ToString());
+                objclsDaily.TotalOutPut = Convert.ToInt32(txtOutputmoney.Text.ToString());
+                objclsDaily.LatKyan = Convert.ToInt32(txtLatKyan.Text.ToString());
+                objclsDaily.SarYinDate = dtpDate.Value.ToShortDateString();
+                if (IsEdit)
+                {
+
+                }
+                else
+                {
+
+                    objclsDaily.action=0;
+                }
+                if (MessageBox.Show("Please confirm to save", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    objclsDaily.saveData();
+                    this.Close();
+                }
+
+            }
+        }
     }
 }

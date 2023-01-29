@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBO\clsDaily.cs" />
     <Compile Include="DBO\clsMainDB.cs" />
     <Compile Include="DBO\clsPawn.cs" />
     <Compile Include="DBO\clsYae.cs" />
