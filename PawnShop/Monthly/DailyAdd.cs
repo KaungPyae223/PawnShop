@@ -58,21 +58,21 @@ namespace PawnShop.Monthly
         {
             CanCulate = false;
             SP = string.Format("SP_SelectPawn  N'{0}',N'{1}',N'{2}','{3}'", dtpDate.Text.ToString(), dtpDate.Text.ToString(), "0", "3");
-            calculateTotal(txtPawnBig, 3, lblPawnBig);
+            calculateTotal(txtPawnBig, 3, lblPawnBigQty);
             SP = string.Format("SP_SelectPawnSmall  N'{0}',N'{1}',N'{2}','{3}'", dtpDate.Text.ToString(), dtpDate.Text.ToString(), "0", "3");
-            calculateTotal(txtPawnSmall, 3, lblPawnSmall);
+            calculateTotal(txtPawnSmall, 3, lblPawnTaeQty);
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "0");
-            calculateTotal(txtYaeBig, 3, lblBigYae);
-            calculateTotal(txtYaeBigToe, 4, lblBigYae);
+            calculateTotal(txtYaeBig, 3, lblKyeeQty);
+            calculateTotal(txtYaeBigToe, 4, lblKyeeQty);
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "1");
-            calculateTotal(txtYaeTae, 3, lblSmallYae);
-            calculateTotal(txtYaeToeTae, 4, lblSmallYae);
+            calculateTotal(txtYaeTae, 3, lblSmallQty);
+            calculateTotal(txtYaeToeTae, 4, lblSmallQty);
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "2");
-            calculateTotal(txtSoneBig, 3, lblBigSone);
-            calculateTotal(txtSoneBigToe, 4, lblBigSone);
+            calculateTotal(txtSoneBig, 3, lblKyeeSoneQty);
+            calculateTotal(txtSoneBigToe, 4, lblKyeeSoneQty);
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "3");
-            calculateTotal(txtSoneSmall, 3, lblTaeSone);
-            calculateTotal(txtSoneSmallToe, 4, lblTaeSone);
+            calculateTotal(txtSoneSmall, 3, lblTaeSoneQty);
+            calculateTotal(txtSoneSmallToe, 4, lblTaeSoneQty);
             fillTotalData();
             CanCulate = true;
 
@@ -82,7 +82,7 @@ namespace PawnShop.Monthly
             int total = 0;
             DataTable DT = new DataTable();
             DT=objclsMain.SelectData(SP);
-            lbl.Text = lbl.Text +" ("+DT.Rows.Count+")";
+            lbl.Text = "("+DT.Rows.Count+")";
 
             foreach (DataRow DR in DT.Rows)
             {
@@ -251,5 +251,7 @@ namespace PawnShop.Monthly
 
             }
         }
+
+        
     }
 }

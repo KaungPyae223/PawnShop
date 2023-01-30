@@ -61,23 +61,25 @@
             this.mnuPawn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pawnBigToolStripMenuItem,
             this.pawnSmallToolStripMenuItem});
-            this.mnuPawn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mnuPawn.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuPawn.Name = "mnuPawn";
-            this.mnuPawn.Size = new System.Drawing.Size(98, 42);
+            this.mnuPawn.Size = new System.Drawing.Size(92, 40);
             this.mnuPawn.Text = "အပေါင်";
             // 
             // pawnBigToolStripMenuItem
             // 
             this.pawnBigToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.pawnBigToolStripMenuItem.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pawnBigToolStripMenuItem.Name = "pawnBigToolStripMenuItem";
-            this.pawnBigToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.pawnBigToolStripMenuItem.Size = new System.Drawing.Size(270, 44);
             this.pawnBigToolStripMenuItem.Text = "အပေါင်ကြီး";
             this.pawnBigToolStripMenuItem.Click += new System.EventHandler(this.pawnBigToolStripMenuItem_Click);
             // 
             // pawnSmallToolStripMenuItem
             // 
+            this.pawnSmallToolStripMenuItem.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pawnSmallToolStripMenuItem.Name = "pawnSmallToolStripMenuItem";
-            this.pawnSmallToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.pawnSmallToolStripMenuItem.Size = new System.Drawing.Size(270, 44);
             this.pawnSmallToolStripMenuItem.Text = "အပေါင်သေး";
             this.pawnSmallToolStripMenuItem.Click += new System.EventHandler(this.pawnSmallToolStripMenuItem_Click);
             // 
@@ -86,22 +88,22 @@
             this.mnuYae.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.အရToolStripMenuItem,
             this.အရသToolStripMenuItem});
-            this.mnuYae.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mnuYae.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuYae.Name = "mnuYae";
-            this.mnuYae.Size = new System.Drawing.Size(86, 42);
+            this.mnuYae.Size = new System.Drawing.Size(82, 40);
             this.mnuYae.Text = "‌အရွေး";
             // 
             // အရToolStripMenuItem
             // 
             this.အရToolStripMenuItem.Name = "အရToolStripMenuItem";
-            this.အရToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.အရToolStripMenuItem.Size = new System.Drawing.Size(270, 44);
             this.အရToolStripMenuItem.Text = "‌အရွေးကြီး";
             this.အရToolStripMenuItem.Click += new System.EventHandler(this.အရToolStripMenuItem_Click);
             // 
             // အရသToolStripMenuItem
             // 
             this.အရသToolStripMenuItem.Name = "အရသToolStripMenuItem";
-            this.အရသToolStripMenuItem.Size = new System.Drawing.Size(270, 46);
+            this.အရသToolStripMenuItem.Size = new System.Drawing.Size(270, 44);
             this.အရသToolStripMenuItem.Text = "‌အရွေးသေး";
             this.အရသToolStripMenuItem.Click += new System.EventHandler(this.အရသToolStripMenuItem_Click);
             // 
@@ -109,16 +111,16 @@
             // 
             this.sarYinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dailyToolStripMenuItem});
-            this.sarYinToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sarYinToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sarYinToolStripMenuItem.Name = "sarYinToolStripMenuItem";
-            this.sarYinToolStripMenuItem.Size = new System.Drawing.Size(103, 42);
+            this.sarYinToolStripMenuItem.Size = new System.Drawing.Size(95, 42);
             this.sarYinToolStripMenuItem.Text = "Sar Yin";
             // 
             // dailyToolStripMenuItem
             // 
-            this.dailyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dailyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dailyToolStripMenuItem.Name = "dailyToolStripMenuItem";
-            this.dailyToolStripMenuItem.Size = new System.Drawing.Size(270, 40);
+            this.dailyToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.dailyToolStripMenuItem.Text = "Daily";
             this.dailyToolStripMenuItem.Click += new System.EventHandler(this.dailyToolStripMenuItem_Click);
             // 
