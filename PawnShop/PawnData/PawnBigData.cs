@@ -39,6 +39,7 @@ namespace PawnShop.PawnData
 
             ShowDetails();
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
+            
 
 
         }

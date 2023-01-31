@@ -386,6 +386,7 @@
             // lblBigYae
             // 
             this.lblBigYae.AutoSize = true;
+            this.lblBigYae.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBigYae.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBigYae.Location = new System.Drawing.Point(3, 0);
             this.lblBigYae.Name = "lblBigYae";
@@ -442,6 +443,7 @@
             // lblPawnBig
             // 
             this.lblPawnBig.AutoSize = true;
+            this.lblPawnBig.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblPawnBig.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPawnBig.Location = new System.Drawing.Point(3, 0);
             this.lblPawnBig.Name = "lblPawnBig";
@@ -533,6 +535,7 @@
             // lblBigSone
             // 
             this.lblBigSone.AutoSize = true;
+            this.lblBigSone.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBigSone.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBigSone.Location = new System.Drawing.Point(3, 0);
             this.lblBigSone.Name = "lblBigSone";
@@ -624,6 +627,7 @@
             // lblTaeSone
             // 
             this.lblTaeSone.AutoSize = true;
+            this.lblTaeSone.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblTaeSone.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaeSone.Location = new System.Drawing.Point(3, 0);
             this.lblTaeSone.Name = "lblTaeSone";
@@ -878,13 +882,14 @@
             // lblSmallYae
             // 
             this.lblSmallYae.AutoSize = true;
+            this.lblSmallYae.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSmallYae.Font = new System.Drawing.Font("Myanmar Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSmallYae.Location = new System.Drawing.Point(3, 0);
             this.lblSmallYae.Name = "lblSmallYae";
             this.lblSmallYae.Size = new System.Drawing.Size(67, 32);
             this.lblSmallYae.TabIndex = 0;
             this.lblSmallYae.Text = "အသေး";
-            this.lblSmallYae.Click += new System.EventHandler(this.label1_Click);
+            this.lblSmallYae.Click += new System.EventHandler(this.lblSmallYae_Click);
             // 
             // lblSmallQty
             // 
@@ -925,6 +930,7 @@
             // lblPawnSmall
             // 
             this.lblPawnSmall.AutoSize = true;
+            this.lblPawnSmall.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblPawnSmall.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPawnSmall.Location = new System.Drawing.Point(3, 0);
             this.lblPawnSmall.Name = "lblPawnSmall";

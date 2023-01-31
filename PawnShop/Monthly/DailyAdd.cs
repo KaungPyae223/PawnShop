@@ -16,6 +16,7 @@ namespace PawnShop.Monthly
         readonly CodeLibrary objclsCodeLibary = new CodeLibrary();
         Boolean CanCulate = false;
         Boolean IsEdit = false;
+        
         private void DailyAdd_Load(object sender, EventArgs e)
         {
             this.Size=new Size(530, 700);
@@ -101,10 +102,7 @@ namespace PawnShop.Monthly
             filldata();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void txtInterest_Leave(object sender, EventArgs e)
         {
@@ -252,6 +250,45 @@ namespace PawnShop.Monthly
             }
         }
 
-        
+        private void lblSmallYae_Click(object sender, EventArgs e)
+        {
+            frmDailyDetails frm = new frmDailyDetails();
+            frm.Text = "Yae Tae Details";
+            frm.lblDetails.Text = "Yae Tae data on "+dtpDate.Value.ToShortDateString();
+            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "1");
+            Yaedgvformat(frm.dgvDetails);
+
+            frm.ShowDialog();
+        }
+        private void Yaedgvformat(DataGridView dgv)
+        {
+            int total = 0;
+            int total1 = 0;
+
+            DataTable DT = new DataTable();
+            DT = objclsCodeLibary.SelectData(SP);
+            DataRow DRdata = DT.NewRow();
+            foreach(DataRow dr in DT.Rows)
+            {
+                total += Convert.ToInt32(dr[3]);
+                total1 += Convert.ToInt32(dr[4]);
+
+            }
+            DRdata[3] = total.ToString();
+            DRdata[4] = total1.ToString();
+
+            DRdata[2] = "Total";
+            DT.Rows.Add(DRdata);
+            dgv.DataSource= DT;
+            dgv.Columns[0].Width = (dgv.Width/100)*20;
+            dgv.Columns[1].Width = (dgv.Width/100)*25;
+            dgv.Columns[2].Width = (dgv.Width/100)*25;
+            dgv.Columns[3].Width = (dgv.Width/100)*15;
+            dgv.Columns[4].Width = (dgv.Width/100)*15;
+            dgv.Columns[5].Visible = false;
+            dgv.Columns[6].Visible = false;
+            dgv.Columns[7].Visible = false;
+            dgv.Columns[8].Visible = false;
+        }
     }
 }

@@ -82,6 +82,12 @@
     <Compile Include="Monthly\DailyAdd.Designer.cs">
       <DependentUpon>DailyAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Monthly\frmDailyDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monthly\frmDailyDetails.Designer.cs">
+      <DependentUpon>frmDailyDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="PawnData\ctl_PawnDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monthly\DailyAdd.resx">
       <DependentUpon>DailyAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monthly\frmDailyDetails.resx">
+      <DependentUpon>frmDailyDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PawnData\ctl_PawnDetails.resx">
       <DependentUpon>ctl_PawnDetails.cs</DependentUpon>
