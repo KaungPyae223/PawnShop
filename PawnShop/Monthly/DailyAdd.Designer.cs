@@ -393,6 +393,7 @@
             this.lblBigYae.Size = new System.Drawing.Size(66, 36);
             this.lblBigYae.TabIndex = 0;
             this.lblBigYae.Text = "အကြီး";
+            this.lblBigYae.Click += new System.EventHandler(this.lblBigYae_Click);
             // 
             // lblKyeeQty
             // 
@@ -450,6 +451,7 @@
             this.lblPawnBig.Size = new System.Drawing.Size(107, 36);
             this.lblPawnBig.TabIndex = 0;
             this.lblPawnBig.Text = "အပေါင်ကြီး";
+            this.lblPawnBig.Click += new System.EventHandler(this.lblPawnBig_Click);
             // 
             // lblPawnBigQty
             // 
@@ -542,6 +544,7 @@
             this.lblBigSone.Size = new System.Drawing.Size(93, 36);
             this.lblBigSone.TabIndex = 0;
             this.lblBigSone.Text = "အကြီးဆုံး";
+            this.lblBigSone.Click += new System.EventHandler(this.lblBigSone_Click);
             // 
             // lblKyeeSoneQty
             // 
@@ -634,6 +637,7 @@
             this.lblTaeSone.Size = new System.Drawing.Size(101, 36);
             this.lblTaeSone.TabIndex = 0;
             this.lblTaeSone.Text = "အသေးဆုံး";
+            this.lblTaeSone.Click += new System.EventHandler(this.lblTaeSone_Click);
             // 
             // lblTaeSoneQty
             // 
@@ -937,6 +941,7 @@
             this.lblPawnSmall.Size = new System.Drawing.Size(115, 36);
             this.lblPawnSmall.TabIndex = 0;
             this.lblPawnSmall.Text = "အပေါင်သေး";
+            this.lblPawnSmall.Click += new System.EventHandler(this.lblPawnSmall_Click);
             // 
             // lblPawnTaeQty
             // 

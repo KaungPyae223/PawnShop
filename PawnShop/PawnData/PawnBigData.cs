@@ -18,7 +18,6 @@ namespace PawnShop.PawnData
         public Boolean big;
         public string a;
         UserControl PawnDetails;
-        Boolean firsttime = true;
         int con;
         private void tsbNew_Click(object sender, EventArgs e)
         {
@@ -33,13 +32,12 @@ namespace PawnShop.PawnData
         {
 
             SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
-            ShowData();
             dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
             cboCondition.SelectedIndex= 0;
-
+            ShowData();
             ShowDetails();
             objclsMain.toolStripTextBoxdata(ref toolStripTextBox1, SP, "CustomerName");
-            
+            MakeColors();
 
 
         }
@@ -53,18 +51,6 @@ namespace PawnShop.PawnData
         }
         public void ShowData()
         {
-            if (firsttime)
-            {
-                DataGridViewTextBoxColumn dgcol = new DataGridViewTextBoxColumn();
-                dgcol.DefaultCellStyle.NullValue="+";
-                dgcol.HeaderText="";
-                dgcol.Width=30;
-                dgcol.ReadOnly=true;
-                dgcol.DefaultCellStyle.Alignment=DataGridViewContentAlignment.MiddleCenter;
-                dgvPawn.Columns.Add(dgcol);
-                firsttime=false;
-            }
-
             dgvPawn.DataSource = objclsMain.SelectData(SP);
 
             dgvPawn.Columns[1].Width = (dgvPawn.Width/100)*5;
@@ -77,6 +63,7 @@ namespace PawnShop.PawnData
             dgvPawn.Columns[8].Visible = false;
             dgvPawn.Columns[9].Visible = false;
             dgvPawn.Columns[10].Width = (dgvPawn.Width/100)*20;
+
             MakeColors();
 
         }
@@ -213,6 +200,7 @@ namespace PawnShop.PawnData
 
         public void MakeColors()
         {
+
             for (int i = 0; i<dgvPawn.RowCount-1; i++)
             {
                 if (dgvPawn.Rows[i].Cells[8].Value.ToString() != string.Empty)

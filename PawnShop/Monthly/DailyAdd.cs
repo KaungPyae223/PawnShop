@@ -14,7 +14,6 @@ namespace PawnShop.Monthly
         clsMainDB objclsMain = new clsMainDB();
         string SP;
         readonly CodeLibrary objclsCodeLibary = new CodeLibrary();
-        Boolean CanCulate = false;
         Boolean IsEdit = false;
         
         private void DailyAdd_Load(object sender, EventArgs e)
@@ -57,7 +56,6 @@ namespace PawnShop.Monthly
 
         public void filldata()
         {
-            CanCulate = false;
             SP = string.Format("SP_SelectPawn  N'{0}',N'{1}',N'{2}','{3}'", dtpDate.Text.ToString(), dtpDate.Text.ToString(), "0", "3");
             calculateTotal(txtPawnBig, 3, lblPawnBigQty);
             SP = string.Format("SP_SelectPawnSmall  N'{0}',N'{1}',N'{2}','{3}'", dtpDate.Text.ToString(), dtpDate.Text.ToString(), "0", "3");
@@ -75,7 +73,6 @@ namespace PawnShop.Monthly
             calculateTotal(txtSoneSmall, 3, lblTaeSoneQty);
             calculateTotal(txtSoneSmallToe, 4, lblTaeSoneQty);
             fillTotalData();
-            CanCulate = true;
 
         }
         public void calculateTotal(TextBox bt, int index, Label lbl)
@@ -289,6 +286,80 @@ namespace PawnShop.Monthly
             dgv.Columns[6].Visible = false;
             dgv.Columns[7].Visible = false;
             dgv.Columns[8].Visible = false;
+        }
+
+        private void lblBigYae_Click(object sender, EventArgs e)
+        {
+            frmDailyDetails frm = new frmDailyDetails();
+            frm.Text = "Yae Kyee Details";
+            frm.lblDetails.Text = "Yae Kyee data on "+dtpDate.Value.ToShortDateString();
+            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "0");
+            Yaedgvformat(frm.dgvDetails);
+
+            frm.ShowDialog();
+        }
+
+        private void lblBigSone_Click(object sender, EventArgs e)
+        {
+            frmDailyDetails frm = new frmDailyDetails();
+            frm.Text = "Yae Kyee Sone Details";
+            frm.lblDetails.Text = "Yae Kyee Sone data on "+dtpDate.Value.ToShortDateString();
+            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "2");
+            Yaedgvformat(frm.dgvDetails);
+
+            frm.ShowDialog();
+        }
+
+        private void lblTaeSone_Click(object sender, EventArgs e)
+        {
+            frmDailyDetails frm = new frmDailyDetails();
+            frm.Text = "Yae Tae Sone Details";
+            frm.lblDetails.Text = "Yae Tae Sone data on "+dtpDate.Value.ToShortDateString();
+            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "3");
+            Yaedgvformat(frm.dgvDetails);
+
+            frm.ShowDialog();
+        }
+
+        private void lblPawnSmall_Click(object sender, EventArgs e)
+        {
+            frmDailyDetails frm = new frmDailyDetails();
+            frm.Text = "Pawn Small Details";
+            frm.lblDetails.Text = "Pawn Small data on "+dtpDate.Value.ToShortDateString();
+            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "7");
+            PawnDgvformat(frm.dgvDetails);
+
+            frm.ShowDialog();
+        }
+        public void PawnDgvformat(DataGridView dgv)
+        {
+            DataTable DT = new DataTable();
+            DataRow DRdata;
+            DT = objclsMain.SelectData(SP);
+            DRdata = DT.NewRow();
+            int total = 0;
+            foreach (DataRow Dr in DT.Rows)
+            {
+                total += Convert.ToInt32(Dr[3]);
+            }
+            DRdata[3] = total.ToString();
+            DRdata[2] = "Total";
+            DT.Rows.Add(DRdata);
+            dgv.DataSource= DT;
+            dgv.Columns[0].Width = (dgv.Width/100)*20;
+            dgv.Columns[1].Width = (dgv.Width/100)*30;
+            dgv.Columns[2].Width = (dgv.Width/100)*30;
+            dgv.Columns[3].Width = (dgv.Width/100)*20;
+        }
+
+        private void lblPawnBig_Click(object sender, EventArgs e)
+        {
+            frmDailyDetails frm = new frmDailyDetails();
+            frm.Text = "Pawn Big Details";
+            frm.lblDetails.Text = "Pawn Big data on "+dtpDate.Value.ToShortDateString();
+            SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "6");
+            PawnDgvformat(frm.dgvDetails);
+            frm.ShowDialog();
         }
     }
 }

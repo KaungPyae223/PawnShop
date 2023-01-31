@@ -15,7 +15,6 @@ namespace PawnShop.YaeData
             frontyae= frontY;
             big = isBig;
         }
-        Boolean firsttime = true;
         Boolean big;
         clsMainDB objclsMain = new clsMainDB();
         CodeLibrary objclsCodelibrary = new CodeLibrary();
@@ -45,17 +44,7 @@ namespace PawnShop.YaeData
         }
         public void showData()
         {
-            if (firsttime)
-            {
-                DataGridViewTextBoxColumn dgcol = new DataGridViewTextBoxColumn();
-                dgcol.DefaultCellStyle.NullValue="+";
-                dgcol.HeaderText="";
-                dgcol.Width=30;
-                dgcol.ReadOnly=true;
-                dgcol.DefaultCellStyle.Alignment=DataGridViewContentAlignment.MiddleCenter;
-                dgvYae.Columns.Add(dgcol);
-                firsttime=false;
-            }
+            
 
 
             SP = string.Format(frontyae, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "1");
