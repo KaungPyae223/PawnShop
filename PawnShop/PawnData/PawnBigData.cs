@@ -67,6 +67,7 @@ namespace PawnShop.PawnData
             dgvPawn.Columns[8].Visible = false;
             dgvPawn.Columns[9].Visible = false;
             dgvPawn.Columns[10].Width = (dgvPawn.Width/100)*20;
+            dgvPawn.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             MakeColors();
 

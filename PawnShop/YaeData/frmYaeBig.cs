@@ -57,6 +57,9 @@ namespace PawnShop.YaeData
             dgvYae.Columns[7].Width=(dgvYae.Width/100)*10;
             dgvYae.Columns[8].Width=(dgvYae.Width/100)*10;
             dgvYae.Columns[9].Width=(dgvYae.Width/100)*10;
+            dgvYae.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvYae.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvYae.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             dgvYae.Columns[10].Visible=false;
             makecolors();

@@ -286,6 +286,9 @@ namespace PawnShop.Monthly
             dgv.Columns[6].Visible = false;
             dgv.Columns[7].Visible = false;
             dgv.Columns[8].Visible = false;
+            dgv.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
         }
 
         private void lblBigYae_Click(object sender, EventArgs e)
@@ -350,6 +353,7 @@ namespace PawnShop.Monthly
             dgv.Columns[1].Width = (dgv.Width/100)*30;
             dgv.Columns[2].Width = (dgv.Width/100)*30;
             dgv.Columns[3].Width = (dgv.Width/100)*20;
+            dgv.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void lblPawnBig_Click(object sender, EventArgs e)
