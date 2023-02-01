@@ -19,19 +19,22 @@ namespace PawnShop.PawnData
         public string a;
         UserControl PawnDetails;
         int con;
+        int Action;
         private void tsbNew_Click(object sender, EventArgs e)
         {
             frmPawnAdd frm = new frmPawnAdd();
             frm.pawnbig=big;
             frm.front = a;
             frm.ShowDialog();
-            ShowData();
+
+            relode();
         }
 
         private void frmPawnBigData_Load(object sender, EventArgs e)
         {
 
             SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+            Action = 3;
             dtpFrom.Text=objclsCodeLibrary.LastSixMonthes();
             cboCondition.SelectedIndex= 0;
             ShowData();
@@ -51,6 +54,7 @@ namespace PawnShop.PawnData
         }
         public void ShowData()
         {
+
             dgvPawn.DataSource = objclsMain.SelectData(SP);
 
             dgvPawn.Columns[1].Width = (dgvPawn.Width/100)*5;
@@ -70,11 +74,15 @@ namespace PawnShop.PawnData
 
         private void button1_Click(object sender, EventArgs e)
         {
+            relode();
+
+        }
+        public void relode()
+        {
             cboCondition.SelectedIndex= 0;
             tslLabel.Text="Customer Name";
             toolStripTextBox1.Text="";
             MakeColors();
-
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
@@ -89,7 +97,10 @@ namespace PawnShop.PawnData
                 dtpFrom.Focus();
             }
             else
-                dgvPawn.DataSource = objclsMain.SelectData(SP);
+            {
+                FillData();
+            }
+
         }
 
         private void dtpTo_ValueChanged(object sender, EventArgs e)
@@ -102,7 +113,16 @@ namespace PawnShop.PawnData
                 dtpFrom.Focus();
             }
             else
-                dgvPawn.DataSource = objclsMain.SelectData(SP);
+            {
+                FillData();
+            }
+
+        }
+        public void FillData()
+        {
+            SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text,Action);
+            dgvPawn.DataSource = objclsMain.SelectData(SP);
+            MakeColors();
         }
 
         private void tsbEdit_Click(object sender, EventArgs e)
@@ -140,7 +160,7 @@ namespace PawnShop.PawnData
                 frm.pawnbig=big;
                 frm.front = a;
                 frm.ShowDialog();
-                ShowData();
+                relode();
                 MakeColors();
 
             }
@@ -149,12 +169,22 @@ namespace PawnShop.PawnData
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             if (tslLabel.Text=="Customer Name")
+            {
                 SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, con*3+0);
+                Action = con*3+0;
+            }
             else if (tslLabel.Text=="Amount")
+            {
                 SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, con*3+1);
-            else
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, con*3+2);
+                Action = con*3+1;
 
+            }
+            else
+            {
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), toolStripTextBox1.Text, con*3+2);
+                Action = con*3+2;
+
+            }
             dgvPawn.DataSource = objclsMain.SelectData(SP);
             MakeColors();
 
@@ -236,7 +266,6 @@ namespace PawnShop.PawnData
 
                 }
 
-
             }
         }
 
@@ -286,7 +315,7 @@ namespace PawnShop.PawnData
                         objclsPawn.saveData();
                 }
 
-                ShowData();
+                relode();
             }
 
         }
@@ -344,23 +373,30 @@ namespace PawnShop.PawnData
         {
             if (cboCondition.SelectedIndex == 0)
             {
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
                 con = 2;
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "3");
+                Action = 3;
+
             }
             if (cboCondition.SelectedIndex == 1)
             {
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "20");
                 con = 3;
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", 20);
+                Action = 20;
+
             }
             if (cboCondition.SelectedIndex == 2)
             {
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "21");
                 con = 4;
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", 21);
+                Action = 21;
+
             }
             if (cboCondition.SelectedIndex == 3)
             {
-                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", "22");
                 con = 5;
+                SP = string.Format(a, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "0", 22);
+                Action = 22;
             }
             dgvPawn.DataSource= objclsMain.SelectData(SP);
             string name = tslLabel.Text.Replace(" ", "");
@@ -369,6 +405,6 @@ namespace PawnShop.PawnData
 
         }
 
-        
+
     }
 }

@@ -34,7 +34,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tslLabel = new System.Windows.Forms.ToolStripDropDownButton();
             this.TsmCustomerName = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +74,6 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNew,
             this.tsbEdit,
-            this.tsbSearch,
             this.toolStripButton1,
             this.tslLabel,
             this.toolStripTextBox1,
@@ -109,16 +107,6 @@
             this.tsbEdit.Size = new System.Drawing.Size(87, 42);
             this.tsbEdit.Text = "ပြင်ဆင်";
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
-            // 
-            // tsbSearch
-            // 
-            this.tsbSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbSearch.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsbSearch.Image")));
-            this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSearch.Name = "tsbSearch";
-            this.tsbSearch.Size = new System.Drawing.Size(69, 42);
-            this.tsbSearch.Text = "ရှာဖွေ";
             // 
             // toolStripButton1
             // 
@@ -444,7 +432,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripButton tsbEdit;
-        private System.Windows.Forms.ToolStripButton tsbSearch;
         private System.Windows.Forms.ToolStripDropDownButton tslLabel;
         private System.Windows.Forms.ToolStripMenuItem TsmCustomerName;
         private System.Windows.Forms.ToolStripMenuItem tsmAmount;

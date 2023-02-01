@@ -44,9 +44,7 @@ namespace PawnShop.YaeData
         }
         public void showData()
         {
-            
-
-
+           
             SP = string.Format(frontyae, dtpFrom.Text.ToString(), dtpTo.Text.ToString(), "1");
 
             dgvYae.DataSource = objclsMain.SelectData(SP);
