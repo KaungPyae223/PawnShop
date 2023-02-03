@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmYaeBig));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tslLabel = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmName = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmVourcherID = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAmount = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -52,7 +53,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.itemNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -132,17 +132,24 @@
             this.tsmName.Text = "Customer Name";
             this.tsmName.Click += new System.EventHandler(this.tsmName_Click);
             // 
+            // itemNameToolStripMenuItem
+            // 
+            this.itemNameToolStripMenuItem.Name = "itemNameToolStripMenuItem";
+            this.itemNameToolStripMenuItem.Size = new System.Drawing.Size(274, 38);
+            this.itemNameToolStripMenuItem.Text = "Item Name";
+            this.itemNameToolStripMenuItem.Click += new System.EventHandler(this.itemNameToolStripMenuItem_Click);
+            // 
             // tsmVourcherID
             // 
             this.tsmVourcherID.Name = "tsmVourcherID";
-            this.tsmVourcherID.Size = new System.Drawing.Size(270, 38);
+            this.tsmVourcherID.Size = new System.Drawing.Size(274, 38);
             this.tsmVourcherID.Text = "Vourcher ID";
             this.tsmVourcherID.Click += new System.EventHandler(this.tsmVourcherID_Click);
             // 
             // tsmAmount
             // 
             this.tsmAmount.Name = "tsmAmount";
-            this.tsmAmount.Size = new System.Drawing.Size(270, 38);
+            this.tsmAmount.Size = new System.Drawing.Size(274, 38);
             this.tsmAmount.Text = "Amount";
             this.tsmAmount.Click += new System.EventHandler(this.tsmAmount_Click);
             // 
@@ -161,7 +168,7 @@
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(105, 42);
+            this.toolStripLabel1.Size = new System.Drawing.Size(105, 38);
             this.toolStripLabel1.Text = "‌အရွေးကြီး";
             // 
             // panel1
@@ -241,24 +248,24 @@
             // 
             this.dgvYae.AllowUserToResizeRows = false;
             this.dgvYae.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvYae.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvYae.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvYae.ColumnHeadersHeight = 35;
             this.dgvYae.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvYae.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvYae.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvYae.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvYae.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dgvYae.Location = new System.Drawing.Point(0, 0);
@@ -301,13 +308,6 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(30, 30);
             this.label10.TabIndex = 6;
-            // 
-            // itemNameToolStripMenuItem
-            // 
-            this.itemNameToolStripMenuItem.Name = "itemNameToolStripMenuItem";
-            this.itemNameToolStripMenuItem.Size = new System.Drawing.Size(274, 38);
-            this.itemNameToolStripMenuItem.Text = "Item Name";
-            this.itemNameToolStripMenuItem.Click += new System.EventHandler(this.itemNameToolStripMenuItem_Click);
             // 
             // frmYaeBig
             // 

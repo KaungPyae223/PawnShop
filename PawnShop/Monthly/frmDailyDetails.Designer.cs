@@ -43,7 +43,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1078, 62);
+            this.panel1.Size = new System.Drawing.Size(1278, 62);
             this.panel1.TabIndex = 1;
             // 
             // lblDetails
@@ -60,7 +60,7 @@
             // 
             this.dgvDetails.AllowUserToResizeRows = false;
             this.dgvDetails.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
@@ -88,14 +88,14 @@
             this.dgvDetails.RowHeadersWidth = 62;
             this.dgvDetails.RowTemplate.Height = 28;
             this.dgvDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetails.Size = new System.Drawing.Size(1078, 582);
+            this.dgvDetails.Size = new System.Drawing.Size(1278, 582);
             this.dgvDetails.TabIndex = 2;
             // 
             // frmDailyDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 644);
+            this.ClientSize = new System.Drawing.Size(1278, 644);
             this.Controls.Add(this.dgvDetails);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

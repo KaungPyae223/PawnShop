@@ -45,6 +45,7 @@ namespace PawnShop.Monthly
             total += Convert.ToInt32(txtPawnSmall.Text);
             total += Convert.ToInt32(txtInterest.Text);
             total += Convert.ToInt32(txtUsage.Text);
+            total += Convert.ToInt32(txtPyanTwin.Text);
             txtOutputmoney.Text = total.ToString();
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "4");
             DataTable DT = new DataTable();
@@ -229,6 +230,8 @@ namespace PawnShop.Monthly
                 objclsDaily.TotalOutPut = Convert.ToInt32(txtOutputmoney.Text.ToString());
                 objclsDaily.LatKyan = Convert.ToInt32(txtLatKyan.Text.ToString());
                 objclsDaily.SarYinDate = dtpDate.Value.ToShortDateString();
+                objclsDaily.PyanTwin = Convert.ToInt32(txtPyanTwin.Text.ToString());
+
                 if (IsEdit)
                 {
 
@@ -277,18 +280,18 @@ namespace PawnShop.Monthly
             DRdata[2] = "Total";
             DT.Rows.Add(DRdata);
             dgv.DataSource= DT;
-            dgv.Columns[0].Width = (dgv.Width/100)*20;
-            dgv.Columns[1].Width = (dgv.Width/100)*25;
-            dgv.Columns[2].Width = (dgv.Width/100)*25;
+            dgv.Columns[0].Width = (dgv.Width/100)*15;
+            dgv.Columns[1].Width = (dgv.Width/100)*23;
+            dgv.Columns[2].Width = (dgv.Width/100)*23;
             dgv.Columns[3].Width = (dgv.Width/100)*15;
             dgv.Columns[4].Width = (dgv.Width/100)*15;
             dgv.Columns[5].Visible = false;
-            dgv.Columns[6].Visible = false;
+            dgv.Columns[6].Width = (dgv.Width/100)*15;
             dgv.Columns[7].Visible = false;
             dgv.Columns[8].Visible = false;
             dgv.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            dgv.Columns[6].DisplayIndex = 1;
         }
 
         private void lblBigYae_Click(object sender, EventArgs e)
@@ -345,15 +348,16 @@ namespace PawnShop.Monthly
             {
                 total += Convert.ToInt32(Dr[3]);
             }
-            DRdata[3] = total.ToString();
-            DRdata[2] = "Total";
+            DRdata[4] = total.ToString();
+            DRdata[3] = "Total";
             DT.Rows.Add(DRdata);
             dgv.DataSource= DT;
             dgv.Columns[0].Width = (dgv.Width/100)*20;
-            dgv.Columns[1].Width = (dgv.Width/100)*30;
-            dgv.Columns[2].Width = (dgv.Width/100)*30;
-            dgv.Columns[3].Width = (dgv.Width/100)*20;
-            dgv.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgv.Columns[1].Width = (dgv.Width/100)*20;
+            dgv.Columns[2].Width = (dgv.Width/100)*23;
+            dgv.Columns[3].Width = (dgv.Width/100)*23;
+            dgv.Columns[4].Width = (dgv.Width/100)*20;
+            dgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void lblPawnBig_Click(object sender, EventArgs e)
@@ -364,6 +368,17 @@ namespace PawnShop.Monthly
             SP = string.Format("SP_SelectDailyAdd N'{0}', N'{1}'", dtpDate.Text.ToString(), "6");
             PawnDgvformat(frm.dgvDetails);
             frm.ShowDialog();
+        }
+
+        private void txtPyanTwin_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPyanTwin.Text!=string.Empty)
+            {
+                if (checkint(txtPyanTwin))
+                {
+                    fillTotalData();
+                }
+            }
         }
     }
 }

@@ -28,6 +28,7 @@ namespace PawnShop.PawnData
             frm.ShowDialog();
 
             relode();
+            ShowData();
         }
 
         private void frmPawnBigData_Load(object sender, EventArgs e)
@@ -68,6 +69,8 @@ namespace PawnShop.PawnData
             dgvPawn.Columns[9].Visible = false;
             dgvPawn.Columns[10].Width = (dgvPawn.Width/100)*20;
             dgvPawn.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPawn.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPawn.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             MakeColors();
 
@@ -162,6 +165,7 @@ namespace PawnShop.PawnData
                 frm.front = a;
                 frm.ShowDialog();
                 relode();
+                ShowData();
                 MakeColors();
 
             }
@@ -315,7 +319,7 @@ namespace PawnShop.PawnData
                     if (MessageBox.Show("Are you sure to delete", "Comfirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                         objclsPawn.saveData();
                 }
-
+                ShowData();
                 relode();
             }
 

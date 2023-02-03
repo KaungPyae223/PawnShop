@@ -100,6 +100,9 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTotalWinNgwe = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPyanTwin = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
@@ -129,6 +132,7 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel20.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -250,11 +254,12 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel14, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label16, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel16, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel17, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel20, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel16, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -354,7 +359,6 @@
             this.txtYaeBigToe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtYaeBigToe.Location = new System.Drawing.Point(205, 18);
             this.txtYaeBigToe.Name = "txtYaeBigToe";
-            this.txtYaeBigToe.ReadOnly = true;
             this.txtYaeBigToe.Size = new System.Drawing.Size(156, 26);
             this.txtYaeBigToe.TabIndex = 1;
             // 
@@ -412,7 +416,6 @@
             this.txtYaeBig.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtYaeBig.Location = new System.Drawing.Point(205, 18);
             this.txtYaeBig.Name = "txtYaeBig";
-            this.txtYaeBig.ReadOnly = true;
             this.txtYaeBig.Size = new System.Drawing.Size(156, 26);
             this.txtYaeBig.TabIndex = 1;
             // 
@@ -470,7 +473,6 @@
             this.txtPawnBig.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPawnBig.Location = new System.Drawing.Point(205, 18);
             this.txtPawnBig.Name = "txtPawnBig";
-            this.txtPawnBig.ReadOnly = true;
             this.txtPawnBig.Size = new System.Drawing.Size(156, 26);
             this.txtPawnBig.TabIndex = 1;
             // 
@@ -505,7 +507,6 @@
             this.txtYaeToeTae.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtYaeToeTae.Location = new System.Drawing.Point(205, 18);
             this.txtYaeToeTae.Name = "txtYaeToeTae";
-            this.txtYaeToeTae.ReadOnly = true;
             this.txtYaeToeTae.Size = new System.Drawing.Size(156, 26);
             this.txtYaeToeTae.TabIndex = 1;
             // 
@@ -563,7 +564,6 @@
             this.txtSoneBig.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoneBig.Location = new System.Drawing.Point(205, 18);
             this.txtSoneBig.Name = "txtSoneBig";
-            this.txtSoneBig.ReadOnly = true;
             this.txtSoneBig.Size = new System.Drawing.Size(156, 26);
             this.txtSoneBig.TabIndex = 1;
             // 
@@ -598,7 +598,6 @@
             this.txtSoneBigToe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoneBigToe.Location = new System.Drawing.Point(205, 18);
             this.txtSoneBigToe.Name = "txtSoneBigToe";
-            this.txtSoneBigToe.ReadOnly = true;
             this.txtSoneBigToe.Size = new System.Drawing.Size(156, 26);
             this.txtSoneBigToe.TabIndex = 1;
             // 
@@ -656,7 +655,6 @@
             this.txtSoneSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoneSmall.Location = new System.Drawing.Point(205, 18);
             this.txtSoneSmall.Name = "txtSoneSmall";
-            this.txtSoneSmall.ReadOnly = true;
             this.txtSoneSmall.Size = new System.Drawing.Size(156, 26);
             this.txtSoneSmall.TabIndex = 1;
             // 
@@ -691,7 +689,6 @@
             this.txtSoneSmallToe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoneSmallToe.Location = new System.Drawing.Point(205, 18);
             this.txtSoneSmallToe.Name = "txtSoneSmallToe";
-            this.txtSoneSmallToe.ReadOnly = true;
             this.txtSoneSmallToe.Size = new System.Drawing.Size(156, 26);
             this.txtSoneSmallToe.TabIndex = 1;
             // 
@@ -787,7 +784,7 @@
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableLayoutPanel16.Controls.Add(this.label15, 0, 0);
             this.tableLayoutPanel16.Controls.Add(this.txtOutputmoney, 1, 0);
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(416, 406);
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(416, 486);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.Padding = new System.Windows.Forms.Padding(5, 15, 15, 5);
             this.tableLayoutPanel16.RowCount = 1;
@@ -810,7 +807,6 @@
             this.txtOutputmoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutputmoney.Location = new System.Drawing.Point(205, 18);
             this.txtOutputmoney.Name = "txtOutputmoney";
-            this.txtOutputmoney.ReadOnly = true;
             this.txtOutputmoney.Size = new System.Drawing.Size(156, 26);
             this.txtOutputmoney.TabIndex = 1;
             // 
@@ -843,7 +839,6 @@
             // 
             this.txtLatKyan.Location = new System.Drawing.Point(205, 18);
             this.txtLatKyan.Name = "txtLatKyan";
-            this.txtLatKyan.ReadOnly = true;
             this.txtLatKyan.Size = new System.Drawing.Size(156, 26);
             this.txtLatKyan.TabIndex = 1;
             // 
@@ -868,7 +863,6 @@
             this.txtYaeTae.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtYaeTae.Location = new System.Drawing.Point(205, 18);
             this.txtYaeTae.Name = "txtYaeTae";
-            this.txtYaeTae.ReadOnly = true;
             this.txtYaeTae.Size = new System.Drawing.Size(156, 26);
             this.txtYaeTae.TabIndex = 1;
             // 
@@ -960,7 +954,6 @@
             this.txtPawnSmall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPawnSmall.Location = new System.Drawing.Point(205, 18);
             this.txtPawnSmall.Name = "txtPawnSmall";
-            this.txtPawnSmall.ReadOnly = true;
             this.txtPawnSmall.Size = new System.Drawing.Size(156, 26);
             this.txtPawnSmall.TabIndex = 1;
             // 
@@ -994,9 +987,43 @@
             this.txtTotalWinNgwe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalWinNgwe.Location = new System.Drawing.Point(205, 18);
             this.txtTotalWinNgwe.Name = "txtTotalWinNgwe";
-            this.txtTotalWinNgwe.ReadOnly = true;
             this.txtTotalWinNgwe.Size = new System.Drawing.Size(156, 26);
             this.txtTotalWinNgwe.TabIndex = 1;
+            // 
+            // tableLayoutPanel20
+            // 
+            this.tableLayoutPanel20.ColumnCount = 2;
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel20.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel20.Controls.Add(this.txtPyanTwin, 1, 0);
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(416, 406);
+            this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+            this.tableLayoutPanel20.Padding = new System.Windows.Forms.Padding(5, 15, 15, 5);
+            this.tableLayoutPanel20.RowCount = 1;
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(379, 56);
+            this.tableLayoutPanel20.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 36);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ပြန်သွင်";
+            // 
+            // txtPyanTwin
+            // 
+            this.txtPyanTwin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPyanTwin.Location = new System.Drawing.Point(205, 18);
+            this.txtPyanTwin.Name = "txtPyanTwin";
+            this.txtPyanTwin.Size = new System.Drawing.Size(156, 26);
+            this.txtPyanTwin.TabIndex = 1;
+            this.txtPyanTwin.Text = "0";
+            this.txtPyanTwin.TextChanged += new System.EventHandler(this.txtPyanTwin_TextChanged);
             // 
             // DailyAdd
             // 
@@ -1065,6 +1092,8 @@
             this.flowLayoutPanel5.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel20.ResumeLayout(false);
+            this.tableLayoutPanel20.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1143,5 +1172,8 @@
         private System.Windows.Forms.Label lblTaeSoneQty;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Label lblPawnTaeQty;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox txtPyanTwin;
     }
 }

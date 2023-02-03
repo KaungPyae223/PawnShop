@@ -29,7 +29,7 @@ namespace PawnShop.DBO
         public int LatKyan { get; set; }
         public int action { get; set; }
         public string SarYinDate { get; set; }
-
+        public int PyanTwin { get; set; }
         public void saveData()
         {
             try
@@ -55,8 +55,7 @@ namespace PawnShop.DBO
                 sql.Parameters.AddWithValue("@para15", LatKyan);
                 sql.Parameters.AddWithValue("@para16", SarYinDate);
                 sql.Parameters.AddWithValue("@action", action);
-
-
+                sql.Parameters.AddWithValue("@para17", PyanTwin);
 
                 sql.ExecuteNonQuery();
             }

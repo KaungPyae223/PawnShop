@@ -52,7 +52,7 @@
             this.sarYinToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 46);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 44);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -71,7 +71,7 @@
             this.pawnBigToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.pawnBigToolStripMenuItem.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pawnBigToolStripMenuItem.Name = "pawnBigToolStripMenuItem";
-            this.pawnBigToolStripMenuItem.Size = new System.Drawing.Size(270, 44);
+            this.pawnBigToolStripMenuItem.Size = new System.Drawing.Size(220, 44);
             this.pawnBigToolStripMenuItem.Text = "အပေါင်ကြီး";
             this.pawnBigToolStripMenuItem.Click += new System.EventHandler(this.pawnBigToolStripMenuItem_Click);
             // 
@@ -79,7 +79,7 @@
             // 
             this.pawnSmallToolStripMenuItem.Font = new System.Drawing.Font("Myanmar Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pawnSmallToolStripMenuItem.Name = "pawnSmallToolStripMenuItem";
-            this.pawnSmallToolStripMenuItem.Size = new System.Drawing.Size(270, 44);
+            this.pawnSmallToolStripMenuItem.Size = new System.Drawing.Size(220, 44);
             this.pawnSmallToolStripMenuItem.Text = "အပေါင်သေး";
             this.pawnSmallToolStripMenuItem.Click += new System.EventHandler(this.pawnSmallToolStripMenuItem_Click);
             // 
@@ -96,14 +96,14 @@
             // အရToolStripMenuItem
             // 
             this.အရToolStripMenuItem.Name = "အရToolStripMenuItem";
-            this.အရToolStripMenuItem.Size = new System.Drawing.Size(270, 44);
+            this.အရToolStripMenuItem.Size = new System.Drawing.Size(210, 44);
             this.အရToolStripMenuItem.Text = "‌အရွေးကြီး";
             this.အရToolStripMenuItem.Click += new System.EventHandler(this.အရToolStripMenuItem_Click);
             // 
             // အရသToolStripMenuItem
             // 
             this.အရသToolStripMenuItem.Name = "အရသToolStripMenuItem";
-            this.အရသToolStripMenuItem.Size = new System.Drawing.Size(270, 44);
+            this.အရသToolStripMenuItem.Size = new System.Drawing.Size(210, 44);
             this.အရသToolStripMenuItem.Text = "‌အရွေးသေး";
             this.အရသToolStripMenuItem.Click += new System.EventHandler(this.အရသToolStripMenuItem_Click);
             // 
@@ -113,23 +113,23 @@
             this.dailyToolStripMenuItem});
             this.sarYinToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sarYinToolStripMenuItem.Name = "sarYinToolStripMenuItem";
-            this.sarYinToolStripMenuItem.Size = new System.Drawing.Size(95, 42);
+            this.sarYinToolStripMenuItem.Size = new System.Drawing.Size(95, 40);
             this.sarYinToolStripMenuItem.Text = "Sar Yin";
             // 
             // dailyToolStripMenuItem
             // 
             this.dailyToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dailyToolStripMenuItem.Name = "dailyToolStripMenuItem";
-            this.dailyToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
+            this.dailyToolStripMenuItem.Size = new System.Drawing.Size(159, 36);
             this.dailyToolStripMenuItem.Text = "Daily";
             this.dailyToolStripMenuItem.Click += new System.EventHandler(this.dailyToolStripMenuItem_Click);
             // 
             // mainPannel
             // 
             this.mainPannel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPannel.Location = new System.Drawing.Point(0, 46);
+            this.mainPannel.Location = new System.Drawing.Point(0, 44);
             this.mainPannel.Name = "mainPannel";
-            this.mainPannel.Size = new System.Drawing.Size(800, 404);
+            this.mainPannel.Size = new System.Drawing.Size(800, 406);
             this.mainPannel.TabIndex = 1;
             // 
             // FrmMain

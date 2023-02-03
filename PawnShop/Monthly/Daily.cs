@@ -33,22 +33,35 @@ namespace PawnShop.Monthly
             SP=string.Format("SP_SelectDaily N'{0}',N'{1}'", dtpFrom.Text.ToString(), "0");
             DT = objclsMainDB.SelectData(SP);
             dtpFrom.Text = DT.Rows[0][0].ToString();
+            SP=string.Format("SP_SelectDaily N'{0}',N'{1}'", dtpFrom.Text.ToString(), "1");
+            DT = objclsMainDB.SelectData(SP);
+            dtpTo.Text = DT.Rows[0][0].ToString();
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
-        {
-            SP=string.Format("SP_SelectDaily N'{0}',N'{1}'", dtpFrom.Text.ToString(), "0");
-            DT = objclsMainDB.SelectData(SP);
-            dtpFrom.Text = DT.Rows[0][0].ToString();
-        }
-
-        private void dtpTo_ValueChanged(object sender, EventArgs e)
         {
             if (objclsCodeLibary.dateDiff(dtpTo.Text, DateTime.Today.ToShortDateString()))
             {
                 MessageBox.Show("Check Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dtpTo.Text=DateTime.Now.ToString();
             }
+            else
+            {
+                SP=string.Format("SP_SelectDaily N'{0}',N'{1}'", dtpFrom.Text.ToString(), "0");
+                DT = objclsMainDB.SelectData(SP);
+                dtpFrom.Text = DT.Rows[0][0].ToString();
+            }    
+            
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            
+            
+                SP=string.Format("SP_SelectDaily N'{0}',N'{1}'", dtpTo.Text.ToString(), "1");
+                DT = objclsMainDB.SelectData(SP);
+                dtpTo.Text = DT.Rows[0][0].ToString();
+            
         }
     }
 }
